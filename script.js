@@ -7,50 +7,6 @@ var apiGoogleMaps = 'AIzaSyD4OVkkkHA93ViisjQDq3Fx_oAtNuevgR0'
 
 
 
-// testApiWeather();
-function testApiWeather () {
-  
-
-  var cityInput = $('#cityInput').val();
-  console.log(cityInput);
-
-  $.ajax({
-
-          type: "GET",
-          url: `https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&units=imperial&APPID=${apiKeyWeather}`,
-          id: "city",
-          success: function(data) {
-            
-            
-            console.log(data);
-
-          }
-        });
-      }
-
-//prescription trails- still need to get api to work
-// testApiTrails();
-// function testApiTrails () {
-
-//   var trailInput = $('#trailInput').val();
-//   console.log(trailInput);
-
-
-//   $.ajax({
-
-//           type: "GET",
-//           url: 'https://prescriptiontrails.org/api/filter/?zip=87102&by=zip&offset=0&count=6',
-          
-//           success: function(data) {
-            
-            
-//             console.log(data);
-
-//           }
-//         });
-//       }
-
-
 parkSearch();
 function parkSearch () {
 
@@ -74,10 +30,6 @@ function parkSearch () {
           }
         });
       }
-
-//           }
-//         });
-//       }
 
 //google maps----------------------
 
@@ -142,55 +94,11 @@ function parkSearch () {
 
 
 
-<<<<<<< HEAD
-// $('#submitBtn').click(function(){
-//     testApiWeather();
-=======
-// function testHikingApi () {
-//   var myHeaders = new Headers();
-//   myHeaders.append("Content-Type", "application/json");
-  
-//   var requestOptions = {
-//     method: 'GET',
-//     headers: myHeaders,
-//     redirect: 'follow',
-//     mode: "no-cors"
-//   };
-//   console.log(requestOptions);
-//   fetch("https://www.benbrougher.tech/hiker/v1/trails/", requestOptions)
-//     .then(response => response.text())
-//     .then(result => console.log(result))
-//     .catch(error => console.log('error', error));
-// }
->>>>>>> map
+
+
 
 //   });
 
 $('#submitBtn').click(function(){
-<<<<<<< HEAD
-    parkSearch();
 
-});
-=======
-    testApiWeather();
-    console.log(cityInput);
-  });
-  //search with enter key
-// $('#cityInput').keypress(function(e){
-//   if(e.which === 13) {
-//     testApiWeather();
-//   }
-// });
-
-
-// $('#submitBtnTwo').click(function(){
-//     testApiTrails();
-
-//   });
-//   //search with enter key
-// $('#trailInput').keypress(function(e){
-//   if(e.which === 13) {
-//     testApiTrailsr();
-//   }
-// });
->>>>>>> map
+}
