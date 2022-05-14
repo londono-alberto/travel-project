@@ -7,50 +7,6 @@ var apiGoogleMaps = 'AIzaSyD4OVkkkHA93ViisjQDq3Fx_oAtNuevgR0'
 
 
 
-// testApiWeather();
-function testApiWeather () {
-  
-
-  var cityInput = $('#cityInput').val();
-  console.log(cityInput);
-
-  $.ajax({
-
-          type: "GET",
-          url: `https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&units=imperial&APPID=${apiKeyWeather}`,
-          id: "city",
-          success: function(data) {
-            
-            
-            console.log(data);
-
-          }
-        });
-      }
-
-//prescription trails- still need to get api to work
-// testApiTrails();
-// function testApiTrails () {
-
-//   var trailInput = $('#trailInput').val();
-//   console.log(trailInput);
-
-
-//   $.ajax({
-
-//           type: "GET",
-//           url: 'https://prescriptiontrails.org/api/filter/?zip=87102&by=zip&offset=0&count=6',
-          
-//           success: function(data) {
-            
-            
-//             console.log(data);
-
-//           }
-//         });
-//       }
-
-
 parkSearch();
 function parkSearch () {
 
