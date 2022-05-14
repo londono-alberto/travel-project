@@ -75,6 +75,9 @@ function parkSearch () {
         });
       }
 
+//           }
+//         });
+//       }
 
 //google maps----------------------
 
@@ -139,12 +142,55 @@ function parkSearch () {
 
 
 
+<<<<<<< HEAD
 // $('#submitBtn').click(function(){
 //     testApiWeather();
+=======
+// function testHikingApi () {
+//   var myHeaders = new Headers();
+//   myHeaders.append("Content-Type", "application/json");
+  
+//   var requestOptions = {
+//     method: 'GET',
+//     headers: myHeaders,
+//     redirect: 'follow',
+//     mode: "no-cors"
+//   };
+//   console.log(requestOptions);
+//   fetch("https://www.benbrougher.tech/hiker/v1/trails/", requestOptions)
+//     .then(response => response.text())
+//     .then(result => console.log(result))
+//     .catch(error => console.log('error', error));
+// }
+>>>>>>> map
 
 //   });
 
 $('#submitBtn').click(function(){
+<<<<<<< HEAD
     parkSearch();
 
 });
+=======
+    testApiWeather();
+    console.log(cityInput);
+  });
+  //search with enter key
+// $('#cityInput').keypress(function(e){
+//   if(e.which === 13) {
+//     testApiWeather();
+//   }
+// });
+
+
+// $('#submitBtnTwo').click(function(){
+//     testApiTrails();
+
+//   });
+//   //search with enter key
+// $('#trailInput').keypress(function(e){
+//   if(e.which === 13) {
+//     testApiTrailsr();
+//   }
+// });
+>>>>>>> map
