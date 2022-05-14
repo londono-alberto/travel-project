@@ -17,8 +17,11 @@ function parkSearch() {
     success: function (data) {
       console.log(data);
 
+}
+
       var activityEl = data.data[0].activities[0].name;
       console.log(activityEl);
     },
   });
 }
+
