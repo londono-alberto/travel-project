@@ -8,24 +8,49 @@
   </head>
   <h1>Hiking Project</h1>
   <body>
-    <div class="row">
-      <div class="column col-3">
-        <p class="search-header fs-3">Search for an Activity:</p>
-
-        <input
-          id="activity-input"
-          type="text"
-          name="activity"
-          class="form-control"
-          placeholder="Activity Name"
-        />
-        <div id="display"></div>
-        <span id="inputError"></span>
-        <div class="recentHistory">
-          <button class="submitBtn" type="button" id="submitBtn">Search</button>
+    <div id="searchBoxes" class="searchBoxes">
+      <h3>Choose a State</h3>
+      <div class="dropdown">
+        <div id="myDropdown" class="dropdown-content">
+          <select>
+            <option value="AL">Alabama</option>
+            <option value="AK">Alaska</option>
+            <option value="AZ">Arizona</option>
+            <option value="AR">Arkansas</option>
+            <option value="CA">California</option>
+            <option value="CO">Colorado</option>
+            <option value="CT">Connecticut</option>
+            <option value="DE">Delaware</option>
+            <option value="DC">District Of Columbia</option>
+            <option value="FL">Florida</option>
+            <option value="GA">Georgia</option>
+            <option value="HI">Hawaii</option>
+          </select>
         </div>
-        <ul id="history-list" class="list-group"></ul>
-      </div>  
+      </div>
+      <div class="row">
+        <div class="column col-3">
+          <p class="search-header fs-3">Search for an Activity:</p>
+
+          <input
+            id="activity-input"
+            type="text"
+            name="activity"
+            class="form-control"
+            placeholder="Activity Name"
+          />
+          <div id="display"></div>
+          <span id="inputError"></span>
+          <div class="recentHistory">
+            <button class="submitBtn" type="button" id="submitBtn">
+              Search
+            </button>
+          </div>
+          <ul id="history-list" class="list-group"></ul>
+        </div>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="script.js"></script>
