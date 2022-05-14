@@ -22,29 +22,44 @@ function testApiWeather () {
       }
 
 
-testApiTrails();
-function testApiTrails () {
+// testApiTrails();
+// function testApiTrails () {
 
 
-  $.ajax({
+//   $.ajax({
 
-          type: "GET",
-          id: 2,
-          url: 'https://prescriptiontrails.org/api/trail/?id=2',
+//           type: "GET",
+//           id: 2,
+//           url: 'https://prescriptiontrails.org/api/trail/?id=2',
           
-          success: function(data) {
+//           success: function(data) {
             
             
-            console.log(data);
+//             console.log(data);
 
-          }
-        });
-      }
-
-
+//           }
+//         });
+//       }
 
 
 
+
+// function testHikingApi () {
+//   var myHeaders = new Headers();
+//   myHeaders.append("Content-Type", "application/json");
+  
+//   var requestOptions = {
+//     method: 'GET',
+//     headers: myHeaders,
+//     redirect: 'follow',
+//     mode: "no-cors"
+//   };
+//   console.log(requestOptions);
+//   fetch("https://www.benbrougher.tech/hiker/v1/trails/", requestOptions)
+//     .then(response => response.text())
+//     .then(result => console.log(result))
+//     .catch(error => console.log('error', error));
+// }
 
 
 
@@ -53,23 +68,23 @@ function testApiTrails () {
 
 $('#submitBtn').click(function(){
     testApiWeather();
-
+    console.log(cityInput);
   });
   //search with enter key
-$('#cityInput').keypress(function(e){
-  if(e.which === 13) {
-    testApiWeather();
-  }
-});
+// $('#cityInput').keypress(function(e){
+//   if(e.which === 13) {
+//     testApiWeather();
+//   }
+// });
 
 
-$('#submitBtnTwo').click(function(){
-    testApiTrails();
+// $('#submitBtnTwo').click(function(){
+//     testApiTrails();
 
-  });
-  //search with enter key
-$('#trailInput').keypress(function(e){
-  if(e.which === 13) {
-    testApiTrailsr();
-  }
-});
+//   });
+//   //search with enter key
+// $('#trailInput').keypress(function(e){
+//   if(e.which === 13) {
+//     testApiTrailsr();
+//   }
+// });
