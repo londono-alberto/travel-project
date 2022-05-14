@@ -31,7 +31,6 @@ function parkSearch () {
         });
       }
 
-
 //google maps----------------------
 
 /*
@@ -95,12 +94,11 @@ function parkSearch () {
 
 
 
-// $('#submitBtn').click(function(){
-//     testApiWeather();
+
+
 
 //   });
 
 $('#submitBtn').click(function(){
-    parkSearch();
 
-});
+}
