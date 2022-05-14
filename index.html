@@ -4,41 +4,28 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Travel Project</title>
+    <title>Hiking Project</title>
   </head>
-  <h1>Travel Project</h1>
+  <h1>Hiking Project</h1>
   <body>
-    <p class="search-header fs-3">Search for a City:</p>
+    <div class="row">
+      <div class="column col-3">
+        <p class="search-header fs-3">Search for an Activity:</p>
 
-    <input
-      id="cityInput"
-      type="text"
-      name="city"
-      class="form-control"
-      placeholder="City Name"
-    />
-    <div id="display"></div>
-    <span id="inputError"></span>
-    <div class="recentHistory">
-      <button class="submitBtn" type="button" id="submitBtn">Search</button>
-    </div>
-    <p class="search-header fs-3">Search for a Trail:</p>
-
-    <input
-      id="trailInput"
-      type="text"
-      name="trail"
-      class="form-control"
-      placeholder="Trail Name"
-    />
-    <div id="display"></div>
-    <span id="inputError"></span>
-    <div class="recentHistory">
-      <button class="submitBtnTwo" type="button" id="submitBtnTwo">
-        Search
-      </button>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+        <input
+          id="activity-input"
+          type="text"
+          name="activity"
+          class="form-control"
+          placeholder="Activity Name"
+        />
+        <div id="display"></div>
+        <span id="inputError"></span>
+        <div class="recentHistory">
+          <button class="submitBtn" type="button" id="submitBtn">Search</button>
+        </div>
+        <ul id="history-list" class="list-group"></ul>
+      </div>  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="script.js"></script>
