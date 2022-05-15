@@ -8,10 +8,18 @@ var apiGoogleMaps = 'AIzaSyD4OVkkkHA93ViisjQDq3Fx_oAtNuevgR0'
 var parkCode = 'ARCH,AZRU,BAND,BRCA,CAGR,CANY,CARE,CAVE,CEBR,CHAM,CHCU,CHIR,CORO,CURE,DEPO,DEVA,ELMA,ELMO,FLFO,FOBO,GICL,GLCA,GRBA,GRCA,GRSA,GUMO,HOVE,JOTR,KICA,LAKE,MANZ,MEVE,MOJA,NABR,ORPI,PARA,PECO,PEFO,PETR,PIMA,PISP,SAGU,SAPU,SEQU,SUCR,TONT,TUMA,WACA,WHSA,WUPA,YOSE,YUHO,ZION,CALI,ELCA,JUBA,OLSP,POEX,SAFE,';
 
 var stateCode = 'AL,AK,AZ,AR,CA,CZ,CO,CT,DE,DC,FL,GA,GU,HI,ID,IL,IN,IA,KS,KY,LA,ME,MD,MA,MI,MS,MO,MT,NE,NV,	NH,NJ,NM,NY,NC,ND,OH,OK,OR,PA,PR,RI,SC,SD,TN,TX,UT,VT,VI,VA,WA,WV,WI,WY';
-
+let startBtn = document.getElementById('stateButton');
 
 var obj = {};
 
+// stateSearch and parkSearch have the same api. what for? 
+// can remove the local variables in parkSearch since they are global 
+
+// button that gets the value fromt the dropdown list 
+startBtn.addEventListener('click', function(){
+  let userInput = $('#myDropdown :selected').val();
+  console.log(userInput);
+})
 
 stateSearch();
 function stateSearch () {
@@ -71,6 +79,6 @@ function parkSearch() {
         });
       }
 
-      var activityEl = data.data[0].activities[0].name;
-      console.log(activityEl);
+      // var activityEl = data.data[0].activities[0].name;
+      // console.log(activityEl);
 }
