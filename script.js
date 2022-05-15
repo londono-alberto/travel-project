@@ -29,21 +29,32 @@ startBtn.addEventListener('click', function(){
 })
 
 
-function stateSearch (userInput) {
+function stateSearch (state) {
 
   var activityInput = document.querySelector('.activity-input')
   console.log(activityInput);
-
+// let decision = state
+// console.log(decision);
   $.ajax({
     
 
           type: "GET",
-          url: "https://developer.nps.gov/api/v1/parks?parkCode=" + userInput + "&api_key=" + apiKeyNPS, 
+          url: "https://developer.nps.gov/api/v1/parks?parkCode=" + state + "&api_key=" + apiKeyNPS, 
           
           
           success: function(data) {
             console.log(data);
+// data.data[i].url 
+            // attempting to display hawaii on array 6 and create a p element to append the url text
+            for (let i = 0; i < data.data.length; i++){
+            if (state === data.data[i].states) {
+              let createP = document.createElement('p');
+              let createDiv = document.createElement('div');
 
+              createP = data.data[i].url 
+              console.log(createP);
+            }
+          }
             var activityEl = data.data[0].activities[0].name;
             console.log(activityEl);
             
