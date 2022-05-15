@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
     <title>Hiking Project</title>
   </head>
   <h1>Hiking Project</h1>
@@ -27,29 +29,20 @@
             <option value="HI">Hawaii</option>
           </select>
         </div>
+        <button id="stateButton" class="stateButton">Submit</button>
       </div>
+      <div id="map"></div>
       <div class="row">
-        <div class="column col-3">
-          <p class="search-header fs-3">Search for an Activity:</p>
-
-          <input
-            id="activity-input"
-            type="text"
-            name="activity"
-            class="form-control"
-            placeholder="Activity Name"
-          />
-          <div id="display"></div>
-          <span id="inputError"></span>
-          <div class="recentHistory">
-            <button class="submitBtn" type="button" id="submitBtn">
-              Search
-            </button>
-          </div>
-          <ul id="history-list" class="list-group"></ul>
+        <div id="activity-card" class="column col-3">
+          <p class="search-header fs-3">Activities:</p>
         </div>
       </div>
     </div>
+
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4OVkkkHA93ViisjQDq3Fx_oAtNuevgR0&callback=mapApi&v=weekly"
+      defer
+    ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
