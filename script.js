@@ -15,14 +15,21 @@ var obj = {};
 // stateSearch and parkSearch have the same api. what for? 
 // can remove the local variables in parkSearch since they are global 
 
+
+
 // button that gets the value fromt the dropdown list 
 startBtn.addEventListener('click', function(){
   let userInput = $('#myDropdown :selected').val();
   console.log(userInput);
+
+  // hides the dropdown list and the button 
+  // $('.dropdown').hide()
+
+  stateSearch(userInput)
 })
 
-stateSearch();
-function stateSearch () {
+
+function stateSearch (userInput) {
 
   var activityInput = document.querySelector('.activity-input')
   console.log(activityInput);
@@ -31,7 +38,8 @@ function stateSearch () {
     
 
           type: "GET",
-          url: `https://developer.nps.gov/api/v1/parks?parkCode=${stateCode}&api_key=UwI3kgigKGVdm8bk9XTQmiupY45dyxNZfIcdn81Q`,
+          url: "https://developer.nps.gov/api/v1/parks?parkCode=" + userInput + "&api_key=" + apiKeyNPS, 
+          
           
           success: function(data) {
             console.log(data);
@@ -45,40 +53,40 @@ function stateSearch () {
       }
 
 
-parkSearch();
-function parkSearch () {
+// parkSearch();
+// function parkSearch () {
 
-  var activityInput = document.querySelector('.activity-input')
+//   var activityInput = document.querySelector('.activity-input')
 
-var apiKeyWeather = "b6a631faf48ec36736fa91299da2f0a2";
-var apiKeyNPS = "UwI3kgigKGVdm8bk9XTQmiupY45dyxNZfIcdn81Q";
-var apiGoogleMaps = "AIzaSyD4OVkkkHA93ViisjQDq3Fx_oAtNuevgR0";
+// var apiKeyWeather = "b6a631faf48ec36736fa91299da2f0a2";
+// var apiKeyNPS = "UwI3kgigKGVdm8bk9XTQmiupY45dyxNZfIcdn81Q";
+// var apiGoogleMaps = "AIzaSyD4OVkkkHA93ViisjQDq3Fx_oAtNuevgR0";
 
-parkSearch();
-function parkSearch() {
-  var activityInput = document.querySelector(".activity-input");
+// parkSearch();
+// function parkSearch() {
+//   var activityInput = document.querySelector(".activity-input");
 
-  console.log(activityInput);
+//   console.log(activityInput);
 
-  $.ajax({
-    type: "GET",
-    url: "https://developer.nps.gov/api/v1/parks?parkCode=acad&api_key=UwI3kgigKGVdm8bk9XTQmiupY45dyxNZfIcdn81Q",
+//   $.ajax({
+//     type: "GET",
+//     url: "https://developer.nps.gov/api/v1/parks?parkCode=acad&api_key=UwI3kgigKGVdm8bk9XTQmiupY45dyxNZfIcdn81Q",
 
 
-          type: "GET",
-          url: `https://developer.nps.gov/api/v1/parks?parkCode=${parkCode}&api_key=UwI3kgigKGVdm8bk9XTQmiupY45dyxNZfIcdn81Q`,
+//           type: "GET",
+//           url: `https://developer.nps.gov/api/v1/parks?parkCode=${parkCode}&api_key=UwI3kgigKGVdm8bk9XTQmiupY45dyxNZfIcdn81Q`,
           
-          success: function(data) {
-            console.log(data);
+//           success: function(data) {
+//             console.log(data);
 
-            var activityEl = data.data[0].activities[0].name;
-            console.log(activityEl);
+//             var activityEl = data.data[0].activities[0].name;
+//             console.log(activityEl);
             
 
-          }
-        });
-      }
+//           }
+//         });
+//       }
 
-      // var activityEl = data.data[0].activities[0].name;
-      // console.log(activityEl);
-}
+//       // var activityEl = data.data[0].activities[0].name;
+//       // console.log(activityEl);
+// }
