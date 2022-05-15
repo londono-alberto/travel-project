@@ -1,7 +1,4 @@
-//api tests
-
-//keys
-
+// web api keys
 var apiKeyWeather = 'b6a631faf48ec36736fa91299da2f0a2';
 var apiKeyNPS = 'UwI3kgigKGVdm8bk9XTQmiupY45dyxNZfIcdn81Q';
 var apiGoogleMaps = 'AIzaSyD4OVkkkHA93ViisjQDq3Fx_oAtNuevgR0'
@@ -33,30 +30,50 @@ function stateSearch (state) {
           success: function(data) {
             console.log(data);
             
-// data.data[i].url 
+
             // attempting to display hawaii on array 6 and create a p element to append the url text
             for (let i = 0; i < data.data.length; i++){
             if (state === data.data[i].states) {
               // this variable will contain the coordinates for the google maps api 
               let {latitude, longitude} = data.data[i];
-        
+              let {url} = data.data[i];
+              
+              // creates p elements 
               let createP = document.createElement('p');
-      
+              let createP2 = document.createElement('p');
+              createP2 = "Link to park: " + url;
+              
+              // creates div elements to append other elements to 
               let createDiv = document.createElement('div');
               let createDiv2 = document.createElement('div');
 
+              // this div will append the url link -- needs to be here so it doesnt get created multiple times 
+              let createDiv3 = document.createElement('div');
+              createDiv3.append(createP2);
+              activityCard.append(createDiv3);
+
+              // this creates an image tag with the src attribute for the image 
               let createImg = document.createElement('img');
               createImg.setAttribute('src', "")
-        
-// data.data[i].activities[i].name 
+              createImg.src = data.data[i].images[0].url
+              createDiv2.append(createImg);
+              activityCard.append(createDiv2);
+              
+              // this for loop specifies the array within the data array 
               for (let j = 0; j < data.data[i].activities.length; j++){
-                createP = data.data[i].activities[j].name
-                createImg.src = data.data[i].images[j].url
 
+                // these elements get the specified data 
+                createP = data.data[i].activities[j].name
+                
+
+                // these elements are getting appeneded to separate divs 
                 createDiv.append(createP);
-                createDiv2.append(createImg);
+                
+              
+                // these elements are getting appended to the card 
+                
                 activityCard.append(createDiv);
-                activityCard.append(createDiv2);
+                
 
               }
 
