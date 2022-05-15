@@ -50,9 +50,12 @@ function stateSearch (state) {
             if (state === data.data[i].states) {
               let createP = document.createElement('p');
               let createDiv = document.createElement('div');
-
-              createP = data.data[i].url 
+// data.data[i].activities[i].name 
+              for (let j = 0; j < data.data[i].activities.length; j++){
+                createP = data.data[i].activities[j].name
               console.log(createP);
+              }
+              
             }
           }
             var activityEl = data.data[0].activities[0].name;
