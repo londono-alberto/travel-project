@@ -41,7 +41,7 @@ function stateSearch (state) {
               // creates p elements 
               let createP = document.createElement('p');
               let createP2 = document.createElement('p');
-              createP2 = "Link to park: " + url;
+              $(createP2).html($(`<a href="${url}">Link to ${data.data[i].name} Park</a>`));
               
               // creates div elements to append other elements to 
               let createDiv = document.createElement('div');
