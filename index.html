@@ -9,7 +9,6 @@
   </head>
   <h1>Hiking Project</h1>
   <body>
-
     <div id="searchBoxes" class="searchBoxes">
       <h3>Choose a State</h3>
       <div class="dropdown">
@@ -17,34 +16,27 @@
           <select>
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
-
-
             <option value="AZ">Arizona</option>
-
             <option value="AR">Arkansas</option>
             <option value="CA">California</option>
             <option value="CO">Colorado</option>
             <option value="CT">Connecticut</option>
-
-
             <option value="DE">Delaware</option>
-
             <option value="DC">District Of Columbia</option>
             <option value="FL">Florida</option>
             <option value="GA">Georgia</option>
             <option value="HI">Hawaii</option>
-
             <option value="KY">Kentucky</option>
             <option value="ME">Maine</option>
             <option value="MD">Maryland</option>
-            <option value="MA">Massachussets</option>
+            <option value="MA">Massachusetts</option>
             <option value="MT">Minnesota</option>
             <option value="NE">Nebraska</option>
             <option value="NY">New York</option>
             <option value="NC">North Carolina</option>
             <option value="NJ">New Jersey</option>
             <option value="NM">New Mexico</option>
-            <option value="PA">Pennyslvania</option>
+            <option value="PA">Pennsylvania</option>
             <option value="RI">Rhode Island</option>
             <option value="SD">South Dakota</option>
             <option value="TN">Tennessee</option>
@@ -62,7 +54,7 @@
       <button id="returnButton" class="returnButton">State Selection</button>
       <div id="map"></div>
       <div class="row">
-        <div id = 'activity-card' class="column col-3">
+        <div id="activity-card" class="column col-3">
           <p class="search-header fs-3">State Park(s) and Activities:</p>
         </div>
       </div>
@@ -72,33 +64,6 @@
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4OVkkkHA93ViisjQDq3Fx_oAtNuevgR0&callback=mapApi&v=weekly"
       defer
     ></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-          </select>
-        </div>
-      </div>
-      <div class="row">
-        <div class="column col-3">
-          <p class="search-header fs-3">Search for an Activity:</p>
-
-          <input
-            id="activity-input"
-            type="text"
-            name="activity"
-            class="form-control"
-            placeholder="Activity Name"
-          />
-          <div id="display"></div>
-          <span id="inputError"></span>
-          <div class="recentHistory">
-            <button class="submitBtn" type="button" id="submitBtn">
-              Search
-            </button>
-          </div>
-          <ul id="history-list" class="list-group"></ul>
-        </div>
-      </div>
-    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
