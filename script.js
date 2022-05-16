@@ -4,7 +4,9 @@ var apiKeyNPS = 'UwI3kgigKGVdm8bk9XTQmiupY45dyxNZfIcdn81Q';
 var apiGoogleMaps = 'AIzaSyD4OVkkkHA93ViisjQDq3Fx_oAtNuevgR0'
 
 let startBtn = document.getElementById('stateButton');
+let returnBtn = document.getElementById('returnButton');
 let activityCard = document.getElementById('activity-card');
+
 
 // button that gets the value fromt the dropdown list 
 startBtn.addEventListener('click', function(){
@@ -12,13 +14,19 @@ startBtn.addEventListener('click', function(){
   console.log(userInput);
 
   // hides the dropdown list and the button 
-  // $('.dropdown').hide()
+  $('.dropdown').hide()
+  $('.returnButton').show()
 
   stateSearch(userInput)
 })
 
+returnBtn.addEventListener('click', function(){
+  location.reload();
+})
+
 // this function will fetch the data for the google maps and display the activities 
 function stateSearch (state) {
+  $('#map').show();
 
   $.ajax({
     
@@ -108,6 +116,8 @@ function stateSearch (state) {
         );
     }
     
+    // hides elements until function is called 
     $(document).ready(function(){
       $('#map').hide();
+      $('.returnButton').hide()
     })
