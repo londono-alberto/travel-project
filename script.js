@@ -78,9 +78,32 @@ function stateSearch (state) {
               }
 
               // this invokes the apiGoogleMaps with the specified coords 
-              // mapApi(latitude, longitude);
+              mapApi(latitude, longitude);
             }
           }
           }
         });
       }
+
+      function mapApi(lat, lon) {
+        const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 8,
+      });
+      console.log(lat, lon);
+      const geocoder = new google.maps.Geocoder();
+    
+      geocoder
+        .geocode({ address: "US" })
+        .then((response) => {
+          const position = response.results[0].geometry.location;
+    
+          map.setCenter(new google.maps.LatLng(	lat, 	lon));
+          new google.maps.Marker({
+            map,
+            position,
+          });
+        })
+        .catch((e) =>
+          window.alert("Geocode was not successful for the following reason: " + e)
+        );
+    }
