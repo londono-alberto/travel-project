@@ -19,6 +19,7 @@ startBtn.addEventListener('click', function(){
 
 // this function will fetch the data for the google maps and display the activities 
 function stateSearch (state) {
+  $('#map').show();
 
   $.ajax({
     
@@ -41,7 +42,7 @@ function stateSearch (state) {
               // creates p elements 
               let createP = document.createElement('p');
               let createP2 = document.createElement('p');
-              createP2 = "Link to park: " + url;
+              $(createP2).html($(`<a href="${url}">Link to ${data.data[i].name} Park</a>`));
               
               // creates div elements to append other elements to 
               let createDiv = document.createElement('div');
@@ -56,8 +57,12 @@ function stateSearch (state) {
               let createImg = document.createElement('img');
               createImg.setAttribute('src', "")
               createImg.src = data.data[i].images[0].url
+              console.log(data.data[i].images[0].url);
+              console.log(createImg);
               createDiv2.append(createImg);
               activityCard.append(createDiv2);
+
+              
               
               // this for loop specifies the array within the data array 
               for (let j = 0; j < data.data[i].activities.length; j++){
@@ -66,7 +71,7 @@ function stateSearch (state) {
                 createP = data.data[i].activities[j].name
                 
 
-                // these elements are getting appeneded to separate divs 
+                // these elements are getting appended to separate divs 
                 createDiv.append(createP);
                 
               
@@ -98,7 +103,7 @@ function mapApi(lat, lon) {
     .then((response) => {
       const position = response.results[0].geometry.location;
 
-      map.setCenter(new google.maps.LatLng(	lat, 	lon));
+      map.setCenter(new google.maps.LatLng(lat, lon));
       new google.maps.Marker({
         map,
         position,
@@ -108,3 +113,7 @@ function mapApi(lat, lon) {
       window.alert("Geocode was not successful for the following reason: " + e)
     );
 }
+
+$(document).ready(function(){
+  $('#map').hide();
+})
