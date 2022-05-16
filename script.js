@@ -6,6 +6,7 @@ var apiGoogleMaps = 'AIzaSyD4OVkkkHA93ViisjQDq3Fx_oAtNuevgR0'
 let startBtn = document.getElementById('stateButton');
 let returnBtn = document.getElementById('returnButton');
 let activityCard = document.getElementById('activity-card');
+let searchBoard = document.getElementById('search-history');
 
 
 // button that gets the value fromt the dropdown list 
@@ -13,15 +14,30 @@ startBtn.addEventListener('click', function(){
   let userInput = $('#myDropdown :selected').val();
   console.log(userInput);
 
+
+  
   // hides the dropdown list and the button 
   $('.dropdown').hide()
   $('.returnButton').show()
 
+  // Pushes the text into the array
+  searchArray.push(userInput);
+
+  // invokes function 
   stateSearch(userInput)
+  storeTodos();
+  renderTodos();
 })
 
 returnBtn.addEventListener('click', function(){
-  location.reload();
+  // location.reload();
+
+  $('#activity-card').empty()
+  $('#map').empty()
+
+  $('.dropdown').show()
+  $('.returnButton').hide()
+
 })
 
 // this function will fetch the data for the google maps and display the activities 
@@ -98,7 +114,7 @@ function stateSearch (state) {
         zoom: 8,
         mapId: "2f72557b09a6245f"
       });
-      console.log(lat, lon);
+     
       const geocoder = new google.maps.Geocoder();
     
       geocoder
@@ -122,3 +138,77 @@ function stateSearch (state) {
       $('#map').hide();
       $('.returnButton').hide()
     })
+
+    // empty array to push the userInput 
+let searchArray = [];
+
+function init() {
+    
+  var storedTodos = JSON.parse(localStorage.getItem("todos"));
+  
+  // sets the array to get the parsed stored items 
+  if (storedTodos !== null) {
+      searchArray = storedTodos;
+  }
+  // invokes the following function
+  renderTodos();
+}
+
+function renderTodos() {
+    // This clears the search history log
+    searchBoard.innerHTML = "";
+    
+    // this for loop will dynamically create li's 
+    for (var i = 0; i < searchArray.length; i++) {
+      var todo = searchArray[i];
+      
+      // creates a li 
+      var li = document.createElement("li");
+      
+      // creates attributes to append to the li 
+      li.setAttribute("data-index", i);
+      li.setAttribute("id", 'cityLi');
+
+      // creates buttons 
+      var button = document.createElement("button");
+
+      // set the text of the button to be equal to the setItem 
+      button.textContent = todo;
+      button.setAttribute("id", 'cityBtn');
+  
+      // appends the following elements to each other 
+      li.appendChild(button);
+      searchBoard.appendChild(li);
+    }
+      
+  }
+
+
+  // sets the array into a string in localstorage 
+  function storeTodos() {
+    
+    localStorage.setItem("todos", JSON.stringify(searchArray));
+  }
+
+  // when the items from the search history is clicked, the following function performs 
+  searchBoard.addEventListener("click", function(event) {
+    event.preventDefault();
+    var element = event.target;
+    // $('#myDropdown :selected').val()
+    let oldCity = document.getElementById('cityBtn').textContent;
+    console.log(oldCity);
+
+    // when the condition is met, it removes the search history appended
+    if (element.matches("button") === true) {
+      event.preventDefault();
+      var index = element.parentElement.getAttribute("data-index");
+      searchArray.splice(index, 1);
+
+      // invokes the following functions when this condition is met 
+      // storeTodos and renderTodos clears the text in the userinput field
+      storeTodos();
+      renderTodos();
+
+      stateSearch(element.textContent);
+      }
+});
