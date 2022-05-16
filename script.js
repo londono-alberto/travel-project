@@ -97,7 +97,7 @@ function stateSearch (state) {
         .then((response) => {
           const position = response.results[0].geometry.location;
     
-          map.setCenter(new google.maps.LatLng(	lat, 	lon));
+          map.setCenter(new google.maps.LatLng(lat, lon));
           new google.maps.Marker({
             map,
             position,
@@ -107,3 +107,7 @@ function stateSearch (state) {
           window.alert("Geocode was not successful for the following reason: " + e)
         );
     }
+    
+    $(document).ready(function(){
+      $('#map').hide();
+    })
