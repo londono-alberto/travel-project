@@ -48,8 +48,6 @@ function stateSearch(state) {
           let parkCity = data.data[i].addresses[0].city;
           let parkName = data.data[i].name;
 
-          // console.log(parkCity);
-
           // creates p elements
           let createP = document.createElement("p");
           let createP2 = document.createElement("p");
@@ -94,7 +92,6 @@ function stateSearch(state) {
     },
   });
 }
-
 function mapApi(lat, lon) {
   const map = new google.maps.Map(document.getElementById("map"), {
     zoom: 8,
@@ -152,7 +149,6 @@ function weatherDisplay(city, park) {
     }
   });
 }
-
 const weatherBtn = document.getElementById("weather-btn");
 const closeBtn = document.getElementById("close-btn");
 const weatherDash = document.getElementById("weather-dash");

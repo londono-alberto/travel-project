@@ -6,10 +6,7 @@
   /* The width is the width of the web page */
 }
 
-
-
-
-
+/*weather forecast display(feel free to change/remove)*/
 .btn {
   cursor: pointer;
   border: 0;
@@ -48,6 +45,7 @@
   width: 400px;
   padding: 20px;
   line-height: 1.5;
+  /*this is what hides the display off screen(transform)*/
   transform: translateX(-500px);
   transition: transform 1s ease-in-out;
 }
@@ -55,3 +53,4 @@
 .weather-dash.show {
   transform: translateX(0);
 }
+/*end weather forecast-----*/
