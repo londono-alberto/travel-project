@@ -96,6 +96,7 @@ function stateSearch (state) {
       function mapApi(lat, lon) {
         const map = new google.maps.Map(document.getElementById("map"), {
         zoom: 8,
+        mapId: "2f72557b09a6245f"
       });
       console.log(lat, lon);
       const geocoder = new google.maps.Geocoder();
