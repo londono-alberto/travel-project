@@ -26,6 +26,7 @@ returnBtn.addEventListener("click", function () {
 // this function will fetch the data for the google maps and display the activities
 function stateSearch(state) {
   $("#map").show();
+  $("#weather-btn").show();
 
   $.ajax({
     type: "GET",
@@ -44,6 +45,8 @@ function stateSearch(state) {
           // this variable will contain the coordinates for the google maps api
           let { latitude, longitude } = data.data[i];
           let { url } = data.data[i];
+          let parkCity = data.data[i].addresses[0].city;
+          let parkName = data.data[i].name;
 
           // creates p elements
           let createP = document.createElement("p");
@@ -83,12 +86,12 @@ function stateSearch(state) {
 
           // this invokes the apiGoogleMaps with the specified coords
           mapApi(latitude, longitude);
+          weatherDisplay(parkCity, parkName);
         }
       }
     },
   });
 }
-
 function mapApi(lat, lon) {
   const map = new google.maps.Map(document.getElementById("map"), {
     zoom: 8,
@@ -113,8 +116,51 @@ function mapApi(lat, lon) {
     );
 }
 
+//weather display----------------------
+function weatherDisplay(city, park) {
+  var apiKeyWeather = "b6a631faf48ec36736fa91299da2f0a2";
+  console.log(city);
+  $.ajax({
+    type: "GET",
+    url: `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&APPID=${apiKeyWeather}`,
+    id: "city",
+  }).then(function (data) {
+    $(".weatherTitle").text(`${park} Park Five Day Forecast`);
+
+    for (i = 7; i < 42; i += 7) {
+      var forecastCard = $('<div class = "card col">');
+      var forecastTitle = $('<p class = "castDate">');
+      var forecastTemp = $('<p class = "temp">');
+      var forecastWind = $('<p class = "wind">');
+      var forecastHumidity = $('<p class = "humid">');
+
+      var date = new Date(data.list[i].dt * 1000).toLocaleDateString("en-US");
+      iconData = `<img src="https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}.png"/>`;
+      forecastTitle.html(`${date} ${iconData}`);
+      forecastTemp.text(`Temperature: ${data.list[i].main.temp}`);
+      forecastWind.text(`Wind: ${data.list[i].wind.speed}`);
+      forecastHumidity.text(`Humidity: ${data.list[i].main.humidity}`);
+
+      $(`.weather-dash`).append(forecastCard);
+      forecastCard.append(forecastTitle);
+      forecastCard.append(forecastTemp);
+      forecastCard.append(forecastWind);
+      forecastCard.append(forecastHumidity);
+    }
+  });
+}
+const weatherBtn = document.getElementById("weather-btn");
+const closeBtn = document.getElementById("close-btn");
+const weatherDash = document.getElementById("weather-dash");
+weatherBtn.addEventListener("click", () =>
+  weatherDash.classList.toggle("show")
+);
+closeBtn.addEventListener("click", () => weatherDash.classList.remove("show"));
+//weather display-----------------------
+
 // hides elements until function is called
 $(document).ready(function () {
   $("#map").hide();
   $(".returnButton").hide();
+  $("#weather-btn").hide();
 });
