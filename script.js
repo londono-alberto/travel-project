@@ -42,6 +42,7 @@ returnBtn.addEventListener('click', function(){
 // this function will fetch the data for the google maps and display the activities
 function stateSearch(state) {
   $("#map").show();
+  $("#weather-btn").show();
 
   $.ajax({
     type: "GET",
@@ -60,6 +61,8 @@ function stateSearch(state) {
           // this variable will contain the coordinates for the google maps api
           let { latitude, longitude } = data.data[i];
           let { url } = data.data[i];
+          let parkCity = data.data[i].addresses[0].city;
+          let parkName = data.data[i].name;
 
           // creates p elements
           let createP = document.createElement("p");
@@ -99,12 +102,12 @@ function stateSearch(state) {
 
           // this invokes the apiGoogleMaps with the specified coords
           mapApi(latitude, longitude);
+          weatherDisplay(parkCity, parkName);
         }
       }
     },
   });
 }
-
 function mapApi(lat, lon) {
   const map = new google.maps.Map(document.getElementById("map"), {
     zoom: 8,
@@ -220,4 +223,121 @@ function renderTodos() {
 
       stateSearch(element.textContent);
       }
+    });
+
+//weather display----------------------
+function weatherDisplay(city, park) {
+  var apiKeyWeather = "b6a631faf48ec36736fa91299da2f0a2";
+  console.log(city);
+  $.ajax({
+    type: "GET",
+    url: `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&APPID=${apiKeyWeather}`,
+    id: "city",
+  }).then(function (data) {
+    $(".weatherTitle").text(`${park} Park Five Day Forecast`);
+
+    for (i = 7; i < 42; i += 7) {
+      var forecastCard = $('<div class = "card col">');
+      var forecastTitle = $('<p class = "castDate">');
+      var forecastTemp = $('<p class = "temp">');
+      var forecastWind = $('<p class = "wind">');
+      var forecastHumidity = $('<p class = "humid">');
+
+      var date = new Date(data.list[i].dt * 1000).toLocaleDateString("en-US");
+      iconData = `<img src="https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}.png"/>`;
+      forecastTitle.html(`${date} ${iconData}`);
+      forecastTemp.text(`Temperature: ${data.list[i].main.temp}`);
+      forecastWind.text(`Wind: ${data.list[i].wind.speed}`);
+      forecastHumidity.text(`Humidity: ${data.list[i].main.humidity}`);
+
+      $(`.weather-dash`).append(forecastCard);
+      forecastCard.append(forecastTitle);
+      forecastCard.append(forecastTemp);
+      forecastCard.append(forecastWind);
+      forecastCard.append(forecastHumidity);
+    }
+  });
+}
+
+// variables to link the html to js 
+const weatherBtn = document.getElementById("weather-btn");
+const closeBtn = document.getElementById("close-btn");
+const weatherDash = document.getElementById("weather-dash");
+
+// button to show the weather 
+weatherBtn.addEventListener("click", () =>
+  weatherDash.classList.toggle("show")
+);
+
+// button to hide the weather 
+closeBtn.addEventListener("click", () => weatherDash.classList.remove("show"));
+//weather display-----------------------
+
+// hides elements until function is called
+$(document).ready(function () {
+  $("#map").hide();
+  $(".returnButton").hide();
+  $("#weather-btn").hide();
 });
+
+
+// carousel function to rotate pictures through
+function carousel(picture){
+
+}
+
+var carousel = document.querySelector(".carouselbox");
+// TODO: Which element is the following line of code selecting?
+var next = carousel.querySelector(".next");
+var prev = carousel.querySelector(".prev");
+var index = 0;
+var currentImage;
+
+var images = [
+  "https://picsum.photos/300/200",
+  "https://picsum.photos/300/201",
+  "https://picsum.photos/300/202",
+  "https://picsum.photos/300/203"
+];
+
+carousel.style.backgroundImage = "url('https://picsum.photos/300/200')";
+
+// function holds the direction from the user input and assigns it a value to perform the function 
+function navigate(direction) {
+
+  // index stores the value of the direction 
+  index = index + direction;
+  
+  // once the index stores the value of the index, the if else function runs 
+  
+  if (index < 0) { 
+    index = images.length - 1; 
+  } else if (index > images.length - 1) { 
+    index = 0;
+  }
+  currentImage = images[index];
+  carousel.style.backgroundImage = "url('" + currentImage + "')";
+}
+
+// TODO: Describe the functionality of the following event listener.
+carousel.addEventListener("click", function() {
+  window.location.href = images[index];
+});
+
+// TODO: Describe the functionality of the following event listener.
+next.addEventListener("click", function(event) {
+  // TODO: What is the purpose of the following line of code?
+  event.stopPropagation();
+
+  navigate(1);
+});
+
+// TODO: Describe the functionality of the following event listener.
+prev.addEventListener("click", function(event) {
+    // TODO: What would happen if we didn't add the following line of code?
+  event.stopPropagation();
+
+  navigate(-1);
+});
+
+navigate(0);

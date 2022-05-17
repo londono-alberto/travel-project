@@ -54,13 +54,35 @@
       </div>
       <button id="returnButton" class="returnButton">State Selection</button>
       <div id="map"></div>
+      <!-- beginning of carousel elements  -->
+      <div class="container">
+        <h4>Click on the image to view</h4>
+        <h4>Click on the buttons to navigate the carousel</h4>
+        <div class="wrapper">
+          <div class="carouselbox" aria-role="img" aria-label="carousel">
+            <button class="prev">
+              ◀ Previous
+            </button>
+            <button class="next">
+              Next ▶ 
+            </button>
+          </div> 
+        </div>
+     </div>
+     <!-- end of carousel elements  -->
       <div class="row">
         <div id="activity-card" class="column col-3">
           <p class="search-header fs-3">State Park(s) and Activities:</p>
         </div>
       </div>
     </div>
-
+    <div id="five-day-forecast" class="weather-container">
+      <button id="weather-btn" class="btn weather-btn">Weather Forecast</button>
+      <div id="weather-dash" class="weather-dash">
+        <h2 class="weatherTitle">5 Day Forecast</h2>
+        <button id="close-btn" class="btn">Close</button>
+      </div>
+    </div>
     <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4OVkkkHA93ViisjQDq3Fx_oAtNuevgR0&callback=mapApi&v=weekly"
       defer
