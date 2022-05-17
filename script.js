@@ -23,6 +23,7 @@ startBtn.addEventListener("click", function () {
   searchArray.push(userInput);
 
   // invokes function 
+  parkList(userInput)
   stateSearch(userInput)
   storeTodos();
   renderTodos();
@@ -38,6 +39,43 @@ returnBtn.addEventListener('click', function(){
   $('.returnButton').hide()
 
 })
+
+// this function creates a list of buttons with all the park names
+$(".stateDropdown").on("change", function () {
+  alert(this.value);
+  parkList(this.value);
+});
+
+function parkList(state) {
+  var parkListArray = [];
+  $.ajax({
+    type: "GET",
+    url: `https://developer.nps.gov/api/v1/parks?stateCode=${state}&api_key=${apiKeyNPS}`,
+
+    success: function (data) {
+      console.log(data);
+
+      // $(".parkList").empty();
+      console.log(data.data.length);
+      for (i = 0; i < data.data.length; i++)
+      if (state === data.data[i].states) {
+        var parkListName = data.data[i].fullName;
+      console.log(parkListName);
+        let createDiv3 = document.createElement("div");
+        let createButton = document.createElement("button");
+        createButton.setAttribute('id', 'parkBtn');
+        createButton.setAttribute('class', 'parkBtn');
+        createButton.textContent = parkListName
+        
+          createDiv3.append(createButton);
+        $("#parkList").append(createDiv3)
+      // parkListArray.push(parkListName);
+      // console.log(parkListArray);
+      }
+    },
+  });
+}
+
 
 // this function will fetch the data for the google maps and display the activities
 function stateSearch(state) {
@@ -79,10 +117,6 @@ function stateSearch(state) {
           let createDiv3 = document.createElement("div");
           createDiv3.append(createP2);
           activityCard.append(createDiv3);
-
-          
-
-          
 
           // this for loop specifies the array within the data array
           for (let j = 0; j < data.data[i].activities.length; j++) {
