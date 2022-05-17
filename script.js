@@ -47,7 +47,7 @@ $(".stateDropdown").on("change", function () {
 });
 
 function parkList(state) {
-  var parkListArray = [];
+  
   $.ajax({
     type: "GET",
     url: `https://developer.nps.gov/api/v1/parks?stateCode=${state}&api_key=${apiKeyNPS}`,
@@ -55,9 +55,9 @@ function parkList(state) {
     success: function (data) {
       console.log(data);
 
-      // $(".parkList").empty();
+   
       console.log(data.data.length);
-      for (i = 0; i < data.data.length; i++)
+      for (i = 0; i < data.data.length; i++) {
       if (state === data.data[i].states) {
         var parkListName = data.data[i].fullName;
       console.log(parkListName);
@@ -69,10 +69,10 @@ function parkList(state) {
         
           createDiv3.append(createButton);
         $("#parkList").append(createDiv3)
-      // parkListArray.push(parkListName);
-      // console.log(parkListArray);
+      
       }
-    },
+    }
+    }
   });
 }
 
@@ -121,20 +121,26 @@ function stateSearch(state) {
           // this for loop specifies the array within the data array
           for (let j = 0; j < data.data[i].activities.length; j++) {
 
+            
+            
+            let parkUrl = data.data[i].images[j].url;
+            
+            parkImages.push(parkUrl);
+            console.log(parkUrl);
             // this creates an image tag with the src attribute for the image
-          let createImg = document.createElement("img");
-          createImg.setAttribute("src", "");
+          // let createImg = document.createElement("img");
+          // createImg.setAttribute("src", "");
 
-          // this sets the src to cycle through and create all the images within the data 
-          createImg.src = data.data[i].images[j].url;
+          // // this sets the src to cycle through and create all the images within the data 
+          // createImg.src = data.data[i].images[j].url;
 
-          // these append it to the page 
-          createDiv2.append(createImg);
-          activityCard.append(createDiv2);
+          // // these append it to the page 
+          // createDiv2.append(createImg);
+          // activityCard.append(createDiv2);
 
             // this pushes the images to the global array 
-          parkImages.push(data.data[i].images[j].url)
-          console.log(parkImages);
+          // parkImages.push(data.data[i].images[j].url)
+          // console.log(parkImages);
             // these elements get the specified data
             createP = data.data[i].activities[j].name;
 
@@ -144,11 +150,13 @@ function stateSearch(state) {
             // these elements are getting appended to the card
 
             activityCard.append(createDiv);
+            // navigate(0, parkArray)
           }
 
           // this invokes the apiGoogleMaps with the specified coords
           mapApi(latitude, longitude);
           weatherDisplay(parkCity, parkName);
+          
         }
       }
     },
