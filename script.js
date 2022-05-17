@@ -80,15 +80,27 @@ function stateSearch(state) {
           createDiv3.append(createP2);
           activityCard.append(createDiv3);
 
-          // this creates an image tag with the src attribute for the image
-          let createImg = document.createElement("img");
-          createImg.setAttribute("src", "");
-          createImg.src = data.data[i].images[0].url;
-          createDiv2.append(createImg);
-          activityCard.append(createDiv2);
+          
+
+          
 
           // this for loop specifies the array within the data array
           for (let j = 0; j < data.data[i].activities.length; j++) {
+
+            // this creates an image tag with the src attribute for the image
+          let createImg = document.createElement("img");
+          createImg.setAttribute("src", "");
+
+          // this sets the src to cycle through and create all the images within the data 
+          createImg.src = data.data[i].images[j].url;
+
+          // these append it to the page 
+          createDiv2.append(createImg);
+          activityCard.append(createDiv2);
+
+            // this pushes the images to the global array 
+          parkImages.push(data.data[i].images[j].url)
+          console.log(parkImages);
             // these elements get the specified data
             createP = data.data[i].activities[j].name;
 
@@ -108,12 +120,14 @@ function stateSearch(state) {
     },
   });
 }
+
+
 function mapApi(lat, lon) {
   const map = new google.maps.Map(document.getElementById("map"), {
     zoom: 8,
     mapId: "2f72557b09a6245f",
   });
-  console.log(lat, lon);
+  
   const geocoder = new google.maps.Geocoder();
 
   geocoder
@@ -145,6 +159,7 @@ function mapApi(lat, lon) {
         );
     })
   }
+
     // hides elements until function is called 
     $(document).ready(function(){
       $('#map').hide();
@@ -227,8 +242,9 @@ function renderTodos() {
 
 //weather display----------------------
 function weatherDisplay(city, park) {
+
   var apiKeyWeather = "b6a631faf48ec36736fa91299da2f0a2";
-  console.log(city);
+
   $.ajax({
     type: "GET",
     url: `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&APPID=${apiKeyWeather}`,
@@ -281,54 +297,67 @@ $(document).ready(function () {
 });
 
 
-// carousel function to rotate pictures through
-function carousel(picture){
 
-}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// global variables that link to the carousel function 
 var carousel = document.querySelector(".carouselbox");
-// TODO: Which element is the following line of code selecting?
+
+// these variables are connected to the carousel
 var next = carousel.querySelector(".next");
 var prev = carousel.querySelector(".prev");
 var index = 0;
 var currentImage;
 
-var images = [
-  "https://picsum.photos/300/200",
-  "https://picsum.photos/300/201",
-  "https://picsum.photos/300/202",
-  "https://picsum.photos/300/203"
-];
-
+var parkImages = [];
+console.log(parkImages);
 carousel.style.backgroundImage = "url('https://picsum.photos/300/200')";
 
+// carousel function to rotate pictures through
 // function holds the direction from the user input and assigns it a value to perform the function 
 function navigate(direction) {
 
   // index stores the value of the direction 
-  index = index + direction;
+  index += direction;
   
   // once the index stores the value of the index, the if else function runs 
   
   if (index < 0) { 
-    index = images.length - 1; 
-  } else if (index > images.length - 1) { 
+    index = parkImages.length - 1; 
+  } else if (index > parkImages.length - 1) { 
     index = 0;
   }
-  currentImage = images[index];
+  currentImage = parkImages[index];
   carousel.style.backgroundImage = "url('" + currentImage + "')";
 }
 
-// TODO: Describe the functionality of the following event listener.
+// When this is clicked it rotates through the index of pictures in the array
 carousel.addEventListener("click", function() {
-  window.location.href = images[index];
+  window.location.href = parkImages[index];
 });
 
-// TODO: Describe the functionality of the following event listener.
+// this is connected to the next button. adds to the index by 1
 next.addEventListener("click", function(event) {
-  // TODO: What is the purpose of the following line of code?
+
+  // Prevents it from event bubbling. So when clicked it doesnt also click the image
   event.stopPropagation();
 
+  // invokes the function with an argument incrementing it by 1 
   navigate(1);
 });
 
@@ -337,7 +366,10 @@ prev.addEventListener("click", function(event) {
     // TODO: What would happen if we didn't add the following line of code?
   event.stopPropagation();
 
+  // invokes the function with an argument decrementing it by 1 
   navigate(-1);
 });
 
-navigate(0);
+// // the function starts off with an argument of 0 
+// navigate(0);
+
