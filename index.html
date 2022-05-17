@@ -13,7 +13,7 @@
       <h3>Choose a State</h3>
       <div class="dropdown">
         <div id="myDropdown" class="dropdown-content">
-          <select>
+          <select class ="stateDropdown">
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
             <option value="AZ">Arizona</option>
@@ -51,8 +51,14 @@
         </div>
         <button id="stateButton" class="stateButton">Submit</button>
       </div>
+      <div id = "park-display" class="park-display">
+        <h2> Parks in this state</h2>
+          <div id="parkList" class="row parkList">
+          </div>
+      </div>
       <button id="returnButton" class="returnButton">State Selection</button>
       <div id="map"></div>
+
       <div class="row">
         <div id="activity-card" class="column col-3">
           <p class="search-header fs-3">State Park(s) and Activities:</p>
@@ -64,17 +70,13 @@
       <div id="weather-dash" class="weather-dash">
         <h2 class="weatherTitle">5 Day Forecast</h2>
 
-        <!-- <p>Day 1</p>
-        <p>Day 2</p>
-        <p>Day 3</p>
-        <p>Day 4</p>
-        <p>Day 5</p> -->
         <button id="close-btn" class="btn">Close</button>
       </div>
     </div>
     <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4OVkkkHA93ViisjQDq3Fx_oAtNuevgR0&callback=mapApi&v=weekly"
       defer
+    ></script>
     ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
