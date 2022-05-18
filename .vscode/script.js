@@ -6,27 +6,28 @@ var apiGoogleMaps = "AIzaSyD4OVkkkHA93ViisjQDq3Fx_oAtNuevgR0";
 let startBtn = document.getElementById("stateButton");
 let returnBtn = document.getElementById("returnButton");
 let activityCard = document.getElementById("activity-card");
-// let searchBoard = document.getElementById("search-history");
+let searchBoard = document.getElementById("search-history");
 
 // button that gets the value from the dropdown list
 
-$("#stateButton").submit(function () {
-  let userInput = $("#myDropdown").val();
+startBtn.addEventListener("click", function (e) {
+  element = e.target;
+  let userInput = $("#myDropdown :selected").val();
   console.log(userInput);
+  console.log(element);
 
   // hides the dropdown list and the button
   $(".dropdown").hide();
   $(".returnButton").show();
-  $(".parkList").show();
 
   // Pushes the text into the array
-  // searchArray.push(userInput);
+  searchArray.push(userInput);
 
   // invokes function
   parkList(userInput);
-  // stateSearch(userInput);
-  // storeTodos();
-  // renderTodos();
+  stateSearch(userInput);
+  storeTodos();
+  renderTodos();
 });
 
 returnBtn.addEventListener("click", function () {
@@ -79,9 +80,7 @@ function parkList(state) {
 
 $(".parkBtn").on("click", (e) => {
   var element = e.target;
-  console.log(element);
   var parkEl = $(element).html();
-  console.log(parkEl);
   if (parkEl !== "Search") {
     parkDisplay(state, parkCity, latitude, longitude);
   }
@@ -94,8 +93,8 @@ function parkDisplay(city, park, lat, lon, state) {
   $(".returnButton").show();
   $(".parkList").hide();
 
-  // mapApi(lat, lon);
-  // weatherDisplay(city, park);
+  mapApi(lat, lon);
+  weatherDisplay(city, park);
 }
 
 // this function will fetch the data for the google maps and display the activities
