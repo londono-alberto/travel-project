@@ -13,8 +13,6 @@ startBtn.addEventListener("click", function () {
   let userInput = $("#myDropdown :selected").val();
   console.log(userInput);
 
-
-  
   // hides the dropdown list and the button 
   $('.dropdown').hide()
   $('.returnButton').show()
@@ -46,7 +44,7 @@ returnBtn.addEventListener('click', function(){
 
 // this function creates a list of buttons with all the park names
 $(".stateDropdown").on("change", function () {
-  alert(this.value);
+  
   parkList(this.value);
 });
 
@@ -83,8 +81,13 @@ function parkList(state) {
 
 // this function will fetch the data for the google maps and display the activities
 function stateSearch(state) {
+
+  // add to the parkList function when created on the other js file 
+
   $("#map").show();
   $("#weather-btn").show();
+
+// ------------------------------------- 
 
   $.ajax({
     type: "GET",
@@ -99,126 +102,52 @@ function stateSearch(state) {
 
       // attempting to display hawaii on array 6 and create a p element to append the url text
       for (let i = 0; i < data.data.length; i++) {
+
+        // if statement to specify the state being selected within the array 
         if (state === data.data[i].states) {
-          // this variable will contain the coordinates for the google maps api
-          let { latitude, longitude } = data.data[i];
+        
+          // get the url data 
           let { url } = data.data[i];
-          let parkCity = data.data[i].addresses[0].city;
-          let parkName = data.data[i].name;
-
-          
-    
-          
-         
-       
-          let createP2 = document.createElement("p");
-          $(createP2).html(
-            $(`<a href="${url}">Link to ${data.data[i].name} Park</a>`)
-          );
-
-          
-          // let createDiv2 = document.createElement("div");
-
+      
           // this div will append the url link -- needs to be here so it doesnt get created multiple times
-          let createDiv3 = document.createElement("div");
-          createDiv3.append(createP2);
-          activityCard.append(createDiv3);
+          let createDiv = document.createElement("div");
+
+          let createP = document.createElement("p");
+          $(createP).html(
+            $(`<a href="${url}">Link to ${data.data[i].name} Park</a>`)
+          );         
+          createDiv.append(createP);
+          activityCard.append(createDiv);
 
           // this for loop specifies the array within the data array
           for (let j = 0; j < data.data[i].activities.length; j++) {
 
+            // this variable stores the image urls 
+            let {url} = data.data[i].images[j];
+            
+            // this pushes the data into an empty array 
+            parkImages.push(url);
+
             // creates div elements to append other elements to
-          let createDiv = document.createElement("div");
+          let createDiv2 = document.createElement("div");
 
           // creates p elements
-          let createP = document.createElement("p");
+          let createP2 = document.createElement("p");
             
-            let parkUrl = data.data[i].images[j].url;
-            
-            parkImages.push(parkUrl);
-            console.log(parkUrl);
-            // this creates an image tag with the src attribute for the image
-          // let createImg = document.createElement("img");
-          // createImg.setAttribute("src", "");
+          // this p element is getting the specified data 
+            createP2.textContent = data.data[i].activities[j].name;
 
-          // // this sets the src to cycle through and create all the images within the data 
-          // createImg.src = data.data[i].images[j].url;
+            // this element is getting appeneded to the div
+            createDiv2.append(createP2);
 
-          // // these append it to the page 
-          // createDiv2.append(createImg);
-          // activityCard.append(createDiv2);
-
-            // this pushes the images to the global array 
-          // parkImages.push(data.data[i].images[j].url)
-          // console.log(parkImages);
-            // these elements get the specified data
-
-            createP.textContent = data.data[i].activities[j].name;
-            console.log(createP.textContent);
-
-            // these elements are getting appeneded to separate divs
-            createDiv.append(createP);
-
-            // these elements are getting appended to the card
-
-            activityCard.append(createDiv);
-            // navigate(0, parkArray)
-          }
-
-          // this invokes the apiGoogleMaps with the specified coords
-          mapApi(latitude, longitude);
-          weatherDisplay(parkCity, parkName);
-          
+            // this element is getting appended to the card
+            activityCard.append(createDiv2);
+          }         
         }
       }
     },
   });
 }
-
-
-function mapApi(lat, lon) {
-  const map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 8,
-    mapId: "2f72557b09a6245f",
-  });
-  
-  const geocoder = new google.maps.Geocoder();
-
-  geocoder
-    .geocode({ address: "US" })
-    .then((response) => {
-      const position = response.results[0].geometry.location;
-
-      map.setCenter(new google.maps.LatLng(lat, lon));
-      new google.maps.Marker({
-        map,
-        position,
-      });
-
-      const geocoder = new google.maps.Geocoder();
-    
-      geocoder
-        .geocode({ address: "US" })
-        .then((response) => {
-          const position = response.results[0].geometry.location;
-    
-          map.setCenter(new google.maps.LatLng(lat, lon));
-          new google.maps.Marker({
-            map,
-            position,
-          });
-        })
-        .catch((e) =>
-          window.alert("Geocode was not successful for the following reason: " + e)
-        );
-    })
-  }
-
-    // hides elements until function is called 
-    $(document).ready(function(){
-      $('#map').hide();
-      $('.returnButton').hide()
-    })
 
     // empty array to push the userInput 
 let searchArray = [];
@@ -236,6 +165,7 @@ function init() {
 }
 
 function renderTodos() {
+
     // This clears the search history log
     searchBoard.innerHTML = "";
     
@@ -263,7 +193,6 @@ function renderTodos() {
     }
       
   }
-
 
   // sets the array into a string in localstorage 
   function storeTodos() {
@@ -293,81 +222,6 @@ function renderTodos() {
       stateSearch(element.textContent);
       }
     });
-
-//weather display----------------------
-function weatherDisplay(city, park) {
-
-  var apiKeyWeather = "b6a631faf48ec36736fa91299da2f0a2";
-
-  $.ajax({
-    type: "GET",
-    url: `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&APPID=${apiKeyWeather}`,
-    id: "city",
-  }).then(function (data) {
-    $(".weatherTitle").text(`${park} Park Five Day Forecast`);
-
-    for (i = 7; i < 42; i += 7) {
-      var forecastCard = $('<div class = "card col">');
-      var forecastTitle = $('<p class = "castDate">');
-      var forecastTemp = $('<p class = "temp">');
-      var forecastWind = $('<p class = "wind">');
-      var forecastHumidity = $('<p class = "humid">');
-
-      var date = new Date(data.list[i].dt * 1000).toLocaleDateString("en-US");
-      iconData = `<img src="https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}.png"/>`;
-      forecastTitle.html(`${date} ${iconData}`);
-      forecastTemp.text(`Temperature: ${data.list[i].main.temp}`);
-      forecastWind.text(`Wind: ${data.list[i].wind.speed}`);
-      forecastHumidity.text(`Humidity: ${data.list[i].main.humidity}`);
-
-      $(`.weather-dash`).append(forecastCard);
-      forecastCard.append(forecastTitle);
-      forecastCard.append(forecastTemp);
-      forecastCard.append(forecastWind);
-      forecastCard.append(forecastHumidity);
-    }
-  });
-}
-
-// variables to link the html to js 
-const weatherBtn = document.getElementById("weather-btn");
-const closeBtn = document.getElementById("close-btn");
-const weatherDash = document.getElementById("weather-dash");
-
-// button to show the weather 
-weatherBtn.addEventListener("click", () =>
-  weatherDash.classList.toggle("show")
-);
-
-// button to hide the weather 
-closeBtn.addEventListener("click", () => weatherDash.classList.remove("show"));
-//weather display-----------------------
-
-// hides elements until function is called
-$(document).ready(function () {
-  $("#map").hide();
-  $(".returnButton").hide();
-  $("#weather-btn").hide();
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // global variables that link to the carousel function 
 var carousel = document.querySelector(".carouselbox");
@@ -408,22 +262,25 @@ carousel.addEventListener("click", function() {
 // this is connected to the next button. adds to the index by 1
 next.addEventListener("click", function(event) {
 
-  // Prevents it from event bubbling. So when clicked it doesnt also click the image
+  // Prevents it from event bubbling. So when clicked, it doesnt also click the image
   event.stopPropagation();
 
   // invokes the function with an argument incrementing it by 1 
   navigate(1);
 });
 
-// TODO: Describe the functionality of the following event listener.
+// this is connected to the next button. decrements the index by 1
 prev.addEventListener("click", function(event) {
-    // TODO: What would happen if we didn't add the following line of code?
+
+    // Prevents it from event bubbling. So when clicked, it doesnt also click the image
   event.stopPropagation();
 
   // invokes the function with an argument decrementing it by 1 
   navigate(-1);
 });
 
-// // the function starts off with an argument of 0 
-// navigate(0);
-
+$(document).ready(function () {
+  $("#map").hide();
+  $(".returnButton").hide();
+  $("#weather-btn").hide();
+});

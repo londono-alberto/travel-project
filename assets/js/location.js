@@ -123,3 +123,7 @@ const weatherDash = document.getElementById("weather-dash");
 weatherBtn.addEventListener("click", () =>
 weatherDash.classList.toggle("show")
 );
+
+// button to hide the weather 
+closeBtn.addEventListener("click", () => weatherDash.classList.remove("show"));
+//weather display-----------------------
