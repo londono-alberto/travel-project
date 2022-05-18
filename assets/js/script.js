@@ -27,9 +27,6 @@ startBtn.addEventListener("click", function () {
           var parkListName = data.data[i].fullName;
           var parkCode = data.data[i].parkCode;
 
-          // parkListArray.push(parkListName);
-          // console.log(parkListArray);
-
           $("#parkList").append(
             `<button id="parkBtn" class= "parkBtn list-group-item list-group-item-action" value = "${parkCode}">${parkListName}</button>`
           );
@@ -58,82 +55,22 @@ returnBtn.addEventListener('click', function(){
 
 // this button displays the activities and url from the specified park 
   parkBtn.addEventListener("click", function(e) {
+
     e.preventDefault();
   
     var element = e.target;
     
     var parkEl = $(element).val();
 
-
-    $("#map").show();
-  $("#weather-btn").show();
-
-// ------------------------------------- 
-
-  $.ajax({
-    type: "GET",
-    url:
-      "https://developer.nps.gov/api/v1/parks?parkCode=" +
-      parkEl +
-      "&api_key=" +
-      apiKeyNPS,
-
-    success: function (data) {
-      console.log(data);
-      // attempting to display hawaii on array 6 and create a p element to append the url text
-      for (let i = 0; i < data.data.length; i++) {
-
-        // if statement to specify the state being selected within the array 
-        if (parkEl === data.data[0].parkCode) {
-        
-          // get the url data 
-          let { url } = data.data[0];
-      
-          // this div will append the url link -- needs to be here so it doesnt get created multiple times
-          let createDiv = document.createElement("div");
-
-          let createP = document.createElement("p");
-          $(createP).html(
-            $(`<a href="${url}">Link to ${data.data[i].name} Park</a>`)
-          );         
-          createDiv.append(createP);
-          activityCard.append(createDiv);
-
-          // this for loop specifies the array within the data array
-          for (let j = 0; j < data.data[0].activities.length; j++) {
-
-            // this variable stores the image urls 
-            let {url} = data.data[0].images[j];
-           
-            // this pushes the data into an empty array 
-            parkImages.push(url);
-            console.log(parkImages);
-
-            // creates div elements to append other elements to
-          let createDiv2 = document.createElement("div");
-
-          // creates p elements
-          let createP2 = document.createElement("p");
-            
-          // this p element is getting the specified data 
-            createP2.textContent = data.data[0].activities[j].name;
-
-            // this element is getting appeneded to the div
-            createDiv2.append(createP2);
-
-            // this element is getting appended to the card
-            activityCard.append(createDiv2);
-          }         
-        }
-      }
-    },
-  });
-    //   // Pushes the text into the localstorage array
-    searchArray.push(parkEl);
-  //   // probably going to be in the parkClick button ^
-  //   // this is for the localStorage. needs to have the button stored in it 
+  // Pushes the text into the localstorage array
+  searchArray.push(parkEl);
+  
+  parkDisplay(parkEl);
   storeTodos();
   renderTodos();
+
+  $("#map").show();
+  $("#weather-btn").show();
   $("#parkList").hide()
   $(".container").show();
   });
@@ -267,7 +204,7 @@ prev.addEventListener("click", function(event) {
           renderTodos();
     
           // invoked the search again but it is now a button invoking the displaying
-          // stateSearch(element.textContent);
+          parkDisplay(element.textContent);
           }
         });
 

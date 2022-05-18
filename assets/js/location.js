@@ -7,6 +7,8 @@ let startButton = document.getElementById('stateButton');
 let parkButton = document.getElementById('parkList');
 let searchCard = document.getElementById('search-history');
 
+
+
 parkButton.addEventListener("click", (e) => {
     e.preventDefault();
     var element = e.target;
@@ -40,38 +42,75 @@ parkButton.addEventListener("click", (e) => {
   })    
 })
 
-// when the items from the search history is clicked, the following function performs 
-searchCard.addEventListener("click", function(event) {
-
-  event.preventDefault();
-  var element = event.target;
-  let oldState = element.textContent
+function parkDisplay (park) {
 
   $.ajax({
     type: "GET",
     url:
       "https://developer.nps.gov/api/v1/parks?parkCode=" +
-      oldState +
+      park +
       "&api_key=" +
       apiKeyNPS,
 
     success: function (data) {
-
+      console.log(data);
+      // attempting to display hawaii on array 6 and create a p element to append the url text
       for (let i = 0; i < data.data.length; i++) {
-        if (oldState === data.data[i].states) {
-          // this variable will contain the coordinates for the google maps api
-          let { latitude, longitude } = data.data[i];
-          let {city} = data.data[i].addresses[0];
-          let {name} = data.data[i];
 
-          // these functions will be invoked with the following arguments 
-          mapApi(latitude, longitude)
-          weatherDisplay(city, name)
+        // if statement to specify the state being selected within the array 
+        if (park === data.data[i].parkCode) {
+        
+          // get the url data 
+          let { url } = data.data[i];
+          let { latitude, longitude } = data.data[i];
+          let parkCity = data.data[i].addresses[0].city;
+          let parkName = data.data[i].name;
+      
+          // this div will append the url link -- needs to be here so it doesnt get created multiple times
+          let createDiv = document.createElement("div");
+
+          let createP = document.createElement("p");
+          $(createP).html(
+            $(`<a href="${url}">Link to ${data.data[i].name} Park</a>`)
+          );         
+          createDiv.append(createP);
+          activityCard.append(createDiv);
+
+
+          // this for loop specifies the array within the data array
+          for (let j = 0; j < data.data[i].activities.length; j++) {
+
+            // this variable stores the image urls 
+            let {url} = data.data[0].images[j];
+           
+            // this pushes the data into an empty array 
+            parkImages.push(url);
+            console.log(parkImages);
+
+            // creates div elements to append other elements to
+          let createDiv2 = document.createElement("div");
+
+          // creates p elements
+          let createP2 = document.createElement("p");
+            
+          // this p element is getting the specified data 
+            createP2.textContent = data.data[0].activities[j].name;
+
+            // this element is getting appeneded to the div
+            createDiv2.append(createP2);
+
+            // this element is getting appended to the card
+            activityCard.append(createDiv2);
+          } 
+             // these functions will be invoked with the following arguments 
+        mapApi(latitude, longitude);
+        weatherDisplay(parkCity, parkName);     
         }
-      } 
-    }
-}) 
-});
+        
+      }
+    },
+  });
+}
 
 function mapApi(lat, lon) {
     const map = new google.maps.Map(document.getElementById("map"), {
@@ -123,7 +162,7 @@ function weatherDisplay(city, park) {
   }).then(function (data) {
     $(".weatherTitle").text(`${park} Park Five Day Forecast`);
 
-    for (i = 7; i < 42; i += 7) {
+    for (i = 5; i < 45; i += 8) {
       var forecastCard = $('<div class = "card col">');
       var forecastTitle = $('<p class = "castDate">');
       var forecastTemp = $('<p class = "temp">');
