@@ -75,16 +75,38 @@
           </select>
         </div>
         <button id="stateButton" class="stateButton">Submit</button>
+        <ul id="search-history" class="search-history"></ul>
+      </div>
+      <div id = "park-display" class="park-display">
+        <h2> Parks in this state</h2>
+          <div id="parkList" class="row parkList">
+          </div>
       </div>
       <button id="returnButton" class="returnButton">State Selection</button>
       <div id="map"></div>
+      <!-- beginning of carousel elements  -->
+      <div class="container">
+        <h4>Click on the image to view</h4>
+        <h4>Click on the buttons to navigate the carousel</h4>
+        <div class="wrapper">
+          <div class="carouselbox" aria-role="img" aria-label="carousel">
+            <button class="prev">
+              ◀ Previous
+            </button>
+            <button class="next">
+              Next ▶ 
+            </button>
+          </div> 
+        </div>
+      </div>
+      <!-- end of carousel elements  -->
       <div class="row">
         <div id="activity-card" class="column col-3">
           <p class="search-header fs-3">State Park(s) and Activities:</p>
         </div>
       </div>
     </div>
-    <div id="five-day-forecast" class="container">
+    <div id="five-day-forecast" class="weather-container">
       <button id="weather-btn" class="btn weather-btn">Weather Forecast</button>
       <div id="weather-dash" class="weather-dash">
         <h2 class="weatherTitle">5 Day Forecast</h2>
