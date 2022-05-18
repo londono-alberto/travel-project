@@ -28,7 +28,6 @@ startBtn.addEventListener("click", function () {
 })
 
 returnBtn.addEventListener('click', function(){
-  // location.reload();
 
   parkImages = [];
   carousel.style.backgroundImage = "url('https://picsum.photos/300/200')";
@@ -42,12 +41,6 @@ returnBtn.addEventListener('click', function(){
 
 })
 
-// this function creates a list of buttons with all the park names
-$(".stateDropdown").on("change", function () {
-  
-  parkList(this.value);
-});
-
 function parkList(state) {
   
   $.ajax({
@@ -55,10 +48,7 @@ function parkList(state) {
     url: `https://developer.nps.gov/api/v1/parks?stateCode=${state}&api_key=${apiKeyNPS}`,
 
     success: function (data) {
-      console.log(data);
 
-
-      console.log(data.data.length);
       for (i = 0; i < data.data.length; i++) {
       if (state === data.data[i].states) {
         var parkListName = data.data[i].fullName;
@@ -77,7 +67,6 @@ function parkList(state) {
     }
   });
 }
-
 
 // this function will fetch the data for the google maps and display the activities
 function stateSearch(state) {
@@ -98,7 +87,6 @@ function stateSearch(state) {
       apiKeyNPS,
 
     success: function (data) {
-      console.log(data);
 
       // attempting to display hawaii on array 6 and create a p element to append the url text
       for (let i = 0; i < data.data.length; i++) {
@@ -204,9 +192,6 @@ function renderTodos() {
   searchBoard.addEventListener("click", function(event) {
     event.preventDefault();
     var element = event.target;
-    // $('#myDropdown :selected').val()
-    let oldCity = document.getElementById('cityBtn').textContent;
-    console.log(oldCity);
 
     // when the condition is met, it removes the search history appended
     if (element.matches("button") === true) {
