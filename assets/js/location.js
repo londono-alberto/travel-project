@@ -7,41 +7,6 @@ let startButton = document.getElementById('stateButton');
 let parkButton = document.getElementById('parkList');
 let searchCard = document.getElementById('search-history');
 
-
-
-parkButton.addEventListener("click", (e) => {
-    e.preventDefault();
-    var element = e.target;
-    let statePark = $(element).val();
-
-    $.ajax({
-        type: "GET",
-        url:
-          "https://developer.nps.gov/api/v1/parks?parkCode=" +
-          statePark +
-          "&api_key=" +
-          apiKeyNPS,
-    
-        success: function (data) {
-    
-          // attempting to display hawaii on array 6 and create a p element to append the url text
-          for (let i = 0; i < data.data.length; i++) {
-            if (statePark === data.data[i].parkCode) {
-              // this variable will contain the coordinates for the google maps api
-              let { latitude, longitude } = data.data[i];
-              let parkCity = data.data[i].addresses[0].city;
-              let parkName = data.data[i].name;
-
-              // these functions will be invoked with the following arguments 
-              mapApi(latitude, longitude)
-              weatherDisplay(parkCity, parkName)
-            }
-            
-          }
-    }
-  })    
-})
-
 function parkDisplay (park) {
 
   $.ajax({
