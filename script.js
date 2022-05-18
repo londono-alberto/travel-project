@@ -32,6 +32,10 @@ startBtn.addEventListener("click", function () {
 returnBtn.addEventListener('click', function(){
   // location.reload();
 
+  parkImages = [];
+  carousel.style.backgroundImage = "url('https://picsum.photos/300/200')";
+
+
   $('#activity-card').empty()
   $('#map').empty()
 
