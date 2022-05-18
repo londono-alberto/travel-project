@@ -4,43 +4,40 @@ var apiKeyNPS = "UwI3kgigKGVdm8bk9XTQmiupY45dyxNZfIcdn81Q";
 var apiGoogleMaps = "AIzaSyD4OVkkkHA93ViisjQDq3Fx_oAtNuevgR0";
 
 let startButton = document.getElementById('stateButton');
+let parkButton = document.querySelector('parkBtn');
 let searchCard = document.getElementById('search-history');
 
-startButton.addEventListener("click", function () {
-    
-    let state = $("#myDropdown :selected").val();
+// $(".parkBtn").on("click", (e) => {
+//     var element = e.target;
+//     let state = $(element).val();
 
-    $.ajax({
-        type: "GET",
-        url:
-          "https://developer.nps.gov/api/v1/parks?parkCode=" +
-          state +
-          "&api_key=" +
-          apiKeyNPS,
+//     $.ajax({
+//         type: "GET",
+//         url:
+//           "https://developer.nps.gov/api/v1/parks?parkCode=" +
+//           state +
+//           "&api_key=" +
+//           apiKeyNPS,
     
-        success: function (data) {
-          console.log(data);
+//         success: function (data) {
     
-          // attempting to display hawaii on array 6 and create a p element to append the url text
-          for (let i = 0; i < data.data.length; i++) {
-            if (state === data.data[i].states) {
-              // this variable will contain the coordinates for the google maps api
-              let { latitude, longitude } = data.data[i];
-              let parkCity = data.data[i].addresses[0].city;
-              let parkName = data.data[i].name;
+//           // attempting to display hawaii on array 6 and create a p element to append the url text
+//           for (let i = 0; i < data.data.length; i++) {
+//             if (state === data.data[i].states) {
+//               // this variable will contain the coordinates for the google maps api
+//               let { latitude, longitude } = data.data[i];
+//               let parkCity = data.data[i].addresses[0].city;
+//               let parkName = data.data[i].name;
 
-              // these functions will be invoked with the following arguments 
-              mapApi(latitude, longitude)
-              weatherDisplay(parkCity, parkName)
-            }
+//               // these functions will be invoked with the following arguments 
+//               mapApi(latitude, longitude)
+//               weatherDisplay(parkCity, parkName)
+//             }
             
-          }
-          
-        }
-    })
-
-    
-})
+//           }
+//     }
+//   })    
+// })
 
 // when the items from the search history is clicked, the following function performs 
 searchCard.addEventListener("click", function(event) {
@@ -48,8 +45,6 @@ searchCard.addEventListener("click", function(event) {
   event.preventDefault();
   var element = event.target;
   let oldState = element.textContent
- 
-  console.log(oldState);
 
   $.ajax({
     type: "GET",
@@ -60,7 +55,6 @@ searchCard.addEventListener("click", function(event) {
       apiKeyNPS,
 
     success: function (data) {
-      console.log(data);
 
       for (let i = 0; i < data.data.length; i++) {
         if (oldState === data.data[i].states) {
@@ -73,16 +67,10 @@ searchCard.addEventListener("click", function(event) {
           mapApi(latitude, longitude)
           weatherDisplay(city, name)
         }
-        
-      }
-      
+      } 
     }
-})
-
-
-    
-    
-  });
+}) 
+});
 
 function mapApi(lat, lon) {
     const map = new google.maps.Map(document.getElementById("map"), {

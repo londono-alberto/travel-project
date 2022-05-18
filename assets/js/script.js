@@ -7,24 +7,54 @@ let startBtn = document.getElementById('stateButton');
 let returnBtn = document.getElementById('returnButton');
 let activityCard = document.getElementById('activity-card');
 let searchBoard = document.getElementById('search-history');
+let parkBtn = document.getElementById('parkList');
 
 // button that gets the value fromt the dropdown list
 startBtn.addEventListener("click", function () {
   let userInput = $("#myDropdown :selected").val();
-  console.log(userInput);
+  
+  $.ajax({
+    type: "GET",
+    url: `https://developer.nps.gov/api/v1/parks?stateCode=${userInput}&api_key=${apiKeyNPS}`,
 
+    success: function (data) {
+      console.log(data);
+
+      $(".parkList").empty();
+      
+      for (i = 0; i < data.data.length; i++)
+        if (userInput === data.data[i].states) {
+          var parkListName = data.data[i].fullName;
+          var parkState = data.data[i].states;
+          var parkCode = data.data[i].parkCode;
+
+          // parkListArray.push(parkListName);
+          // console.log(parkListArray);
+
+          $("#parkList").append(
+            `<button id="parkBtn" class= "parkBtn list-group-item list-group-item-action" value = "${parkCode}">${parkListName}</button>`
+          );
+        }
+    },
+  });
   // hides the dropdown list and the button 
   $('.dropdown').hide()
   $('.returnButton').show()
 
-  // Pushes the text into the array
-  searchArray.push(userInput);
+  // // Pushes the text into the array
+  // searchArray.push(userInput);
+  // // probably going to be in the parkClick button ^
+  // // this is for the localStorage. needs to have the button stored in it 
 
   // invokes function 
-  parkList(userInput)
-  stateSearch(userInput)
-  storeTodos();
-  renderTodos();
+  // parkList(userInput)
+
+  // this will be in the park click 
+  // stateSearch(userInput)
+
+  // these functions will probably need to be invoked in the parklist button 
+  // storeTodos();
+  // renderTodos();
 })
 
 returnBtn.addEventListener('click', function(){
@@ -41,39 +71,18 @@ returnBtn.addEventListener('click', function(){
 
 })
 
-function parkList(state) {
-  
-  $.ajax({
-    type: "GET",
-    url: `https://developer.nps.gov/api/v1/parks?stateCode=${state}&api_key=${apiKeyNPS}`,
 
-    success: function (data) {
+  // this code snippet starts when the button is clicked 
 
-      for (i = 0; i < data.data.length; i++) {
-      if (state === data.data[i].states) {
-        var parkListName = data.data[i].fullName;
-      console.log(parkListName);
-        let createDiv3 = document.createElement("div");
-        let createButton = document.createElement("button");
-        createButton.setAttribute('id', 'parkBtn');
-        createButton.setAttribute('class', 'parkBtn');
-        createButton.textContent = parkListName
-        
-          createDiv3.append(createButton);
-        $("#parkList").append(createDiv3)
-      
-      }
-    }
-    }
-  });
-}
+  parkBtn.addEventListener("click", function(e) {
+    e.preventDefault();
+  // console.log(e);
+    var element = e.target;
+    // console.log(element);
+    var parkEl = $(element).val();
+    console.log(parkEl);
 
-// this function will fetch the data for the google maps and display the activities
-function stateSearch(state) {
-
-  // add to the parkList function when created on the other js file 
-
-  $("#map").show();
+    $("#map").show();
   $("#weather-btn").show();
 
 // ------------------------------------- 
@@ -82,17 +91,17 @@ function stateSearch(state) {
     type: "GET",
     url:
       "https://developer.nps.gov/api/v1/parks?parkCode=" +
-      state +
+      parkEl +
       "&api_key=" +
       apiKeyNPS,
 
     success: function (data) {
-
+      console.log(data);
       // attempting to display hawaii on array 6 and create a p element to append the url text
       for (let i = 0; i < data.data.length; i++) {
 
         // if statement to specify the state being selected within the array 
-        if (state === data.data[i].states) {
+        if (parkEl === data.data[i].states) {
         
           // get the url data 
           let { url } = data.data[i];
@@ -135,7 +144,112 @@ function stateSearch(state) {
       }
     },
   });
-}
+    //   // Pushes the text into the array
+  //   searchArray.push(parkEl);
+  //   // probably going to be in the parkClick button ^
+  //   // this is for the localStorage. needs to have the button stored in it 
+  // storeTodos();
+  // renderTodos();
+  $("#parkList").hide()
+  });
+
+
+// function parkList(state) {
+  
+//   $.ajax({
+//     type: "GET",
+//     url: `https://developer.nps.gov/api/v1/parks?stateCode=${state}&api_key=${apiKeyNPS}`,
+
+//     success: function (data) {
+
+//       for (i = 0; i < data.data.length; i++) {
+//       if (state === data.data[i].states) {
+//         var parkListName = data.data[i].fullName;
+//       console.log(parkListName);
+//         let createDiv3 = document.createElement("div");
+//         let createButton = document.createElement("button");
+//         createButton.setAttribute('id', 'parkBtn');
+//         createButton.setAttribute('class', 'parkBtn');
+//         createButton.textContent = parkListName
+      
+        
+//           createDiv3.append(createButton);
+//         $("#parkList").append(createDiv3)
+      
+//       }
+//     }
+//     }
+//   });
+// }
+
+// this function will fetch the data for the google maps and display the activities
+// function stateSearch(state) {
+
+//   // add to the parkList function when created on the other js file 
+
+//   $("#map").show();
+//   $("#weather-btn").show();
+
+// // ------------------------------------- 
+
+//   $.ajax({
+//     type: "GET",
+//     url:
+//       "https://developer.nps.gov/api/v1/parks?parkCode=" +
+//       state +
+//       "&api_key=" +
+//       apiKeyNPS,
+
+//     success: function (data) {
+
+//       // attempting to display hawaii on array 6 and create a p element to append the url text
+//       for (let i = 0; i < data.data.length; i++) {
+
+//         // if statement to specify the state being selected within the array 
+//         if (state === data.data[i].states) {
+        
+//           // get the url data 
+//           let { url } = data.data[i];
+      
+//           // this div will append the url link -- needs to be here so it doesnt get created multiple times
+//           let createDiv = document.createElement("div");
+
+//           let createP = document.createElement("p");
+//           $(createP).html(
+//             $(`<a href="${url}">Link to ${data.data[i].name} Park</a>`)
+//           );         
+//           createDiv.append(createP);
+//           activityCard.append(createDiv);
+
+//           // this for loop specifies the array within the data array
+//           for (let j = 0; j < data.data[i].activities.length; j++) {
+
+//             // this variable stores the image urls 
+//             let {url} = data.data[i].images[j];
+            
+//             // this pushes the data into an empty array 
+//             parkImages.push(url);
+
+//             // creates div elements to append other elements to
+//           let createDiv2 = document.createElement("div");
+
+//           // creates p elements
+//           let createP2 = document.createElement("p");
+            
+//           // this p element is getting the specified data 
+//             createP2.textContent = data.data[i].activities[j].name;
+
+//             // this element is getting appeneded to the div
+//             createDiv2.append(createP2);
+
+//             // this element is getting appended to the card
+//             activityCard.append(createDiv2);
+//           }         
+//         }
+//       }
+//     },
+//   });
+// }
 
     // empty array to push the userInput 
 let searchArray = [];
@@ -188,6 +302,7 @@ function renderTodos() {
     localStorage.setItem("todos", JSON.stringify(searchArray));
   }
 
+  // make this searchboard also fetch the api to pass the value into it 
   // when the items from the search history is clicked, the following function performs 
   searchBoard.addEventListener("click", function(event) {
     event.preventDefault();
@@ -204,7 +319,8 @@ function renderTodos() {
       storeTodos();
       renderTodos();
 
-      stateSearch(element.textContent);
+      // invoked the search again but it is now a button invoking the displaying
+      // stateSearch(element.textContent);
       }
     });
 
@@ -268,4 +384,5 @@ $(document).ready(function () {
   $("#map").hide();
   $(".returnButton").hide();
   $("#weather-btn").hide();
+  $(".container").hide();
 });
