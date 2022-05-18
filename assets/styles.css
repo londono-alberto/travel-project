@@ -1,8 +1,8 @@
 /* Set the size of the div element that contains the map */
 #map {
-  height: 300px;
+  height: 400px;
   /* The height is 400 pixels */
-  width: 50%;
+  width: 100%;
   /* The width is the width of the web page */
 }
 
@@ -16,43 +16,70 @@
   border-radius: 5px;
 }
 
-.btn:focus {
-  outline: 0;
+/* for all templates and grids*/
+body{text-align:left;}
+#footer{clear:both;}
+
+	/* to preserve source-order independence for Gecko */
+	.yui-b{position:relative;}
+	.yui-b{_position:static;} 
+	#main .yui-b{position:static;} 
+
+#main {width:100%;}
+.yui-t1 #main,
+.yui-t2 #main,
+.yui-t3 #main{float:right;margin-left:-25em;}
+
+.yui-t4 #main,
+.yui-t5 #main,
+.yui-t6 #main{float:left;margin-right:-25em;}
+
+.yui-t1 .yui-b {
+	float:left;
+    width:12.3207em;*width:12.0106em;}
+.yui-t1 #main .yui-b{
+    margin-left:13.3207em;*margin-left:13.0106em;
 }
 
-.btn:hover {
-  /* background: #222; */
-  opacity: 0.8;
+.yui-t2 .yui-b {
+	float:left;
+    width:13.8456em;*width:13.512em;}
+.yui-t2 #main .yui-b {
+    margin-left:14.8456em;*margin-left:14.512em;
 }
 
-.btn:active {
-  transform: scale(0.98);
+.yui-t3 .yui-b {
+	float:left;
+    width:23.0759em;*width:22.52em;}
+.yui-t3 #main .yui-b {
+    margin-left:24.0759em;*margin-left:23.52em;
 }
 
-.weather-btn {
-  position: absolute;
-  top: 20px;
-  right: 30px;
+.yui-t4 .yui-b {
+	float:right;
+    width:13.8456em;*width:13.512em;}
+.yui-t4 #main .yui-b {
+    margin-right:14.8456em;*margin-right:14.512em;
 }
 
-.weather-dash {
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: #333;
-  color: #fff;
-  min-height: 100vh;
-  width: 400px;
-  padding: 20px;
-  line-height: 1.5;
-  /*this is what hides the display off screen(transform)*/
-  transform: translateX(-500px);
-  transition: transform 1s ease-in-out;
+.yui-t5 .yui-b {
+	float:right;
+    width:18.4608em;*width:18.016em;}
+.yui-t5 #main .yui-b {
+    margin-right:19.4608em;*margin-right:19.016em;
 }
 
-.weather-dash.show {
-  transform: translateX(0);
+.yui-t6 .yui-b {
+	float:right;
+    width:23.0759em;*width:22.52em;}
+.yui-t6 #main .yui-b {
+    margin-right:24.0759em;*margin-right:23.52em;
 }
+
+.body #main .yui-b {
+	display:block;margin:0 0 1em 0;
+}
+
 /*end weather forecast-----*/
 
 /* carousel begins - has img element */
@@ -97,3 +124,141 @@ img {
   padding-bottom: 30px;
 }
 /* carousel ends  */
+
+#main .yui-b {float:none;width:auto;}
+
+/* GRIDS
+div.yui-g -  Standard Nesting Grid - tells two children to each take up half the available space.
+div.yui-gb - Special Nesting Grid B - tells three children to each take up a third of the available space.
+div.yui-gc - Special Nesting Grid C - tells the first of two children to take up 66% of the available space.
+div.yui-gd - Special Nesting Grid D - tells the first of two children to take up 33% of the available space.
+div.yui-ge - Special Nesting Grid E - tells the first of two children to take up 75% of the available space.
+div.yui-gf - Special Nesting Grid F - tells the first of two children to take up 25% of the available space.*/
+.yui-g .yui-u, 
+.yui-g .yui-g, 
+.yui-gc .yui-u,
+.yui-gc .yui-g .yui-u,
+.yui-ge .yui-u, 
+.yui-gf .yui-u{float:right;display:inline;}
+.yui-g  div.first, 
+.yui-gc div.first,
+.yui-gc div.first div.first,
+.yui-gd div.first, 
+.yui-ge div.first, 
+.yui-gf div.first{float:left;}
+.yui-g .yui-u, 
+.yui-g .yui-g{width:49.1%;}
+.yui-g .yui-g .yui-u,
+.yui-gc .yui-g .yui-u {width:48.1%;}
+.yui-gb .yui-u, 
+.yui-gc .yui-u, 
+.yui-gd .yui-u{float:left;margin-left:2%;*margin-left:1.895%;width:32%;}
+.yui-gb div.first, 
+.yui-gc div.first, 
+.yui-gd div.first{margin-left:0;}
+.yui-gc div.first, 
+.yui-gd .yui-u{width:66%;}
+.yui-gd div.first{width:32%;}
+.yui-ge .yui-u{width:24%;}
+.yui-ge div.first, 
+.yui-gf .yui-u{width:74.2%;}
+.yui-gf div.first{width:24%;}
+.yui-ge div.first{width:74.2%;}
+#body:after,
+.yui-g:after, 
+.yui-gb:after, 
+.yui-gc:after, 
+.yui-gd:after, 
+.yui-ge:after, 
+.yui-gf:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+#body,
+.yui-g, 
+.yui-gb, 
+.yui-gc, 
+.yui-gd, 
+.yui-ge, 
+.yui-gf{zoom:1;}
+
+
+/* Basic Element Formatting */
+
+#header{
+	height:100px;
+	background-color:darkblue;
+	color: whitesmoke;
+  font-size: 15px;
+  margin:0;
+	padding:0;
+	}
+
+.content{
+	height:300px;
+	background:lightgrey;
+	border-top:whitesmoke 2px solid;
+	margin:0;
+	padding:0;
+	}
+	
+#secondary{
+	height:300px;
+	background:lightgrey;
+	border-top:whitesmoke 2px solid;
+	margin:0;
+	padding:0;
+	}
+	
+#secondaryFull{
+	height:50px;
+	background-color:lightgrey;
+	border-top: whitesmoke 2px solid;
+	margin:0;
+	padding:0;
+	}
+	
+#footer{
+	height:50px;
+	background:lightgrey;
+	border-top:whitesmoke 2px solid;
+	margin:0;
+	padding:0;
+	}
+
+  .btn:focus {
+    outline: 0;
+  }
+  
+  .btn:hover {
+    /* background: #222; */
+    opacity: 0.8;
+  }
+  
+  .btn:active {
+    transform: scale(0.98);
+  }
+  
+  .weather-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+  }
+  
+  .weather-dash {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #333;
+    color: #fff;
+    min-height: 100vh;
+    width: 400px;
+    padding: 20px;
+    line-height: 1.5;
+    /*this is what hides the display off screen(transform)*/
+    transform: translateX(-500px);
+    transition: transform 1s ease-in-out;
+  }
+  
+  .weather-dash.show {
+    transform: translateX(0);
+  }
+  /*end weather forecast-----*/
+
