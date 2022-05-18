@@ -25,7 +25,6 @@ startBtn.addEventListener("click", function () {
       for (i = 0; i < data.data.length; i++)
         if (userInput === data.data[i].states) {
           var parkListName = data.data[i].fullName;
-          var parkState = data.data[i].states;
           var parkCode = data.data[i].parkCode;
 
           // parkListArray.push(parkListName);
@@ -40,19 +39,6 @@ startBtn.addEventListener("click", function () {
   // hides the dropdown list and the button 
   $('.dropdown').hide()
   $('.returnButton').show()
-
-  // // Pushes the text into the array
-  // searchArray.push(userInput);
-  // // probably going to be in the parkClick button ^
-  // // this is for the localStorage. needs to have the button stored in it 
-
-
-  // this will be in the park click 
-  // stateSearch(userInput)
-
-  // these functions will probably need to be invoked in the parklist button 
-  // storeTodos();
-  // renderTodos();
 })
 
 returnBtn.addEventListener('click', function(){
@@ -143,11 +129,11 @@ returnBtn.addEventListener('click', function(){
     },
   });
     //   // Pushes the text into the localstorage array
-  //   searchArray.push(parkEl);
+    searchArray.push(parkEl);
   //   // probably going to be in the parkClick button ^
   //   // this is for the localStorage. needs to have the button stored in it 
-  // storeTodos();
-  // renderTodos();
+  storeTodos();
+  renderTodos();
   $("#parkList").hide()
   $(".container").show();
   });
@@ -248,7 +234,7 @@ prev.addEventListener("click", function(event) {
     
           // set the text of the button to be equal to the setItem 
           button.textContent = todo;
-          button.setAttribute("id", 'cityBtn');
+          button.setAttribute("id", 'parkBtn');
       
           // appends the following elements to each other 
           li.appendChild(button);
