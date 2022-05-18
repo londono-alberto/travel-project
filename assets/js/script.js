@@ -59,7 +59,7 @@ function parkList(state) {
     success: function (data) {
       console.log(data);
 
-   
+
       console.log(data.data.length);
       for (i = 0; i < data.data.length; i++) {
       if (state === data.data[i].states) {
@@ -106,16 +106,18 @@ function stateSearch(state) {
           let parkCity = data.data[i].addresses[0].city;
           let parkName = data.data[i].name;
 
-          // creates p elements
-          let createP = document.createElement("p");
+          
+    
+          
+         
+       
           let createP2 = document.createElement("p");
           $(createP2).html(
             $(`<a href="${url}">Link to ${data.data[i].name} Park</a>`)
           );
 
-          // creates div elements to append other elements to
-          let createDiv = document.createElement("div");
-          let createDiv2 = document.createElement("div");
+          
+          // let createDiv2 = document.createElement("div");
 
           // this div will append the url link -- needs to be here so it doesnt get created multiple times
           let createDiv3 = document.createElement("div");
@@ -125,7 +127,11 @@ function stateSearch(state) {
           // this for loop specifies the array within the data array
           for (let j = 0; j < data.data[i].activities.length; j++) {
 
-            
+            // creates div elements to append other elements to
+          let createDiv = document.createElement("div");
+
+          // creates p elements
+          let createP = document.createElement("p");
             
             let parkUrl = data.data[i].images[j].url;
             
@@ -146,7 +152,9 @@ function stateSearch(state) {
           // parkImages.push(data.data[i].images[j].url)
           // console.log(parkImages);
             // these elements get the specified data
-            createP = data.data[i].activities[j].name;
+
+            createP.textContent = data.data[i].activities[j].name;
+            console.log(createP.textContent);
 
             // these elements are getting appeneded to separate divs
             createDiv.append(createP);
