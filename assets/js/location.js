@@ -3,10 +3,6 @@ var apiKeyWeather = "b6a631faf48ec36736fa91299da2f0a2";
 var apiKeyNPS = "UwI3kgigKGVdm8bk9XTQmiupY45dyxNZfIcdn81Q";
 var apiGoogleMaps = "AIzaSyD4OVkkkHA93ViisjQDq3Fx_oAtNuevgR0";
 
-let startButton = document.getElementById('stateButton');
-let parkButton = document.getElementById('parkList');
-let searchCard = document.getElementById('search-history');
-
 function parkDisplay (park) {
 
   $.ajax({
