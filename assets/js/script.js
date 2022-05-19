@@ -200,3 +200,4 @@ $(document).ready(function () {
   $("#weather-btn").hide();
   $(".container").hide();
 });
+

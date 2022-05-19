@@ -161,3 +161,4 @@ weatherBtn.addEventListener("click", () =>
 // button to hide the weather
 closeBtn.addEventListener("click", () => weatherDash.classList.remove("show"));
 //weather display-----------------------
+
