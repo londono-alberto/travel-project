@@ -1,3 +1,22 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";
+
+/* for all templates and grids*/
+body{text-align:left;}
+#footer{clear:both;}
+
+* { 
+  font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: 400px;
+}
+
+#search-header fs-3 {
+  text-align: center;
+}
+
 /* Set the size of the div element that contains the map */
 #map {
   height: 300px;
@@ -11,10 +30,11 @@
   cursor: pointer;
   border: 0;
   padding: 10px 20px;
-  background: #000;
-  color: #fff;
+  background: lightgrey;
+  color: black;
   border-radius: 5px;
 }
+
 
 /* for all templates and grids*/
 body {
@@ -128,6 +148,52 @@ body {
 }
 
 /*end weather forecast-----*/
+
+.searchBoxes{
+  height: 500px;
+  background-color: lightgray;
+  border:black;
+  border-width: 100px;
+}
+
+h2,
+h3,
+.dropdown,
+#parkList.row.parkList  {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#searchboxes.searchboxes {
+  height: 500px;
+}
+
+/*header | Animation & Design*/
+@keyframes colors {
+  0%  {background-color: #263a4d;}
+ 25%  {background-color: #324b64;}
+ 50%  {background-color: #446685;}
+ 75%  {background-color: #527aa0;}
+ 100% {background-color: #6a9ccd;}
+}
+
+#header {
+  animation-name: colors;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#header{
+  height:100px;
+  background-color:darkblue;
+  color: whitesmoke;
+  font-size: 32px;
+  margin:0;
+  padding:0;
+  }
+
 
 /* carousel begins - has img element */
 .container {
@@ -362,3 +428,86 @@ div.yui-gf - Special Nesting Grid F - tells the first of two children to take up
 }
 
 /*end weather forecast-----*/
+=======
+/* Basic Element Formatting */
+
+.content{
+  height:300px;
+  background:lightgrey;
+  border-top:whitesmoke 2px solid;
+  margin:0;
+  padding:0;
+  }
+  
+#secondary{
+  height:300px;
+  background:lightgrey;
+  border-top:whitesmoke 2px solid;
+  margin:0;
+  padding:0;
+  }
+  
+#secondaryFull {
+  height:50px;
+  background-color:lightgrey;
+  border-top: whitesmoke 2px solid;
+  margin:0;
+  padding:0;
+  }
+
+  .dropdown {
+    background-color: lightgrey;
+  }  
+
+  #stateButton {
+    background-color: lightgrey;
+  }  
+
+  #dropdown-content {
+    background-color: lightgrey;
+  }
+
+  .btn:focus {
+    outline: 0;
+  }
+  
+  .btn:hover {
+    /* background: #222; */
+    opacity: 0.8;
+  }
+  
+  .btn:active {
+    transform: scale(0.98);
+  }
+
+  .card {
+    background-color: #333;
+    color: white;
+  }
+  
+  .weather-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+  }
+  
+  .weather-dash {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #333;
+    color: #fff;
+    min-height: 100vh;
+    width: 400px;
+    padding: 20px;
+    line-height: 1.5;
+    /*this is what hides the display off screen(transform)*/
+    transform: translateX(-500px);
+    transition: transform 1s ease-in-out;
+  }
+  
+  .weather-dash.show {
+    transform: translateX(0);
+  }
+  /*end weather forecast-----*/
+
