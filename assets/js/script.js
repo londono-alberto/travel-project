@@ -19,8 +19,7 @@ startBtn.addEventListener("click", function () {
 
     success: function (data) {
       console.log(data);
-
-      $(".parkList").empty();
+      
       
       for (i = 0; i < data.data.length; i++)
         if (userInput === data.data[i].states) {
@@ -36,6 +35,7 @@ startBtn.addEventListener("click", function () {
   // hides the dropdown list and the button 
   $('.dropdown').hide()
   $('.returnButton').show()
+  $("#parkList").show()
 })
 
 returnBtn.addEventListener('click', function(){
@@ -48,6 +48,7 @@ returnBtn.addEventListener('click', function(){
   $('#map').empty()
 
   $('.dropdown').show()
+  $("#parkList").empty()
   $('.returnButton').hide()
 
 })

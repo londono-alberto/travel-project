@@ -8,40 +8,6 @@ let parkButton = document.getElementById('parkList');
 let searchCard = document.getElementById('search-history');
 
 
-
-parkButton.addEventListener("click", (e) => {
-    e.preventDefault();
-    var element = e.target;
-    let statePark = $(element).val();
-
-    $.ajax({
-        type: "GET",
-        url:
-          "https://developer.nps.gov/api/v1/parks?parkCode=" +
-          statePark +
-          "&api_key=" +
-          apiKeyNPS,
-    
-        success: function (data) {
-    
-          // attempting to display hawaii on array 6 and create a p element to append the url text
-          for (let i = 0; i < data.data.length; i++) {
-            if (statePark === data.data[i].parkCode) {
-              // this variable will contain the coordinates for the google maps api
-              let { latitude, longitude } = data.data[i];
-              let parkCity = data.data[i].addresses[0].city;
-              let parkName = data.data[i].name;
-
-              // these functions will be invoked with the following arguments 
-              mapApi(latitude, longitude)
-              weatherDisplay(parkCity, parkName)
-            }
-            
-          }
-    }
-  })    
-})
-
 function parkDisplay (park) {
 
   $.ajax({
@@ -55,6 +21,7 @@ function parkDisplay (park) {
     success: function (data) {
       console.log(data);
       // attempting to display hawaii on array 6 and create a p element to append the url text
+      
       for (let i = 0; i < data.data.length; i++) {
 
         // if statement to specify the state being selected within the array 
@@ -80,13 +47,6 @@ function parkDisplay (park) {
           // this for loop specifies the array within the data array
           for (let j = 0; j < data.data[i].activities.length; j++) {
 
-            // this variable stores the image urls 
-            let {url} = data.data[0].images[j];
-           
-            // this pushes the data into an empty array 
-            parkImages.push(url);
-            console.log(parkImages);
-
             // creates div elements to append other elements to
           let createDiv2 = document.createElement("div");
 
@@ -94,7 +54,7 @@ function parkDisplay (park) {
           let createP2 = document.createElement("p");
             
           // this p element is getting the specified data 
-            createP2.textContent = data.data[0].activities[j].name;
+            createP2.textContent = data.data[i].activities[j].name;
 
             // this element is getting appeneded to the div
             createDiv2.append(createP2);
@@ -102,6 +62,17 @@ function parkDisplay (park) {
             // this element is getting appended to the card
             activityCard.append(createDiv2);
           } 
+
+          for (let k = 0; k < data.data[i].images.length; k++){
+
+            // this variable stores the image urls 
+            let {url} = data.data[i].images[k];
+           
+            // this pushes the data into an empty array 
+            parkImages.push(url);
+            console.log(parkImages);
+
+          }
              // these functions will be invoked with the following arguments 
         mapApi(latitude, longitude);
         weatherDisplay(parkCity, parkName);     
