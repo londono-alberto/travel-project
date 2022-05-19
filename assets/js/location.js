@@ -7,7 +7,6 @@ let startButton = document.getElementById('stateButton');
 let parkButton = document.getElementById('parkList');
 let searchCard = document.getElementById('search-history');
 
-
 function parkDisplay (park) {
 
   $.ajax({
