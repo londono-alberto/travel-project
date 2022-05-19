@@ -9,7 +9,7 @@ let activityCard = document.getElementById("activity-card");
 let searchBoard = document.getElementById("search-history");
 let parkBtn = document.getElementById("parkList");
 
-// button that gets the value fromt the dropdown list
+// button that gets the value from the dropdown list
 startBtn.addEventListener("click", function () {
   let userInput = $("#myDropdown :selected").val();
 
@@ -35,6 +35,7 @@ startBtn.addEventListener("click", function () {
   $(".dropdown").hide();
   $(".returnButton").show();
   $("#parkList").show();
+  $(".park-choice").show();
 });
 
 returnBtn.addEventListener("click", function () {
@@ -47,6 +48,10 @@ returnBtn.addEventListener("click", function () {
   $(".dropdown").show();
   $("#parkList").empty();
   $(".returnButton").hide();
+  $(".parkTitle").text(`Choose a State`);
+  $(".park-choice").show();
+  $("#weather-btn").hide();
+  $(".clearBtn").show();
 });
 
 // this button displays the activities and url from the specified park
@@ -54,11 +59,11 @@ parkBtn.addEventListener("click", function (e) {
   e.preventDefault();
 
   var element = e.target;
-
+  var parkSave = e.target.textContent;
   var parkEl = $(element).val();
 
   // Pushes the text into the localstorage array
-  searchArray.push(parkEl);
+  searchArray.push(parkSave);
 
   parkDisplay(parkEl);
   storeTodos();
@@ -68,6 +73,7 @@ parkBtn.addEventListener("click", function (e) {
   $("#weather-btn").show();
   $("#parkList").hide();
   $(".container").show();
+  $(".park-choice").hide();
 });
 
 // global variables that link to the carousel function
@@ -127,7 +133,7 @@ prev.addEventListener("click", function (event) {
 
 // empty array to push the userInput
 let searchArray = [];
-
+init();
 function init() {
   var storedTodos = JSON.parse(localStorage.getItem("todos"));
 
@@ -194,9 +200,17 @@ searchBoard.addEventListener("click", function (event) {
   }
 });
 
+clearBtn.addEventListener("click", clearParks);
+function clearParks() {
+  localStorage.clear();
+  window.location.reload();
+}
+
 $(document).ready(function () {
   $("#map").hide();
   $(".returnButton").hide();
   $("#weather-btn").hide();
   $(".container").hide();
+  $(".search-header").hide();
+  $(".clearBtn").show();
 });

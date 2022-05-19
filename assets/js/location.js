@@ -24,6 +24,15 @@ function parkDisplay(park) {
       let longitude = data.data[0].longitude;
       let parkCity = data.data[0].addresses[0].city;
       let parkName = data.data[0].name;
+      let parkFullName = data.data[0].fullName;
+      let infoData = data.data[0].description;
+      let parkState = data.data[0].states;
+
+      $(".parkTitle").text(`${parkFullName}`);
+      $(".carouselTitle").text(`${parkName}`);
+      $(".desc-box").text(`${infoData}`);
+      $(".search-header").show();
+      $(".clearBtn").hide();
 
       for (let i = 0; i < data.data.length; i++) {
         // if statement to specify the state being selected within the array
@@ -65,56 +74,44 @@ function parkDisplay(park) {
 
             // this pushes the data into an empty array
             parkImages.push(url);
-            console.log(parkImages);
+            // console.log(parkImages);
           }
         }
       }
       $(`.weather-dash`).empty();
-      mapApi(latitude, longitude);
+      mapApi(latitude, longitude, parkCity, parkName, parkState);
       weatherDisplay(parkCity, parkName);
     },
   });
 }
-
-function mapApi(lat, lon) {
-  const map = new google.maps.Map(document.getElementById("map"), {
+//--------------MAP DON'T CHANGE-------------------------
+function mapApi(lat, lon, city, park, state) {
+  //map options
+  console.log(lat, lon);
+  var options = {
     zoom: 8,
     mapId: "2f72557b09a6245f",
+    center: { lat: +lat, lng: +lon },
+  };
+
+  var map = new google.maps.Map(document.getElementById("map"), options);
+
+  var marker = new google.maps.Marker({
+    position: { lat: +lat, lng: +lon },
+    map: map,
+    icon: "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
+  });
+  var infoWindow = new google.maps.InfoWindow({
+    content: `<h3>${park} Park</h3> <p>${city}, ${state}</p>`,
   });
 
-  const geocoder = new google.maps.Geocoder();
-
-  geocoder.geocode({ address: "US" }).then((response) => {
-    const position = response.results[0].geometry.location;
-
-    map.setCenter(new google.maps.LatLng(lat, lon));
-    new google.maps.Marker({
-      map,
-      position,
-    });
-
-    const geocoder = new google.maps.Geocoder();
-
-    geocoder
-      .geocode({ address: "US" })
-      .then((response) => {
-        const position = response.results[0].geometry.location;
-
-        map.setCenter(new google.maps.LatLng(lat, lon));
-        new google.maps.Marker({
-          map,
-          position,
-        });
-      })
-      .catch((e) =>
-        window.alert(
-          "Geocode was not successful for the following reason: " + e
-        )
-      );
+  marker.addListener("click", function () {
+    infoWindow.open(map, marker);
   });
 }
+//--------------------END MAP------------------------------
 
-//weather display----------------------
+//weather display------------------------------------------
 function weatherDisplay(city, park) {
   var apiKeyWeather = "b6a631faf48ec36736fa91299da2f0a2";
 
@@ -160,4 +157,4 @@ weatherBtn.addEventListener("click", () =>
 
 // button to hide the weather
 closeBtn.addEventListener("click", () => weatherDash.classList.remove("show"));
-//weather display-----------------------
+//weather display-----------------------------------------

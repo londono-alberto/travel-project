@@ -35,7 +35,7 @@
         </div>
       </div>
       <div id="searchBoxes" class="searchBoxes">
-        <h3>Choose a State</h3>
+        <h3 class="parkTitle">Choose a State</h3>
         <div class="dropdown">
           <div id="myDropdown" class="dropdown-content">
             <select>
@@ -75,17 +75,18 @@
             </select>
           </div>
           <button id="stateButton" class="stateButton">Submit</button>
+          <button class="clearBtn" id="clearBtn">Clear Recent Parks</button>
           <ul id="search-history" class="search-history"></ul>
         </div>
         <div id="park-display" class="park-display">
-          <h2>Parks in this state</h2>
+          <h2 class="park-choice">Parks in this state</h2>
           <div id="parkList" class="row parkList"></div>
         </div>
         <button id="returnButton" class="returnButton">State Selection</button>
         <div id="map"></div>
         <!-- beginning of carousel elements  -->
         <div class="container">
-          <h4>Click on the image to view</h4>
+          <h4 class="carouselTitle">Click on the image to view</h4>
           <h4>Click on the buttons to navigate the carousel</h4>
           <div class="wrapper">
             <div class="carouselbox" aria-role="img" aria-label="carousel">
@@ -96,6 +97,9 @@
         </div>
         <!-- end of carousel elements  -->
         <div class="row">
+          <div class="container">
+            <div class="desc-box"></div>
+          </div>
           <div id="activity-card" class="column col-3">
             <p class="search-header fs-3">State Park(s) and Activities:</p>
           </div>
@@ -111,8 +115,9 @@
         </div>
       </div>
       <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4OVkkkHA93ViisjQDq3Fx_oAtNuevgR0&callback=mapApi&v=weekly"
+        async
         defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4OVkkkHA93ViisjQDq3Fx_oAtNuevgR0&callback=mapApi"
       ></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
