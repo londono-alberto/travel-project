@@ -4,70 +4,77 @@ var apiKeyNPS = "UwI3kgigKGVdm8bk9XTQmiupY45dyxNZfIcdn81Q";
 var apiGoogleMaps = "AIzaSyD4OVkkkHA93ViisjQDq3Fx_oAtNuevgR0";
 
 let startButton = document.getElementById("stateButton");
-
-// when the items from the search history is clicked, the following function performs
-searchCard.addEventListener("click", function (event) {
-  event.preventDefault();
-  var element = event.target;
-  let oldState = element.textContent;
-
-  $.ajax({
-    type: "GET",
-    url:
-      "https://developer.nps.gov/api/v1/parks?parkCode=" +
-      oldState +
-      "&api_key=" +
-      apiKeyNPS,
-
-    success: function (data) {
-      for (let i = 0; i < data.data.length; i++) {
-        if (oldState === data.data[i].states) {
-          // this variable will contain the coordinates for the google maps api
-          let { latitude, longitude } = data.data[i];
-          let { city } = data.data[i].addresses[0];
-          let { name } = data.data[i];
-
-          // these functions will be invoked with the following arguments
-          mapApi(latitude, longitude);
-          weatherDisplay(city, name);
-        }
-      }
-    },
-  });
-});
-
+let parkButton = document.getElementById("parkList");
 let searchCard = document.getElementById("search-history");
 
-startButton.addEventListener("click", function () {
-  let state = $("#myDropdown :selected").val();
-
+function parkDisplay(park) {
   $.ajax({
     type: "GET",
     url:
       "https://developer.nps.gov/api/v1/parks?parkCode=" +
-      state +
+      park +
       "&api_key=" +
       apiKeyNPS,
 
     success: function (data) {
       console.log(data);
-
       // attempting to display hawaii on array 6 and create a p element to append the url text
-      for (let i = 0; i < data.data.length; i++) {
-        if (state === data.data[i].states) {
-          // this variable will contain the coordinates for the google maps api
-          let { latitude, longitude } = data.data[i];
-          let parkCity = data.data[i].addresses[0].city;
-          let parkName = data.data[i].name;
 
-          // these functions will be invoked with the following arguments
-          mapApi(latitude, longitude);
-          weatherDisplay(parkCity, parkName);
+      let latitude = data.data[0].latitude;
+      let longitude = data.data[0].longitude;
+      let parkCity = data.data[0].addresses[0].city;
+      let parkName = data.data[0].name;
+
+      for (let i = 0; i < data.data.length; i++) {
+        // if statement to specify the state being selected within the array
+        if (park === data.data[0].parkCode) {
+          // get the url data
+          let { urlPark } = data.data[0];
+
+          // this div will append the url link -- needs to be here so it doesnt get created multiple times
+          let createDiv = document.createElement("div");
+
+          let createP = document.createElement("p");
+          $(createP).html(
+            $(`<a href="${urlPark}">Link to ${data.data[0].name} Park</a>`)
+          );
+          createDiv.append(createP);
+          activityCard.append(createDiv);
+
+          // this for loop specifies the array within the data array
+          for (let j = 0; j < data.data[i].activities.length; j++) {
+            // creates div elements to append other elements to
+            let createDiv2 = document.createElement("div");
+
+            // creates p elements
+            let createP2 = document.createElement("p");
+
+            // this p element is getting the specified data
+            createP2.textContent = data.data[i].activities[j].name;
+
+            // this element is getting appeneded to the div
+            createDiv2.append(createP2);
+
+            // this element is getting appended to the card
+            activityCard.append(createDiv2);
+          }
+
+          for (let k = 0; k < data.data[i].images.length; k++) {
+            // this variable stores the image urls
+            let { url } = data.data[i].images[k];
+
+            // this pushes the data into an empty array
+            parkImages.push(url);
+            console.log(parkImages);
+          }
         }
       }
+      $(`.weather-dash`).empty();
+      mapApi(latitude, longitude);
+      weatherDisplay(parkCity, parkName);
     },
   });
-});
+}
 
 function mapApi(lat, lon) {
   const map = new google.maps.Map(document.getElementById("map"), {

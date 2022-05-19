@@ -7,32 +7,37 @@ let startBtn = document.getElementById("stateButton");
 let returnBtn = document.getElementById("returnButton");
 let activityCard = document.getElementById("activity-card");
 let searchBoard = document.getElementById("search-history");
+let parkBtn = document.getElementById("parkList");
 
-// button that gets the value from the dropdown list
-
-$("#stateButton").click(function (e) {
-  element = e.target;
+// button that gets the value fromt the dropdown list
+startBtn.addEventListener("click", function () {
   let userInput = $("#myDropdown :selected").val();
-  console.log(userInput);
-  console.log(element);
 
+  $.ajax({
+    type: "GET",
+    url: `https://developer.nps.gov/api/v1/parks?stateCode=${userInput}&api_key=${apiKeyNPS}`,
+
+    success: function (data) {
+      console.log(data);
+
+      for (i = 0; i < data.data.length; i++)
+        if (userInput === data.data[i].states) {
+          var parkListName = data.data[i].fullName;
+          var parkCode = data.data[i].parkCode;
+
+          $("#parkList").append(
+            `<button id="parkBtn" class= "parkBtn list-group-item list-group-item-action" value = "${parkCode}">${parkListName}</button>`
+          );
+        }
+    },
+  });
   // hides the dropdown list and the button
-  // $(".dropdown").hide();
-  // $(".returnButton").show();
-
-  // Pushes the text into the array
-  // searchArray.push(userInput);
-
-  // invokes function
-  // parkList(userInput);
-  // stateSearch(userInput);
-  // storeTodos();
-  // renderTodos();
+  $(".dropdown").hide();
+  $(".returnButton").show();
+  $("#parkList").show();
 });
 
 returnBtn.addEventListener("click", function () {
-  // location.reload();
-
   parkImages = [];
   carousel.style.backgroundImage = "url('https://picsum.photos/300/200')";
 
@@ -40,197 +45,29 @@ returnBtn.addEventListener("click", function () {
   $("#map").empty();
 
   $(".dropdown").show();
+  $("#parkList").empty();
   $(".returnButton").hide();
 });
 
-// this function creates a list of buttons with all the park names
+// this button displays the activities and url from the specified park
+parkBtn.addEventListener("click", function (e) {
+  e.preventDefault();
 
-function parkList(state) {
-  $.ajax({
-    type: "GET",
-    url: `https://developer.nps.gov/api/v1/parks?stateCode=${state}&api_key=${apiKeyNPS}`,
-
-    success: function (data) {
-      console.log(data);
-
-      console.log(data.data.length);
-      for (i = 0; i < data.data.length; i++) {
-        if (state === data.data[i].states) {
-          var parkListName = data.data[i].fullName;
-          let latitude = data.data[i].latitude;
-          let longitude = data.data[i].longitude;
-          var parkCity = data.data[i].name;
-
-          $("#parkList").append(
-            `<button id="parkBtn" class= "parkBtn list-group-item list-group-item-action">${parkListName}</button>`
-          );
-          // console.log(parkListName);
-          // let createDiv3 = document.createElement("div");
-          // let createButton = document.createElement("button");
-          // createButton.setAttribute("id", "parkBtn");
-          // createButton.setAttribute("class", "parkBtn");
-          // createButton.textContent = parkListName;
-          // createDiv3.append(createButton);
-          // $("#parkList").append(createDiv3);
-        }
-      }
-    },
-  });
-}
-
-$(".parkBtn").on("click", (e) => {
   var element = e.target;
-  var parkEl = $(element).html();
-  if (parkEl !== "Search") {
-    parkDisplay(state, parkCity, latitude, longitude);
-  }
-});
 
-function parkDisplay(city, park, lat, lon, state) {
-  $("#map").show();
-  $("#weather-btn").show();
-  $(".dropdown").hide();
-  $(".returnButton").show();
-  $(".parkList").hide();
+  var parkEl = $(element).val();
 
-  mapApi(lat, lon);
-  weatherDisplay(city, park);
-}
+  // Pushes the text into the localstorage array
+  searchArray.push(parkEl);
 
-// this function will fetch the data for the google maps and display the activities
-function stateSearch(state) {
-  // add to the parkList function when created on the other js file
-
-  $("#map").show();
-  $("#weather-btn").show();
-
-  // -------------------------------------
-
-  $.ajax({
-    type: "GET",
-    url:
-      "https://developer.nps.gov/api/v1/parks?parkCode=" +
-      state +
-      "&api_key=" +
-      apiKeyNPS,
-
-    success: function (data) {
-      console.log(data);
-
-      // attempting to display hawaii on array 6 and create a p element to append the url text
-      for (let i = 0; i < data.data.length; i++) {
-        // if statement to specify the state being selected within the array
-        if (state === data.data[i].states) {
-          // get the url data
-          let { url } = data.data[i];
-
-          // this div will append the url link -- needs to be here so it doesnt get created multiple times
-          let createDiv = document.createElement("div");
-
-          let createP = document.createElement("p");
-          $(createP).html(
-            $(`<a href="${url}">Link to ${data.data[i].name} Park</a>`)
-          );
-          createDiv.append(createP);
-          activityCard.append(createDiv);
-
-          // this for loop specifies the array within the data array
-          for (let j = 0; j < data.data[i].activities.length; j++) {
-            // this variable stores the image urls
-            let { url } = data.data[i].images[j];
-
-            // this pushes the data into an empty array
-            parkImages.push(url);
-
-            // creates div elements to append other elements to
-            let createDiv2 = document.createElement("div");
-
-            // creates p elements
-            let createP2 = document.createElement("p");
-
-            // this p element is getting the specified data
-            createP2.textContent = data.data[i].activities[j].name;
-
-            // this element is getting appeneded to the div
-            createDiv2.append(createP2);
-
-            // this element is getting appended to the card
-            activityCard.append(createDiv2);
-          }
-        }
-      }
-    },
-  });
-}
-
-// empty array to push the userInput
-let searchArray = [];
-
-function init() {
-  var storedTodos = JSON.parse(localStorage.getItem("todos"));
-
-  // sets the array to get the parsed stored items
-  if (storedTodos !== null) {
-    searchArray = storedTodos;
-  }
-  // invokes the following function
+  parkDisplay(parkEl);
+  storeTodos();
   renderTodos();
-}
 
-function renderTodos() {
-  // This clears the search history log
-  searchBoard.innerHTML = "";
-
-  // this for loop will dynamically create li's
-  for (var i = 0; i < searchArray.length; i++) {
-    var todo = searchArray[i];
-
-    // creates a li
-    var li = document.createElement("li");
-
-    // creates attributes to append to the li
-    li.setAttribute("data-index", i);
-    li.setAttribute("id", "cityLi");
-
-    // creates buttons
-    var button = document.createElement("button");
-
-    // set the text of the button to be equal to the setItem
-    button.textContent = todo;
-    button.setAttribute("id", "cityBtn");
-
-    // appends the following elements to each other
-    li.appendChild(button);
-    searchBoard.appendChild(li);
-  }
-}
-
-// sets the array into a string in localstorage
-function storeTodos() {
-  localStorage.setItem("todos", JSON.stringify(searchArray));
-}
-
-// when the items from the search history is clicked, the following function performs
-searchBoard.addEventListener("click", function (event) {
-  event.preventDefault();
-  var element = event.target;
-  // $('#myDropdown :selected').val()
-  let oldCity = document.getElementById("cityBtn").textContent;
-  console.log(oldCity);
-
-  // when the condition is met, it removes the search history appended
-  if (element.matches("button") === true) {
-    event.preventDefault();
-    var index = element.parentElement.getAttribute("data-index");
-    searchArray.splice(index, 1);
-
-    // invokes the following functions when this condition is met
-    // storeTodos and renderTodos clears the text in the userinput field
-    storeTodos();
-    renderTodos();
-
-    stateSearch(element.textContent);
-  }
+  $("#map").show();
+  $("#weather-btn").show();
+  $("#parkList").hide();
+  $(".container").show();
 });
 
 // global variables that link to the carousel function
@@ -243,7 +80,7 @@ var index = 0;
 var currentImage;
 
 var parkImages = [];
-console.log(parkImages);
+
 carousel.style.backgroundImage = "url('https://picsum.photos/300/200')";
 
 // carousel function to rotate pictures through
@@ -286,8 +123,80 @@ prev.addEventListener("click", function (event) {
   navigate(-1);
 });
 
+// beginning of the localstorage functions --------vvvvv
+
+// empty array to push the userInput
+let searchArray = [];
+
+function init() {
+  var storedTodos = JSON.parse(localStorage.getItem("todos"));
+
+  // sets the array to get the parsed stored items
+  if (storedTodos !== null) {
+    searchArray = storedTodos;
+  }
+  // invokes the following function
+  renderTodos();
+}
+
+function renderTodos() {
+  // This clears the search history log
+  searchBoard.innerHTML = "";
+
+  // this for loop will dynamically create li's
+  for (var i = 0; i < searchArray.length; i++) {
+    var todo = searchArray[i];
+
+    // creates a li
+    var li = document.createElement("li");
+
+    // creates attributes to append to the li
+    li.setAttribute("data-index", i);
+    li.setAttribute("id", "cityLi");
+
+    // creates buttons
+    var button = document.createElement("button");
+
+    // set the text of the button to be equal to the setItem
+    button.textContent = todo;
+    button.setAttribute("id", "parkBtn");
+
+    // appends the following elements to each other
+    li.appendChild(button);
+    searchBoard.appendChild(li);
+  }
+}
+
+// sets the array into a string in localstorage
+function storeTodos() {
+  localStorage.setItem("todos", JSON.stringify(searchArray));
+}
+
+// make this searchboard also fetch the api to pass the value into it
+// when the items from the search history is clicked, the following function performs
+searchBoard.addEventListener("click", function (event) {
+  event.preventDefault();
+  var element = event.target;
+
+  // when the condition is met, it removes the search history appended
+  if (element.matches("button") === true) {
+    event.preventDefault();
+    var index = element.parentElement.getAttribute("data-index");
+    searchArray.splice(index, 1);
+
+    // invokes the following functions when this condition is met
+    // storeTodos and renderTodos clears the text in the userinput field
+    storeTodos();
+    renderTodos();
+
+    // invoked the search again but it is now a button invoking the displaying
+    parkDisplay(element.textContent);
+  }
+});
+
 $(document).ready(function () {
   $("#map").hide();
   $(".returnButton").hide();
   $("#weather-btn").hide();
+  $(".container").hide();
 });
