@@ -118,7 +118,7 @@ function weatherDisplay(city, park) {
   }).then(function (data) {
     $(".weatherTitle").text(`${park} Park Five Day Forecast`);
 
-    for (i = 7; i < 42; i += 7) {
+    for (i = 5; i < 45; i += 8) {
       var forecastCard = $('<div class = "card col">');
       var forecastTitle = $('<p class = "castDate">');
       var forecastTemp = $('<p class = "temp">');
