@@ -25,12 +25,26 @@ function parkDisplay(park) {
       let parkCity = data.data[0].addresses[0].city;
       let parkName = data.data[0].name;
       let parkFullName = data.data[0].fullName;
-      let infoData = data.data[0].description;
+      let infoDesc = data.data[0].description;
       let parkState = data.data[0].states;
+      let picDesignation = data.data[0].designation;
+      let parkHours = data.data[0].operatingHours[0].description;
+      let parkDirections = data.data[0].directionsInfo;
+      let parkDirectionsUrl = data.data[0].directionsUrl;
+      let parkEntranceFeesCost = data.data[0].entranceFees[0].cost;
+      let parkEntranceFeesDesc = data.data[0].entranceFees[0].description;
 
       $(".parkTitle").text(`${parkFullName}`);
-      $(".carouselTitle").text(`${parkName}`);
-      $(".desc-box").text(`${infoData}`);
+      $(".picDesignation").text(`${picDesignation}`);
+      $(".desc-box").html(`<strong>About:</strong> ${infoDesc}`);
+      $(".hours").html(`<strong>Operating Hours:</strong> ${parkHours}`);
+      $(".directions").html(
+        `<strong>Directions:</strong> ${parkDirections} <br> <a href=${parkDirectionsUrl}>NPS Directions</a>`
+      );
+      $(".fees").html(
+        `<strong>Cost of Entry:</strong> $ ${parkEntranceFeesCost} <br> ${parkEntranceFeesDesc}`
+      );
+
       $(".search-header").show();
       $(".clearBtn").hide();
 
@@ -79,17 +93,17 @@ function parkDisplay(park) {
         }
       }
       $(`.weather-dash`).empty();
-      mapApi(latitude, longitude, parkCity, parkName, parkState);
+      initMap(latitude, longitude, parkCity, parkName, parkState);
       weatherDisplay(parkCity, parkName);
     },
   });
 }
-//--------------MAP DON'T CHANGE-------------------------
-function mapApi(lat, lon, city, park, state) {
+//--------------MAP-------------------------
+function initMap(lat, lon, city, park, state) {
   //map options
   console.log(lat, lon);
   var options = {
-    zoom: 8,
+    zoom: 9,
     mapId: "2f72557b09a6245f",
     center: { lat: +lat, lng: +lon },
   };

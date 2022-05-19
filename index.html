@@ -86,8 +86,10 @@
         <div id="map"></div>
         <!-- beginning of carousel elements  -->
         <div class="container">
-          <h4 class="carouselTitle">Click on the image to view</h4>
-          <h4>Click on the buttons to navigate the carousel</h4>
+          <h4 class="picDesignation">Click on the image to view</h4>
+          <h4 class="pictureDesc">
+            Click on the buttons to navigate the carousel
+          </h4>
           <div class="wrapper">
             <div class="carouselbox" aria-role="img" aria-label="carousel">
               <button class="prev">◀ Previous</button>
@@ -99,6 +101,9 @@
         <div class="row">
           <div class="container">
             <div class="desc-box"></div>
+            <p class="hours"></p>
+            <p class="directions"></p>
+            <p class="fees"></p>
           </div>
           <div id="activity-card" class="column col-3">
             <p class="search-header fs-3">State Park(s) and Activities:</p>
@@ -117,7 +122,7 @@
       <script
         async
         defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4OVkkkHA93ViisjQDq3Fx_oAtNuevgR0&callback=mapApi"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4OVkkkHA93ViisjQDq3Fx_oAtNuevgR0&callback=initMap"
       ></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
