@@ -26,7 +26,7 @@ startBtn.addEventListener("click", function () {
           var parkCode = data.data[i].parkCode;
 
           $("#parkList").append(
-            `<button id="parkBtn" class= "parkBtn list-group-item list-group-item-action" value = "${parkCode}">${parkListName}</button>`
+            `<button id="parkBtn" class= "button is-info is-rounded" value = "${parkCode}">${parkListName}</button>`
           );
         }
     },

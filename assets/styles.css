@@ -1,5 +1,6 @@
-/* version 4.0*/
+/* version 4.0 */
 @import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";
+@import url('https://fonts.googleapis.com/css?family=Sen&display=swap');
 
 /* for all templates and grids*/
 body{text-align:left;}
@@ -45,11 +46,15 @@ h1{
 
 h2,
 h3,
-.dropdown,
-#parkList.row.parkList  {
+.dropdown  {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.button.is-info {
+  background-color: #527aa0;
+  border-color: white;
 }
 
 #searchboxes.searchboxes {
@@ -170,12 +175,23 @@ img {
 	padding:0;
 	}
 
-  .dropdown {
+.dropdown-content {
     background-color: lightgrey;
+    background-blend-mode: normal;
+    box-shadow: none;
   }  
 
-  #stateButton {
-    background-color: lightgrey;
+  .dropdown-content:hover {
+    box-shadow: inset 0px 0px 40px yellow, 0 0 105px yellow;
+
+  }
+
+
+#returnButton,
+#clearBtn,
+#stateButton {
+    background-color: #527aa0;
+    color:white;
   }  
 
   #dropdown-content {
@@ -196,6 +212,8 @@ img {
   }
   
   .weather-btn {
+    background-color: lightgrey;
+    color: black;
     position: absolute;
     top: 20px;
     right: 30px;
