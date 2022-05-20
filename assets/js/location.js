@@ -33,6 +33,8 @@ function parkDisplay(park) {
       let parkDirectionsUrl = data.data[0].directionsUrl;
       let parkEntranceFeesCost = data.data[0].entranceFees[0].cost;
       let parkEntranceFeesDesc = data.data[0].entranceFees[0].description;
+      var parkCode = data.data[0].parkCode;
+      console.log(parkCode);
 
       $(".parkTitle").text(`${parkFullName}`);
       $(".picDesignation").text(`${picDesignation}`);
@@ -45,6 +47,7 @@ function parkDisplay(park) {
         `<strong>Cost of Entry:</strong> $ ${parkEntranceFeesCost} <br> ${parkEntranceFeesDesc}`
       );
 
+      $(".park-code").text(`${parkCode}`);
       $(".search-header").show();
       $(".clearBtn").hide();
 
@@ -75,7 +78,7 @@ function parkDisplay(park) {
             // this p element is getting the specified data
             createP2.textContent = data.data[i].activities[j].name;
 
-            // this element is getting appeneded to the div
+            // this element is getting appended to the div
             createDiv2.append(createP2);
 
             // this element is getting appended to the card
