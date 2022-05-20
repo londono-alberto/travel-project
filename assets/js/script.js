@@ -38,7 +38,7 @@ startBtn.addEventListener("click", function () {
   $("#parkList").show();
   $(".park-choice").show();
   
-  $(".parkTitle").text(`Parks in ${userState}` );
+  $(".park-choice").text(`Parks in ${userState}` );
 });
 
 // button to return to state selection 
