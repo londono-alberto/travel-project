@@ -48,9 +48,10 @@ returnBtn.addEventListener("click", function () {
 
   $("#activity-card").empty();
   $("#map").empty();
-
-  $(".dropdown").show();
   $("#parkList").empty();
+
+  $(".container").hide();
+  $(".dropdown").show();
   $(".returnButton").hide();
   $(".parkTitle").text(`Choose a State`);
   $(".park-choice").show();
