@@ -12,6 +12,7 @@ let parkBtn = document.getElementById("parkList");
 // button that gets the value from the dropdown list
 startBtn.addEventListener("click", function () {
   let userInput = $("#myDropdown :selected").val();
+  let userState = $("#myDropdown :selected").text();
 
   $.ajax({
     type: "GET",
@@ -36,6 +37,8 @@ startBtn.addEventListener("click", function () {
   $(".returnButton").show();
   $("#parkList").show();
   $(".park-choice").show();
+  
+  $(".parkTitle").text(`Parks in ${userState}` );
 });
 
 // button to return to state selection 
