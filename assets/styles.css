@@ -1,18 +1,21 @@
 /* version 4.0 */
 @import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";
-@import url('https://fonts.googleapis.com/css?family=Sen&display=swap');
+@import "https://fonts.googleapis.com/css?family=Roboto:400,700";
 
 /* for all templates and grids*/
 body{text-align:left;}
 #footer{clear:both;}
 
+/* header | make title look like fire*/
+h1 {
+  font-family: “Georgia, 'Times New Roman', Times, serif;
+  color: #f5f5f5;
+  text-shadow: 0px -2px 4px #fff, 0px -2px 10px #FF3, 0px -10px 20px #F90, 0px -20px 40px #C33;
+  font-size: 60px;
+  }
+
 *{ 
   font-family:Georgia, 'Times New Roman', Times, serif;
-}
-
-h1{
-  font-size: 32px;
-  font-weight: 400px;
 }
 
 #search-header fs-3 {
@@ -32,13 +35,13 @@ h1{
   cursor: pointer;
   border: 0;
   padding: 10px 20px;
-  background: lightgrey;
+  background: #4a6741;
   color: black;
   border-radius: 5px;
 }
 
 .searchBoxes{
-  height: 100%;
+  height: 50%;
   background-color: lightgray;
   border:black;
   border-width: 100px;
@@ -50,10 +53,16 @@ h3,
   display: flex;
   align-items: center;
   justify-content: center;
+  font-weight: bolder;
 }
 
 .button.is-info {
-  background-color: #527aa0;
+  background-color: #22311d;
+  border-color: white;
+}
+
+.button.is-info:hover {
+  background-color: #4a6741;
   border-color: white;
 }
 
@@ -63,23 +72,23 @@ h3,
 
 /*header | Animation & Design*/
 @keyframes colors {
-  0%  {background-color: #263a4d;}
- 25%  {background-color: #324b64;}
- 50%  {background-color: #446685;}
- 75%  {background-color: #527aa0;}
- 100% {background-color: #6a9ccd;}
+  0%  {background-color: #22311d;}
+ 25%  {background-color: #304529;}
+ 50%  {background-color: #374f2f;}
+ 75%  {background-color: #3f5a36;}
+ 100% {background-color: #4a6741;}
 }
 
 #header {
   animation-name: colors;
-  animation-duration: 5s;
+  animation-duration: 8s;
   animation-iteration-count: infinite;
   animation-direction: alternate;
 }
 
 #header{
   height:100px;
-  background-color:darkblue;
+  background-color:#22311d;
   color: whitesmoke;
   font-size: 32px;
   margin:0;
@@ -103,7 +112,7 @@ h3,
 }
 
 .container:hover{
-  box-shadow: inset 0px 0px 40px yellow, 0 0 105px yellow;
+  box-shadow: inset 0px 0px 40px #374f2f, 0 0 105px #374f2f;
 }
 
 .carouselbox {
@@ -144,9 +153,11 @@ img {
 /* park information  */
 
 .desc-box,
+.fees,
 .hours,
-.directions {
-  font-size: calc(1.3vw + 1.5vh);
+.directions
+  {
+  font-size: calc(1.3vw + 1.3vh);
 }
 
 /* Basic Element Formatting */
@@ -179,18 +190,19 @@ img {
     background-color: lightgrey;
     background-blend-mode: normal;
     box-shadow: none;
-  }  
-
-  .dropdown-content:hover {
-    box-shadow: inset 0px 0px 40px yellow, 0 0 105px yellow;
-
   }
-
 
 #returnButton,
 #clearBtn,
 #stateButton {
-    background-color: #527aa0;
+    background-color: #22311d;
+    color:white;
+  }  
+
+#returnButton:hover,
+#clearBtn:hover,
+#stateButton:hover {
+    background-color: #4a6741;
     color:white;
   }  
 
@@ -212,11 +224,16 @@ img {
   }
   
   .weather-btn {
-    background-color: lightgrey;
-    color: black;
+    background-color: maroon;
+    color: white;
+    text-shadow: 0px -2px 4px #fff, 0px -2px 10px #FF3, 0px -10px 20px #F90, 0px -20px 40px #C33;
     position: absolute;
     top: 20px;
     right: 30px;
+  }
+
+  .weather-btn:hover {
+    background-color: #F90;
   }
   
   .weather-dash {
@@ -240,3 +257,4 @@ img {
   /*end weather forecast-----*/
 
 
+  
