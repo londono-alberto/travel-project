@@ -12,6 +12,7 @@ let parkBtn = document.getElementById("parkList");
 // button that gets the value from the dropdown list
 startBtn.addEventListener("click", function () {
   let userInput = $("#myDropdown :selected").val();
+  let userState = $("#myDropdown :selected").text();
 
   $.ajax({
     type: "GET",
@@ -36,8 +37,11 @@ startBtn.addEventListener("click", function () {
   $(".returnButton").show();
   $("#parkList").show();
   $(".park-choice").show();
+  
+  $(".park-choice").text(`Parks in ${userState}` );
 });
 
+// button to return to state selection 
 returnBtn.addEventListener("click", function () {
   parkImages = [];
   carousel.style.backgroundImage = "url('https://picsum.photos/300/200')";
@@ -94,6 +98,7 @@ function init() {
   renderTodos();
 }
 
+// creates buttons from the localstorage value to be appended onto the page 
 function renderTodos() {
   // This clears the search history log
   searchBoard.innerHTML = "";
@@ -149,12 +154,6 @@ searchBoard.addEventListener("click", function (event) {
   }
 });
 
-//  {'parks', [
-//         {state: "CA", code: "1111"}
-//          {state: "CA", code: "2222"}
-//          {state: "CA", code: "3333"}
-//         ]}
-
 $(".favBtn").on("click", favoritePark);
 
 function favoritePark(e) {
@@ -169,12 +168,15 @@ function favoritePark(e) {
   localStorage.setItem(k, v);
 }
 
+
+// clears localStorage and refreshes the page 
 clearBtn.addEventListener("click", clearParks);
 function clearParks() {
   localStorage.clear();
   window.location.reload();
 }
 
+// hides and shows buttons when wanted 
 $(document).ready(function () {
   $("#map").hide();
   $(".returnButton").hide();

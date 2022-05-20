@@ -3,10 +3,7 @@ var apiKeyWeather = "b6a631faf48ec36736fa91299da2f0a2";
 var apiKeyNPS = "UwI3kgigKGVdm8bk9XTQmiupY45dyxNZfIcdn81Q";
 var apiGoogleMaps = "AIzaSyD4OVkkkHA93ViisjQDq3Fx_oAtNuevgR0";
 
-let startButton = document.getElementById("stateButton");
-let parkButton = document.getElementById("parkList");
-let searchCard = document.getElementById("search-history");
-
+//--------------------PARK-------------------------
 function parkDisplay(park) {
   $.ajax({
     type: "GET",
@@ -98,7 +95,9 @@ function parkDisplay(park) {
     },
   });
 }
-//--------------MAP-------------------------
+//--------------------END PARK-------------------------
+
+//--------------------MAP-------------------------
 function initMap(lat, lon, city, park, state) {
   //map options
   console.log(lat, lon);
@@ -125,7 +124,7 @@ function initMap(lat, lon, city, park, state) {
 }
 //--------------------END MAP------------------------------
 
-//weather display------------------------------------------
+//--------------------WEATHER----------------------
 function weatherDisplay(city, park) {
   var apiKeyWeather = "b6a631faf48ec36736fa91299da2f0a2";
 
@@ -171,4 +170,4 @@ weatherBtn.addEventListener("click", () =>
 
 // button to hide the weather
 closeBtn.addEventListener("click", () => weatherDash.classList.remove("show"));
-//weather display-----------------------------------------
+//-------------------END WEATHER----------------------
