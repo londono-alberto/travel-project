@@ -47,6 +47,7 @@ function parkDisplay(park) {
       $(".park-code").text(`${parkCode}`);
       $(".search-header").show();
       $(".clearBtn").hide();
+      console.log(data.data.length);
 
       for (let i = 0; i < data.data.length; i++) {
         // if statement to specify the state being selected within the array

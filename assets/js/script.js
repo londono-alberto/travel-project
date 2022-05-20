@@ -22,22 +22,31 @@ startBtn.addEventListener("click", function () {
       console.log(data);
 
       for (i = 0; i < data.data.length; i++)
-        if (userInput === data.data[i].states) {
+        if (userInput === data.data[i].states[i]) {
           var parkFullName = data.data[i].fullName;
           var parkCode = data.data[i].parkCode;
+          console.log(parkCode);
+          console.log(parkFullName);
 
           $("#parkList").append(
             `<button id="parkBtn" class= "parkBtn list-group-item list-group-item-action" value = "${parkCode}">${parkFullName}</button>`
+          );
+        } else if (data.data[i].states.includes(userInput)) {
+          parkListName = data.data[i].fullName;
+          parkCode = data.data[i].parkCode;
+
+          $("#parkList").append(
+            `<button id="parkBtn" class= "parkBtn button is-info is-rounded" onclick="parkDisplay(event)" value = "${parkCode}">${parkListName}</button>`
           );
         }
     },
   });
   // hides the dropdown list and the button
+  $(".parkTitle").hide();
   $(".dropdown").hide();
-  $("#returnButton").show();
+  $(".returnButton").show();
   $("#parkList").show();
   $(".park-choice").show();
-
   $(".park-choice").text(`Parks in ${userState}`);
 });
 
@@ -215,21 +224,10 @@ function clearParks() {
   window.location.reload();
 }
 
-// hides and shows buttons when wanted
-$(document).ready(function () {
-  $(".park-choice").hide();
-  $("#map").hide();
-  $("#returnButton").hide();
-  $("#weather-btn").hide();
-  $(".container").hide();
-  $(".search-header").hide();
-  $("#clearBtn").show();
-  $(".favBtn").hide();
-});
-
 favParksDisplay();
 function favParksDisplay() {
   var parkHistory = localStorage.getItem("historyKey") || [];
+  // console.log(parkHistory);
   var parsed = JSON.parse(parkHistory);
   var parsedVal = parsed[0];
   // console.log(parsed.length);
@@ -254,3 +252,15 @@ function favParksDisplay() {
     }
   }
 }
+
+// hides and shows buttons when wanted
+$(document).ready(function () {
+  $(".park-choice").hide();
+  $("#map").hide();
+  $("#returnButton").hide();
+  $("#weather-btn").hide();
+  $(".container").hide();
+  $(".search-header").hide();
+  $("#clearBtn").show();
+  $(".favBtn").hide();
+});

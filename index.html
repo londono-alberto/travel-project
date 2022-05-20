@@ -82,7 +82,10 @@
           <button class="button is-info is-rounded" id="clearBtn">
             Clear Recent Parks
           </button>
-          <ul id="search-history" class="search-history"></ul>
+          <div>
+            <h2><i class="fa fa-tree"></i>&nbsp; Saved Parks</h2>
+            <ul id="search-history" class="search-history"></ul>
+          </div>
         </div>
         <div id="park-display" class="park-display">
           <h2 class="park-choice">Parks in this state</h2>
@@ -117,6 +120,7 @@
             <p class="fees"></p>
             <!-- park code needed for localStorage -->
             <p class="park-code" style="display: none"></p>
+            <!-- DON'T REMOVE PARK CODE (ok to move)-->
           </div>
           <div id="activity-card" class="column col-3">
             <p class="search-header fs-3">State Park(s) and Activities:</p>
