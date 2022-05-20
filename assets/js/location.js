@@ -94,7 +94,7 @@ function parkDisplay(park) {
       }
       $(`.weather-dash`).empty();
       initMap(latitude, longitude, parkCity, parkName, parkState);
-      weatherDisplay(parkCity, parkName);
+      weatherDisplay(parkCity, parkName, latitude, longitude);
     },
   });
 }
@@ -128,29 +128,29 @@ function initMap(lat, lon, city, park, state) {
 //--------------------END MAP------------------------------
 
 //--------------------WEATHER----------------------
-function weatherDisplay(city, park) {
+function weatherDisplay(city, park, lat, lon) {
   var apiKeyWeather = "b6a631faf48ec36736fa91299da2f0a2";
 
   $.ajax({
     type: "GET",
-    url: `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&APPID=${apiKeyWeather}`,
-    id: "city",
+    url: `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=current,minutely,hourly,alerts&appid=${apiKeyWeather}`,
   }).then(function (data) {
+    console.log(data);
     $(".weatherTitle").text(`${park} Park Five Day Forecast`);
 
-    for (i = 5; i < 45; i += 8) {
+    for (i = 1; i < 6; i += 1) {
       var forecastCard = $('<div class = "card col">');
       var forecastTitle = $('<p class = "castDate">');
       var forecastTemp = $('<p class = "temp">');
       var forecastWind = $('<p class = "wind">');
       var forecastHumidity = $('<p class = "humid">');
 
-      var date = new Date(data.list[i].dt * 1000).toLocaleDateString("en-US");
-      iconData = `<img src="https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}.png"/>`;
+      var date = new Date(data.daily[i].dt * 1000).toLocaleDateString("en-US");
+      iconData = `<img src="https://openweathermap.org/img/wn/${data.daily[i].weather[0].icon}.png"/>`;
       forecastTitle.html(`${date} ${iconData}`);
-      forecastTemp.text(`Temperature: ${data.list[i].main.temp}`);
-      forecastWind.text(`Wind: ${data.list[i].wind.speed}`);
-      forecastHumidity.text(`Humidity: ${data.list[i].main.humidity}`);
+      forecastTemp.text(`Temperature: ${data.daily[i].temp.day}`);
+      forecastWind.text(`Wind: ${data.daily[i].wind_speed}`);
+      forecastHumidity.text(`Humidity: ${data.daily[i].humidity}`);
 
       $(`.weather-dash`).append(forecastCard);
       forecastCard.append(forecastTitle);
