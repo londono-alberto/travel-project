@@ -4,7 +4,29 @@ var apiKeyNPS = "UwI3kgigKGVdm8bk9XTQmiupY45dyxNZfIcdn81Q";
 var apiGoogleMaps = "AIzaSyD4OVkkkHA93ViisjQDq3Fx_oAtNuevgR0";
 
 //--------------------PARK-------------------------
-function parkDisplay(park) {
+function parkDisplay(e) {
+  // prevents event bubbling 
+  e.stopPropagation();
+
+  
+
+  var element = e.target;
+  var parkSave = e.target.textContent;
+  var park = $(element).val();
+  console.log(element);
+  
+
+  // Pushes the text into the localstorage array
+  searchArray.push(parkSave);
+
+  storeTodos();
+  renderTodos();
+
+  $("#map").show();
+  $("#weather-btn").show();
+  $("#parkList").hide();
+  $(".container").show();
+  $(".park-choice").hide();
   $.ajax({
     type: "GET",
     url:
@@ -156,6 +178,7 @@ function weatherDisplay(city, park) {
       forecastCard.append(forecastHumidity);
     }
   });
+  $("#close-btn").show()
 }
 
 // variables to link the html to js
@@ -166,6 +189,7 @@ const weatherDash = document.getElementById("weather-dash");
 // button to show the weather
 weatherBtn.addEventListener("click", () =>
   weatherDash.classList.toggle("show")
+  
 );
 
 // button to hide the weather
