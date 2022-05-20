@@ -34,7 +34,7 @@ startBtn.addEventListener("click", function () {
   });
   // hides the dropdown list and the button
   $(".dropdown").hide();
-  $(".returnButton").show();
+  $("#returnButton").show();
   $("#parkList").show();
   $(".park-choice").show();
 
@@ -51,11 +51,11 @@ returnBtn.addEventListener("click", function () {
 
   $(".dropdown").show();
   $("#parkList").empty();
-  $(".returnButton").hide();
+  $("#returnButton").hide();
   $(".parkTitle").text(`Choose a State`);
   $(".park-choice").show();
   $("#weather-btn").hide();
-  $(".clearBtn").show();
+  $("#clearBtn").show();
   $(".favBtn").hide();
 
   favParksDisplay();
@@ -97,7 +97,6 @@ searchBoard.addEventListener("click", function (e) {
   }
 });
 
-// =======
 //   // Pushes the text into the localstorage array
 //   searchArray.push(parkSave);
 
@@ -184,7 +183,6 @@ searchBoard.addEventListener("click", function (e) {
 //   }
 // });
 
-// >>>>>>> 621b11e984e0ecdc430ef925aecd61ea48c97a8d
 $(".favBtn").on("click", favoritePark);
 
 function favoritePark(e) {
@@ -219,12 +217,13 @@ function clearParks() {
 
 // hides and shows buttons when wanted
 $(document).ready(function () {
+  $(".park-choice").hide();
   $("#map").hide();
-  $(".returnButton").hide();
+  $("#returnButton").hide();
   $("#weather-btn").hide();
   $(".container").hide();
   $(".search-header").hide();
-  $(".clearBtn").show();
+  $("#clearBtn").show();
   $(".favBtn").hide();
 });
 
@@ -233,18 +232,18 @@ function favParksDisplay() {
   var parkHistory = localStorage.getItem("historyKey") || [];
   var parsed = JSON.parse(parkHistory);
   var parsedVal = parsed[0];
-  console.log(parsed.length);
-  console.log(parsed);
-  console.log(parsedVal);
+  // console.log(parsed.length);
+  // console.log(parsed);
+  // console.log(parsedVal);
   // var parkCode = parsedVal.parkCode;
   // var parkFullName = parsedVal.parkFullName;
 
   for (i = 0; i < parsed.length; i++) {
     var parsed = JSON.parse(parkHistory);
     var parsedVal = parsed[i];
-    console.log(parkHistory);
-    console.log(parsedVal);
-    console.log(parsed);
+    // console.log(parkHistory);
+    // console.log(parsedVal);
+    // console.log(parsed);
 
     if (!parkHistory.includes(parsedVal)) {
       var favPark = document.createElement("button");
