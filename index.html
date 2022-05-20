@@ -13,32 +13,9 @@
   </head>
   <html>
     <body>
-      <div id="doc" class="yui-t7">
+      <div id="doc" class="header">
         <div id="header">
           <div id="header"><h1>Hiking Project</h1></div>
-        </div>
-        <div id="body">
-          <div id="main">
-            <div class="yui-b">
-              <div class="yui-gc">
-                <div class="yui-u first">
-                  <div class="content">Map Here</div>
-                </div>
-                <div class="yui-u">
-                  <div class="content">Weather Here</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="yui-b">
-            <div id="secondary">Secondary Column</div>
-          </div>
-        </div>
-        <div id="footer">
-          <button class="favBtn" id="favBtn">
-            <i class="fa fa-tree"></i> Save Park to Favorites
-          </button>
-          <div id="footer">Footer</div>
         </div>
       </div>
       <div id="searchBoxes" class="searchBoxes">
@@ -81,18 +58,21 @@
               <option value="WY">Wyoming</option>
             </select>
           </div>
-          <button id="stateButton" class="stateButton">Submit</button>
-          <button class="clearBtn" id="clearBtn">Clear Favorite Parks</button>
-          <!-- <button class="favBtn" id="favBtn">
-            <i class="fa fa-tree"></i> Save Park to Favorites
-          </button> -->
+          <button id="stateButton" class="button is-info is-rounded">
+            Submit
+          </button>
+          <button class="button is-info is-rounded" id="clearBtn">
+            Clear Recent Parks
+          </button>
           <ul id="search-history" class="search-history"></ul>
         </div>
         <div id="park-display" class="park-display">
           <h2 class="park-choice">Parks in this state</h2>
           <div id="parkList" class="row parkList"></div>
         </div>
-        <button id="returnButton" class="returnButton">State Selection</button>
+        <button id="returnButton" class="button is-info is-rounded">
+          State Selection
+        </button>
         <div id="map"></div>
         <!-- beginning of carousel elements  -->
         <div class="container">
