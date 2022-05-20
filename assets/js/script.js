@@ -25,7 +25,8 @@ startBtn.addEventListener("click", function () {
           var parkCode = data.data[i].parkCode;
 
           $("#parkList").append(
-            `<button id="parkBtn" class= "parkBtn list-group-item list-group-item-action" onclick="parkDisplay(event)" value = "${parkCode}">${parkListName}</button>`
+
+            `<button id="parkBtn" class= "parkBtn button is-info is-rounded" onclick="parkDisplay(event)" value = "${parkCode}">${parkListName}</button>`
           );
         } else if (data.data[i].states.includes(userInput)) {
 
@@ -33,7 +34,8 @@ startBtn.addEventListener("click", function () {
           parkCode = data.data[i].parkCode;
 
           $("#parkList").append(
-            `<button id="parkBtn" class= "parkBtn list-group-item list-group-item-action" onclick="parkDisplay(event)" value = "${parkCode}">${parkListName}</button>`
+            `<button id="parkBtn" class= "parkBtn button is-info is-rounded" onclick="parkDisplay(event)" value = "${parkCode}">${parkListName}</button>`
+
           );
         }
     },
