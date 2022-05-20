@@ -36,7 +36,7 @@ h1{
 }
 
 .searchBoxes{
-  height: 500px;
+  height: 100%;
   background-color: lightgray;
   border:black;
   border-width: 100px;
@@ -81,16 +81,23 @@ h3,
   }
 
 /* carousel begins - has img element */
+
 .container {
   display: block;
   margin: 60px auto;
   text-align: center;
-  font-size: 30px;
+  font-size: 32px;
+  border-width: thick;
+  border-radius: 70px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
   width: 80vw;
-  background-color: #f0ead6;
+  background-color: whitesmoke;
   padding-top: 20px;
+}
+
+.container:hover{
+  box-shadow: inset 0px 0px 40px yellow, 0 0 105px yellow;
 }
 
 .carouselbox {
@@ -119,9 +126,22 @@ img {
 }
 
 .wrapper {
-  padding-bottom: 30px;
+  padding-bottom: 40px;
 }
+
+.pictureDesc {
+  font-size: 18px;
+}
+
 /* carousel ends  */
+
+/* park information  */
+
+.desc-box,
+.hours,
+.directions {
+  font-size: calc(1.3vw + 1.5vh);
+}
 
 /* Basic Element Formatting */
 
@@ -199,4 +219,5 @@ img {
     transform: translateX(0);
   }
   /*end weather forecast-----*/
+
 
