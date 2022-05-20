@@ -201,6 +201,14 @@ img {
     right: 30px;
   }
   
+  .card {
+    margin: 5px;
+    padding: 10px;
+    background-color: rgb(46, 168, 225);
+    color: white;
+    text-align: center;
+  }
+
   .weather-dash {
     position: absolute;
     top: 0;
