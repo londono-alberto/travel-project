@@ -9,120 +9,105 @@
   </head>
 <html>
 <body>
-<div id="doc" class="yui-t7">
+<div id="doc" class="header">
   <div id="header">
     <div id="header"><h1>Hiking Project</h1></div>
   </div>
-  <div id="body">
-    <div id="main">
-      <div class="yui-b">
-        <div class="yui-gc">
-          <div class="yui-u first">
-            <div class="content">Map Here</div>
-          </div>
-          <div class="yui-u">
-            <div class="content">Weather Here</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="yui-b">
-      <div id="secondary">Secondary Column</div>
-    </div>
-  </div>
-  <div id="footer">
-    <div id="footer">Footer</div>
-  </div>
 </div>
-    <div id="searchBoxes" class="searchBoxes">
-      <h3>Choose a State</h3>
-      <div class="dropdown">
-        <div id="myDropdown" class="dropdown-content">
-          <select>
-            <option value="AL">Alabama</option>
-            <option value="AK">Alaska</option>
-            <option value="AZ">Arizona</option>
-            <option value="AR">Arkansas</option>
-            <option value="CA">California</option>
-            <option value="CO">Colorado</option>
-            <option value="CT">Connecticut</option>
-            <option value="DE">Delaware</option>
-            <option value="DC">District Of Columbia</option>
-            <option value="FL">Florida</option>
-            <option value="GA">Georgia</option>
-            <option value="HI">Hawaii</option>
-            <option value="KY">Kentucky</option>
-            <option value="ME">Maine</option>
-            <option value="MD">Maryland</option>
-            <option value="MA">Massachusetts</option>
-            <option value="MT">Minnesota</option>
-            <option value="NE">Nebraska</option>
-            <option value="NY">New York</option>
-            <option value="NC">North Carolina</option>
-            <option value="NJ">New Jersey</option>
-            <option value="NM">New Mexico</option>
-            <option value="PA">Pennsylvania</option>
-            <option value="RI">Rhode Island</option>
-            <option value="SD">South Dakota</option>
-            <option value="TN">Tennessee</option>
-            <option value="TX">Texas</option>
-            <option value="UT">Utah</option>
-            <option value="VT">Vermont</option>
-            <option value="VA">Virginia</option>
-            <option value="WV">West Virginia</option>
-            <option value="WI">Wisconsin</option>
-            <option value="WY">Wyoming</option>
-          </select>
-        </div>
-        <button id="stateButton" class="stateButton">Submit</button>
-        <ul id="search-history" class="search-history"></ul>
-      </div>
-      <div id = "park-display" class="park-display">
-        <h2> Parks in this state</h2>
-          <div id="parkList" class="row parkList">
+      <div id="searchBoxes" class="searchBoxes">
+        <h3 class="parkTitle">Choose a State</h3>
+        <div class="dropdown">
+          <div id="myDropdown" class="dropdown-content">
+            <select>
+              <option value="AL">Alabama</option>
+              <option value="AK">Alaska</option>
+              <option value="AZ">Arizona</option>
+              <option value="AR">Arkansas</option>
+              <option value="CA">California</option>
+              <option value="CO">Colorado</option>
+              <option value="CT">Connecticut</option>
+              <option value="DE">Delaware</option>
+              <option value="DC">District Of Columbia</option>
+              <option value="FL">Florida</option>
+              <option value="GA">Georgia</option>
+              <option value="HI">Hawaii</option>
+              <option value="KY">Kentucky</option>
+              <option value="ME">Maine</option>
+              <option value="MD">Maryland</option>
+              <option value="MA">Massachusetts</option>
+              <option value="MT">Minnesota</option>
+              <option value="NE">Nebraska</option>
+              <option value="NY">New York</option>
+              <option value="NC">North Carolina</option>
+              <option value="NJ">New Jersey</option>
+              <option value="NM">New Mexico</option>
+              <option value="PA">Pennsylvania</option>
+              <option value="RI">Rhode Island</option>
+              <option value="SD">South Dakota</option>
+              <option value="TN">Tennessee</option>
+              <option value="TX">Texas</option>
+              <option value="UT">Utah</option>
+              <option value="VT">Vermont</option>
+              <option value="VA">Virginia</option>
+              <option value="WV">West Virginia</option>
+              <option value="WI">Wisconsin</option>
+              <option value="WY">Wyoming</option>
+            </select>
           </div>
-      </div>
-      <button id="returnButton" class="returnButton">State Selection</button>
-      <div id="map"></div>
-      <!-- beginning of carousel elements  -->
-      <div class="container">
-        <h4>Click on the image to view</h4>
-        <h4>Click on the buttons to navigate the carousel</h4>
-        <div class="wrapper">
-          <div class="carouselbox" aria-role="img" aria-label="carousel">
-            <button class="prev">
-              ◀ Previous
-            </button>
-            <button class="next">
-              Next ▶ 
-            </button>
-          </div> 
+          <button id="stateButton" class="stateButton">Submit</button>
+          <button class="clearBtn" id="clearBtn">Clear Recent Parks</button>
+          <ul id="search-history" class="search-history"></ul>
+        </div>
+        <div id="park-display" class="park-display">
+          <h2 class="park-choice">Parks in this state</h2>
+          <div id="parkList" class="row parkList"></div>
+        </div>
+        <button id="returnButton" class="returnButton">State Selection</button>
+        <div id="map"></div>
+        <!-- beginning of carousel elements  -->
+        <div class="container">
+          <h4 class="picDesignation">Click on the image to view</h4>
+          <h4 class="pictureDesc">
+            Click on the buttons to navigate the carousel
+          </h4>
+          <div class="wrapper">
+            <div class="carouselbox" aria-role="img" aria-label="carousel">
+              <button class="prev">◀ Previous</button>
+              <button class="next">Next ▶</button>
+            </div>
+          </div>
+        </div>
+        <!-- end of carousel elements  -->
+        <div class="row">
+          <div class="container">
+            <div class="desc-box"></div>
+            <p class="hours"></p>
+            <p class="directions"></p>
+            <p class="fees"></p>
+          </div>
+          <div id="activity-card" class="column col-3">
+            <p class="search-header fs-3">State Park(s) and Activities:</p>
+          </div>
         </div>
       </div>
-      <!-- end of carousel elements  -->
-      <div class="row">
-        <div id="activity-card" class="column col-3">
-          <p class="search-header fs-3">State Park Website and Activities:</p>
+      <div id="five-day-forecast" class="weather-container">
+        <button id="weather-btn" class="btn weather-btn">
+          Weather Forecast
+        </button>
+        <div id="weather-dash" class="weather-dash">
+          <h2 class="weatherTitle">5 Day Forecast</h2>
+          <button id="close-btn" class="btn">Close</button>
         </div>
       </div>
-    </div>
-    <div id="five-day-forecast" class="weather-container">
-      <button id="weather-btn" class="btn weather-btn">Weather Forecast</button>
-      <div id="weather-dash" class="weather-dash">
-        <h2 class="weatherTitle">5 Day Forecast</h2>
-        <button id="close-btn" class="btn">Close</button>
-      </div>
-    </div>
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4OVkkkHA93ViisjQDq3Fx_oAtNuevgR0&callback=mapApi&v=weekly"
-      defer
-    ></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="assets/js/location.js"></script>
-    <script src="assets/js/script.js"></script>
-    <script src="assets/js/carousel.js"></script>
-  </body>
-
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+      <script src="assets/js/location.js"></script>
+      <script src="assets/js/carousel.js"></script>
+      <script src="assets/js/script.js"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4OVkkkHA93ViisjQDq3Fx_oAtNuevgR0"></script>
+    </body>
+  </html>
 </html>
+  
+  
