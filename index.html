@@ -9,6 +9,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     />
+
     <title>Take a Hike</title>
   </head>
   <html>
@@ -21,6 +22,7 @@
     <title>Take A Hike</title>
   </head>
     
+
       <div id="searchBoxes" class="searchBoxes">
         <h3 class="parkTitle">Choose a State</h3>
         <div class="dropdown">
@@ -103,23 +105,28 @@
           <div id="parkList" class="row parkList"></div>
         </div>
 
-        <button id="returnButton" class="returnButton button is-info is-rounded" style="display: none">
+        <button id="returnButton" class="returnButton button is-info is-rounded">
           Return to State Selection
         </button>
 
-        <button class="favBtn button is-success is-rounded" id="favBtn" style="display: none">
+
+        <button class="favBtn" id="favBtn"s>
+
+
+        <button class="favBtn button is-success is-rounded" id="favBtn">
+
           <i class="fa fa-tree"></i> Save Park to Favorites
         </button>
 
         <div id="map"></div>
        <!-- beginning of carousel elements  -->
-        <div class="container" style="display: none">
-          <h4 class="picDesignation" style="display: none">Click on the image to view</h4>
-          <h4 class="pictureDesc" style="display: none">
+        <div class="container">
+          <h4 class="picDesignation">Click on the image to view</h4>
+          <h4 class="pictureDesc">
             Click on the buttons to navigate the carousel
           </h4>
 
-          <div class="wrapper" style="display: none">
+          <div class="wrapper">
             <div class="carouselbox"  aria-role="img" aria-label="carousel">
               <button class="prev">◀ Previous</button>
               <button class="next">Next ▶</button>
@@ -128,21 +135,22 @@
         </div>
         <!-- end of carousel elements  -->
         <div class="row">
-          <div class="container" style="display: none">
+          <div class="container">
             <div class="desc-box" ></div>
             <p class="hours"></p>
             <p class="directions"></p>
             <p class="fees"></p>
             <!-- park code needed for localStorage -->
-            <p class="park-code" style="display: none"></p>
+            <p class="park-code"></p>
             <!-- DON'T REMOVE PARK CODE (ok to move)-->
           </div>
-          <div id="activity-card" class="column col-3">
-            <p class="search-header fs-3" style="display: none">Activities:</p>
+
+            <p class="search-header fs-3">Activities:</p>
+
           </div>
         </div>
       </div>
-        <input type="button" id="weather-btn" class="btn weather-btn" style="display: none" value="Weather Forecast" onClick="changetext()"  >
+        <input type="button" id="weather-btn" class="btn weather-btn" value="Weather Forecast" onClick="changetext()"  >
         <script>
         function changetext() {
              var elem = document.getElementById("weather-btn");
