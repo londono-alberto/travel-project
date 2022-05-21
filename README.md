@@ -1,8 +1,8 @@
-# Hiking Project
+# Take a Hike
 
-<a href="https://guapguap.github.io/travel-project/">Hiking Project - Click here for deployed app</a>
+<a href="https://guapguap.github.io/travel-project/">Take a Hike - Click here for deployed app</a>
 
-# travel-project
+# Take a Hike
 
 Group Project #1 Take A Hike
 Group Members: Alberto, Arthur, Mason, Timothy

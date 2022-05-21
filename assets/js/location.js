@@ -68,7 +68,9 @@ function parkDisplay(park) {
 
           let createP = document.createElement("p");
           $(createP).html(
-            $(`<a href="${urlPark}">Link to ${data.data[0].name} Park</a>`)
+            $(
+              `<a href="${urlPark}" display="none" >Link to ${data.data[0].name} Park</a>`
+            )
           );
 //           createDiv.append(createP);
 //           activityCard.append(createDiv);

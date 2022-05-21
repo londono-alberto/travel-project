@@ -70,6 +70,7 @@ returnBtn.addEventListener("click", function () {
   $("#weather-btn").hide();
   $("#clearBtn").show();
   $(".favBtn").hide();
+  window.location.reload();
 });
 
 parkList.addEventListener("click", function (e) {
