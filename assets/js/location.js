@@ -6,19 +6,6 @@ var apiGoogleMaps = "AIzaSyD4OVkkkHA93ViisjQDq3Fx_oAtNuevgR0";
 //--------------------PARK-------------------------
 
 function parkDisplay(park) {
-  // prevents event bubbling
-  // e.stopPropagation();
-
-  // var element = e.target;
-  // var parkSave = e.target.textContent;
-  // var park = $(element).val();
-  // console.log(element);
-
-  // // Pushes the text into the localstorage array
-  // searchArray.push(parkSave);
-
-  // storeTodos();
-  // renderTodos();
 
   $("#map").show();
   $("#weather-btn").show();
@@ -34,9 +21,9 @@ function parkDisplay(park) {
       apiKeyNPS,
 
     success: function (data) {
-      console.log(data);
-      // attempting to display hawaii on array 6 and create a p element to append the url text
 
+      console.log(data);
+      
       let latitude = data.data[0].latitude;
       let longitude = data.data[0].longitude;
       let parkCity = data.data[0].addresses[0].city;
@@ -54,10 +41,8 @@ function parkDisplay(park) {
       console.log(parkCode);
 
       $(".parkTitle").text(`${parkFullName}`);
-      $(".picDesignation").text(`${picDesignation}`);
-      if (picDesignation === "") {
-        $(".picDesignation").text(`${parkFullName}`);
-      }
+      $(".picDesignation").text(`${parkFullName}`);
+      
       $(".desc-box").html(`<strong>About:</strong> ${infoDesc}`);
       $(".hours").html(`<strong>Operating Hours:</strong> ${parkHours}`);
       $(".directions").html(
