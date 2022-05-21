@@ -1,16 +1,13 @@
 # Take a Hike
-
-Link to deployed site: <a href="https://guapguap.github.io/travel-project/">https://guapguap.github.io/travel-project/</a>
-
-# Take a Hike
+<br>
+#Github Repository and Deployed Application:
+<br>
+Deployed Page Link: https://guapguap.github.io/travel-project/
+<br>
+Github Repo: https://github.com/Guapguap/travel-project
 <br>
 Group Members: Alberto, Arthur, Mason, Timothy
 
-<br>
-     This Application utilizes 3 Server Side APIs:
-        - Google Maps
-        - Weather
-        - National Park Service
 <br>
     	Concept:
     	As an avid outdoor person, I wanted to go to a website that gives me high level park information when I select a park that I wanted to checkout.
@@ -25,12 +22,6 @@ Timothy: Worked on the CSS and HTML. Focused on the styling and layout of the we
 <br>
 Arthur: Worked on the ReadMe, PowerPoint, and Software Testing. Focused on fleshing out the bugs and errors of the current main branch.
 <br>
-
-#Github Repository and Deployed Application:
-<br>
-- Deployed Page Link: https://guapguap.github.io/travel-project/
-<br>
-- Github Repo: https://github.com/Guapguap/travel-project
 
 #Presentation: 
 <br>
@@ -54,17 +45,17 @@ explored is saved for reference. The "Clear Recent Parks" button will clear this
 <br>
 Challenges we faced were mainly the functionality of some the features we implemented.
 <br>
-- One problem was event bubbling on the park list when a specific button is not clicked it would end up running the function and then locally storing the entire div.
+One problem was event bubbling on the park list when a specific button is not clicked it would end up running the function and then locally storing the entire div.
 <br>
-- Another was that the weather api. We had the latitude and longitude displaying an error within the console before it even ran.
+Another was that the weather api. We had the latitude and longitude displaying an error within the console before it even ran.
 <br>
-- Local Storage was another big obstacle that we encountered. We reworked it as a different feature in our application that kept giving an error.
+Local Storage was another big obstacle that we encountered. We reworked it as a different feature in our application that kept giving an error.
 
 #Successes
 <br>
- - A lot of the successes derived from the challenges we encountered. We were able to push through and resolve the issues and find different solutions to some of the problems.
+A lot of the successes derived from the challenges we encountered. We were able to push through and resolve the issues and find different solutions to some of the problems.
 <br>
- - Aside from the coding aspect, further into the project building process, we ended up establishing a nice work flow in the group.
+Aside from the coding aspect, further into the project building process, we ended up establishing a nice work flow in the group.
  
 <br>
 
