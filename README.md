@@ -31,9 +31,6 @@ Arthur: Worked on the ReadMe, PowerPoint, and Software Testing. Focused on flesh
 #Presentation: 
 <br>
 <br>
-Link to PowerPoint: [PowerPoint](https://onedrive.live.com/edit.aspx?resid=DE955333573C7D02!115&ithint=file%2cpptx&wdOrigin=OFFICECOM-WEB.START.MRU)
-<br>
-<br>
 #Version 2.0 Might Include:
 <br>
 <br>
