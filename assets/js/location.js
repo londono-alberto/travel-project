@@ -164,7 +164,6 @@ function weatherDisplay(city, park, lat, lon) {
 
     for (i = 1; i < 6; i += 1) {
       var forecastCard = $('<div class = "card col">');
-
       var forecastDate = $('<p class = "castDate">');
       var forecastTemp = $('<p class = "temp">');
       var forecastWind = $('<p class = "wind">');
@@ -187,6 +186,11 @@ function weatherDisplay(city, park, lat, lon) {
       forecastCard.append(forecastHumidity);
     }
   });
+  var weatherClose = document.createElement("button");
+  $(weatherClose).html(
+    `<button id="weatherClose" class= "weatherClose"</button>`
+  );
+  $("#weather-dash").append(weatherClose);
   $("#close-btn").show();
 }
 
