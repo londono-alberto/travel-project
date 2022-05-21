@@ -70,6 +70,7 @@ returnBtn.addEventListener("click", function () {
   $("#weather-btn").hide();
   $("#clearBtn").show();
   $(".favBtn").hide();
+  $(".saved-list").show();
   window.location.reload();
 });
 
@@ -88,6 +89,7 @@ parkList.addEventListener("click", function (e) {
     $(".container").show();
     $(".park-choice").hide();
     $(".favBtn").show();
+    $("#clearBtn").hide();
   }
 });
 
@@ -107,6 +109,7 @@ searchBoard.addEventListener("click", function (e) {
     $(".container").show();
     $(".park-choice").hide();
     $(".favBtn").show();
+    $(".saved-list").hide();
   }
 });
 

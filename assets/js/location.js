@@ -6,12 +6,12 @@ var apiGoogleMaps = "AIzaSyD4OVkkkHA93ViisjQDq3Fx_oAtNuevgR0";
 //--------------------PARK-------------------------
 
 function parkDisplay(park) {
-
   $("#map").show();
   $("#weather-btn").show();
   $("#parkList").hide();
   $(".container").show();
   $(".park-choice").hide();
+  $("#clearBtn").hide();
   $.ajax({
     type: "GET",
     url:
@@ -21,7 +21,6 @@ function parkDisplay(park) {
       apiKeyNPS,
 
     success: function (data) {
-
       let latitude = data.data[0].latitude;
       let longitude = data.data[0].longitude;
       let parkCity = data.data[0].addresses[0].city;
@@ -72,8 +71,8 @@ function parkDisplay(park) {
               `<a href="${urlPark}" display="none" >Link to ${data.data[0].name} Park</a>`
             )
           );
-//           createDiv.append(createP);
-//           activityCard.append(createDiv);
+          //           createDiv.append(createP);
+          //           activityCard.append(createDiv);
 
           // this for loop specifies the array within the data array
           for (let j = 0; j < data.data[i].activities.length; j++) {
