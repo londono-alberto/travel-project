@@ -12,7 +12,6 @@
 }
 
 /* activities | needs to be first */
-
 #activity-card.column.col-3 {
   text-align: center;
   color: white;
@@ -38,13 +37,13 @@ body {
   clear: both;
 }
 
-
 /* header | make title look like fire*/
 h1 {
   font-family: “Georgia, 'Times New Roman', Times, serif;
   color: #f5f5f5;
   text-shadow: 0px -2px 4px #fff, 0px -2px 10px #FF3, 0px -10px 20px #F90, 0px -20px 40px #C33;
   font-size: 60px;
+  padding-left: 15px;
   }
 
 *{ 
@@ -84,7 +83,6 @@ h1 {
 h2,
 h3,
 .dropdown  {
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -121,12 +119,6 @@ h3,
   border-color: white;
 }
 
-ul li {
-  font-family: “Georgia, 'Times New Roman', Times, serif;
-  outline: none !important;
-  border: none;
-}
-
 #searchboxes.searchboxes {
   height: 500px;
 }
@@ -148,9 +140,7 @@ ul li {
   padding:0;
 }
 
-
 /* carousel begins - has img element */
-
 .container {
   display: block;
   margin: 60px auto;
@@ -201,7 +191,6 @@ img {
 .pictureDesc {
   font-size: 18px;
 }
-
 /* carousel ends  */
 
 /* park information  */
@@ -255,12 +244,10 @@ img {
 }
 
 .btn:hover {
-  /* background: #222; */
   opacity: 0.8;
 }
 
-/* park information  */
-
+/* park information container  */
 .desc-box,
 .hours,
 .directions {
@@ -269,7 +256,6 @@ img {
 
 
 /* Basic Element Formatting */
-
 .content {
   height: 300px;
   background: lightgrey;
@@ -314,28 +300,11 @@ img {
     color:white;
   }  
 
-
-/* favorite parks button with icon
-.favBtn {
-  border-left: 1px solid black;
-  background-color: #313649;
-  padding: 15px;
-  font-size: 20px;
-  color: white;
-}
-
-.favBtn:hover {
-  font-size: 18px;
-  transition: all 0.1s ease-in-out;
-  opacity: 0.9;
-}*/
-
   .btn:focus {
     outline: 0;
   }
 
   .btn:hover {
-    /* background: #222; */
     opacity: 0.8;
   }
   
@@ -382,5 +351,38 @@ img {
   .weather-dash.show {
     transform: translateX(0);
   }
-
   /*end weather forecast-----*/
+
+/*media queries for smaller divices*/
+@media (max-width: 768px) {
+  #weather-btn {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  h2,
+  h3
+{
+  display: flex;
+  align-items: left;
+  justify-content: left;
+}
+}
+
+@media (max-width: 768px) {
+#stateButton,
+#clearButton
+{
+  display: flexbox;
+  align-items: left;
+  justify-content: left;
+}
+}
+
+@media (max-width: 768px) {
+  h1 {
+    text-align: center;
+    padding-left: 0px;
+  }
+}
