@@ -186,12 +186,16 @@ function weatherDisplay(city, park, lat, lon) {
       forecastCard.append(forecastHumidity);
     }
   });
-  var weatherClose = document.createElement("button");
+  var weatherClose = document.createElement("div");
   $(weatherClose).html(
-    `<button id="weatherClose" class= "weatherClose"</button>`
+    `<button id="weatherClose" class= "weatherClose">Close</button>`
   );
   $("#weather-dash").append(weatherClose);
   $("#close-btn").show();
+  var weatherCloseBtn = document.getElementById("weatherClose");
+  weatherCloseBtn.addEventListener("click", () =>
+    weatherDash.classList.remove("show")
+  );
 }
 
 // variables to link the html to js

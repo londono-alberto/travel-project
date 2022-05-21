@@ -116,92 +116,6 @@ searchBoard.addEventListener("click", function (e) {
   }
 });
 
-//   // Pushes the text into the localstorage array
-//   searchArray.push(parkSave);
-
-//   parkDisplay(parkEl);
-//   storeTodos();
-//   renderTodos();
-
-//   $("#map").show();
-//   $("#weather-btn").show();
-//   $("#parkList").hide();
-//   $(".container").show();
-//   $(".park-choice").hide();
-// });
-
-// beginning of the localstorage functions --------vvvvv
-
-// empty array to push the userInput
-// let searchArray = [];
-// init();
-// function init() {
-//   var storedTodos = JSON.parse(localStorage.getItem("todos"));
-
-//   // sets the array to get the parsed stored items
-//   if (storedTodos !== null) {
-//     searchArray = storedTodos;
-//   }
-//   // invokes the following function
-//   renderTodos();
-// }
-
-// // creates buttons from the localstorage value to be appended onto the page
-// function renderTodos() {
-//   // This clears the search history log
-//   searchBoard.innerHTML = "";
-
-//   // this for loop will dynamically create li's
-//   for (var i = 0; i < searchArray.length; i++) {
-//     var todo = searchArray[i];
-
-//     // creates a li
-//     var li = document.createElement("li");
-
-//     // creates attributes to append to the li
-//     li.setAttribute("data-index", i);
-//     li.setAttribute("id", "cityLi");
-
-//     // creates buttons
-//     var button = document.createElement("button");
-
-//     // set the text of the button to be equal to the setItem
-//     button.textContent = todo;
-//     button.setAttribute("id", "parkBtn");
-
-//     // appends the following elements to each other
-//     li.appendChild(button);
-//     searchBoard.appendChild(li);
-//   }
-// }
-
-// // sets the array into a string in localstorage
-// function storeTodos() {
-//   localStorage.setItem("todos", JSON.stringify(searchArray));
-// }
-
-// // make this searchboard also fetch the api to pass the value into it
-// // when the items from the search history is clicked, the following function performs
-// searchBoard.addEventListener("click", function (event) {
-//   event.preventDefault();
-//   var element = event.target;
-
-//   // when the condition is met, it removes the search history appended
-//   if (element.matches("button") === true) {
-//     event.preventDefault();
-//     var index = element.parentElement.getAttribute("data-index");
-//     searchArray.splice(index, 1);
-
-//     // invokes the following functions when this condition is met
-//     // storeTodos and renderTodos clears the text in the userinput field
-//     storeTodos();
-//     renderTodos();
-
-//     // invoked the search again but it is now a button invoking the displaying
-//     parkDisplay(element.textContent);
-//   }
-// });
-
 $(".favBtn").on("click", favoritePark);
 
 function favoritePark(e) {
@@ -254,7 +168,7 @@ function favParksDisplay() {
     // console.log(parsed);
 
     if (!parkHistory.includes(parsedVal)) {
-      var favPark = document.createElement("button");
+      var favPark = document.createElement("div");
       $(favPark).html(
         `<button id="parkBtn" class= "parkBtn list-group-item list-group-item-action" value = "${parsed[i].parkCode}">${parsed[i].parkFullName}</button>`
       );
