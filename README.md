@@ -1,24 +1,11 @@
 # Take a Hike
 
-<a href="https://guapguap.github.io/travel-project/">Take a Hike - Click here for deployed app</a>
+Link to deployed site: <a href="https://guapguap.github.io/travel-project/">https://guapguap.github.io/travel-project/</a>
 
 # Take a Hike
-
-Group Project #1 Take A Hike
+<br>
 Group Members: Alberto, Arthur, Mason, Timothy
 
-General Technical Information: 
-<br>
-For each State in the US this Page accepts user input to provide:
-<ul>
-        - National Park Links
-        - Scalable Maps
-        - A 5 Day Weather Forecast for National Park
-        - Lists of History and Culturally Pertinent Details
-        - A Hyperlink to the National Parks Directions
-        - Cost of admission to each specific National Park
-        - Interesting photos of each National Park
-</ul>
 <br>
      This Application utilizes 3 Server Side APIs:
         - Google Maps
