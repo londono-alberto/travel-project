@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="assets/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
     <title>Take A Hike</title>
   </head>
 <html>
@@ -14,6 +18,7 @@
     <div id="header"><h1>Take A Hike</h1></div>
   </div>
 </div>
+
       <div id="searchBoxes" class="searchBoxes">
         <h3 class="parkTitle">Choose a State</h3>
         <div class="dropdown">
@@ -37,26 +42,27 @@
               <option value="HI">Hawaii</option>
               <option value="ID">Idaho</option>
               <option value="IL">Illinois</option>
-              <option value="IA">Iowa</option>
               <option value="IN">Indiana</option>
+              <option value="IA">Iowa</option>
               <option value="KS">Kansas</option>
               <option value="KY">Kentucky</option>
               <option value="LA">Louisiana</option>
               <option value="ME">Maine</option>
               <option value="MD">Maryland</option>
               <option value="MA">Massachusetts</option>
-              <option value="MT">Minnesota</option>
+              <option value="MI">Michigan</option>
+              <option value="MN">Minnesota</option>
               <option value="MS">Mississippi</option>
               <option value="MO">Missouri</option>
               <option value="MT">Montana</option>
               <option value="NE">Nebraska</option>
               <option value="NV">Nevada</option>
               <option value="NH">New Hampshire</option>
+              <option value="NJ">New Jersey</option>
+              <option value="NM">New Mexico</option>
               <option value="NY">New York</option>
               <option value="NC">North Carolina</option>
               <option value="ND">North Dakota</option>
-              <option value="NJ">New Jersey</option>
-              <option value="NM">New Mexico</option>
               <option value="OH">Ohio</option>
               <option value="OK">Oklahoma</option>
               <option value="OR">Oregon</option>
@@ -79,15 +85,29 @@
             </div>
             </div>
           </div>
-          <button id="stateButton" class="button is-info is-rounded">Submit</button>
-          <button class="button is-info is-rounded" id="clearBtn">Clear Recent Parks</button>
-          <ul id="search-history" class="search-history"></ul>
+          <button id="stateButton" class="button is-info is-rounded">
+            Submit
+          </button>
+          <button class="button is-info is-rounded" id="clearBtn">
+            Clear Recent Parks
+          </button>
+          <div>
+            <h2><i class="fa fa-tree"></i>&nbsp; Saved Parks</h2>
+            <ul id="search-history" class="search-history"></ul>
+          </div>
         </div>
         <div id="park-display" class="park-display">
           <h2 class="park-choice">Parks in this state</h2>
           <div id="parkList" class="row parkList"></div>
         </div>
-        <button id="returnButton" class="button is-info is-rounded">State Selection</button>
+
+        <button id="returnButton" class="returnButton button is-info is-rounded">
+          Return to State Selection
+        </button>
+        <button class="favBtn" id="favBtn">
+          <i class="fa fa-tree"></i> Save Park to Favorites
+        </button>
+
         <div id="map"></div>
        <!-- beginning of carousel elements  -->
         <div class="container">
@@ -109,6 +129,9 @@
             <p class="hours"></p>
             <p class="directions"></p>
             <p class="fees"></p>
+            <!-- park code needed for localStorage -->
+            <p class="park-code" style="display: none"></p>
+            <!-- DON'T REMOVE PARK CODE (ok to move)-->
           </div>
           <div id="activity-card" class="column col-3">
             <p class="search-header fs-3">State Park(s) and Activities:</p>
@@ -134,19 +157,13 @@
           <button id="close-btn" class="btn">Close</button>
         </div>
       </div>
-      <script
-        async
-        defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4OVkkkHA93ViisjQDq3Fx_oAtNuevgR0&callback=initMap"
-      ></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
       <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
       <script src="assets/js/location.js"></script>
-      <script src="assets/js/script.js"></script>
       <script src="assets/js/carousel.js"></script>
+      <script src="assets/js/script.js"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4OVkkkHA93ViisjQDq3Fx_oAtNuevgR0"></script>
     </body>
   </html>
 </html>
-  
-  

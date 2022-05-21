@@ -4,7 +4,27 @@ var apiKeyNPS = "UwI3kgigKGVdm8bk9XTQmiupY45dyxNZfIcdn81Q";
 var apiGoogleMaps = "AIzaSyD4OVkkkHA93ViisjQDq3Fx_oAtNuevgR0";
 
 //--------------------PARK-------------------------
+
 function parkDisplay(park) {
+  // prevents event bubbling
+  // e.stopPropagation();
+
+  // var element = e.target;
+  // var parkSave = e.target.textContent;
+  // var park = $(element).val();
+  // console.log(element);
+
+  // // Pushes the text into the localstorage array
+  // searchArray.push(parkSave);
+
+  // storeTodos();
+  // renderTodos();
+
+  $("#map").show();
+  $("#weather-btn").show();
+  $("#parkList").hide();
+  $(".container").show();
+  $(".park-choice").hide();
   $.ajax({
     type: "GET",
     url:
@@ -30,9 +50,14 @@ function parkDisplay(park) {
       let parkDirectionsUrl = data.data[0].directionsUrl;
       let parkEntranceFeesCost = data.data[0].entranceFees[0].cost;
       let parkEntranceFeesDesc = data.data[0].entranceFees[0].description;
+      var parkCode = data.data[0].parkCode;
+      console.log(parkCode);
 
       $(".parkTitle").text(`${parkFullName}`);
       $(".picDesignation").text(`${picDesignation}`);
+      if (picDesignation === "") {
+        $(".picDesignation").text(`${parkFullName}`);
+      }
       $(".desc-box").html(`<strong>About:</strong> ${infoDesc}`);
       $(".hours").html(`<strong>Operating Hours:</strong> ${parkHours}`);
       $(".directions").html(
@@ -42,8 +67,10 @@ function parkDisplay(park) {
         `<strong>Cost of Entry:</strong> $ ${parkEntranceFeesCost} <br> ${parkEntranceFeesDesc}`
       );
 
+      $(".park-code").text(`${parkCode}`);
       $(".search-header").show();
       $(".clearBtn").hide();
+      console.log(data.data.length);
 
       for (let i = 0; i < data.data.length; i++) {
         // if statement to specify the state being selected within the array
@@ -72,7 +99,7 @@ function parkDisplay(park) {
             // this p element is getting the specified data
             createP2.textContent = data.data[i].activities[j].name;
 
-            // this element is getting appeneded to the div
+            // this element is getting appended to the div
             createDiv2.append(createP2);
 
             // this element is getting appended to the card
@@ -91,7 +118,7 @@ function parkDisplay(park) {
       }
       $(`.weather-dash`).empty();
       initMap(latitude, longitude, parkCity, parkName, parkState);
-      weatherDisplay(parkCity, parkName);
+      weatherDisplay(parkCity, parkName, latitude, longitude);
     },
   });
 }
@@ -125,37 +152,42 @@ function initMap(lat, lon, city, park, state) {
 //--------------------END MAP------------------------------
 
 //--------------------WEATHER----------------------
-function weatherDisplay(city, park) {
+function weatherDisplay(city, park, lat, lon) {
   var apiKeyWeather = "b6a631faf48ec36736fa91299da2f0a2";
 
   $.ajax({
     type: "GET",
-    url: `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&APPID=${apiKeyWeather}`,
-    id: "city",
+    url: `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=current,minutely,hourly,alerts&appid=${apiKeyWeather}`,
   }).then(function (data) {
+    console.log(data);
     $(".weatherTitle").text(`${park} Park Five Day Forecast`);
 
-    for (i = 5; i < 45; i += 8) {
+    for (i = 1; i < 6; i += 1) {
       var forecastCard = $('<div class = "card col">');
-      var forecastTitle = $('<p class = "castDate">');
+
+      var forecastDate = $('<p class = "castDate">');
       var forecastTemp = $('<p class = "temp">');
       var forecastWind = $('<p class = "wind">');
       var forecastHumidity = $('<p class = "humid">');
 
-      var date = new Date(data.list[i].dt * 1000).toLocaleDateString("en-US");
-      iconData = `<img src="https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}.png"/>`;
-      forecastTitle.html(`${date} ${iconData}`);
-      forecastTemp.text(`Temperature: ${data.list[i].main.temp}`);
-      forecastWind.text(`Wind: ${data.list[i].wind.speed}`);
-      forecastHumidity.text(`Humidity: ${data.list[i].main.humidity}`);
+      var date = new Date(data.daily[i].dt * 1000).toLocaleDateString("en-US");
+      let iconData = $(
+        `<img src="https://openweathermap.org/img/wn/${data.daily[i].weather[0].icon}.png"/>`
+      );
+      forecastDate.html(`${date}`);
+      forecastTemp.text(`Temperature: ${data.daily[i].temp.day} °F`);
+      forecastWind.text(`Wind: ${data.daily[i].wind_speed} MPH`);
+      forecastHumidity.text(`Humidity: ${data.daily[i].humidity}%`);
 
       $(`.weather-dash`).append(forecastCard);
-      forecastCard.append(forecastTitle);
+      forecastCard.append(forecastDate);
+      forecastCard.append(iconData);
       forecastCard.append(forecastTemp);
       forecastCard.append(forecastWind);
       forecastCard.append(forecastHumidity);
     }
   });
+  $("#close-btn").show();
 }
 
 // variables to link the html to js
@@ -170,4 +202,5 @@ weatherBtn.addEventListener("click", () =>
 
 // button to hide the weather
 closeBtn.addEventListener("click", () => weatherDash.classList.remove("show"));
+
 //-------------------END WEATHER----------------------
