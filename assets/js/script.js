@@ -202,7 +202,7 @@ searchBoard.addEventListener("click", function (e) {
 //   }
 // });
 
-$(".favBtn").on("click", favoritePark);
+$("#favBtn").on("click", favoritePark);
 
 function favoritePark(e) {
   $(this).find(".fa").removeClass("fa-tree").addClass("fa-check");

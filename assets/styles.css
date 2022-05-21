@@ -59,7 +59,7 @@ h1 {
 #map {
   height: 400px;
   /* The height is 400 pixels */
-  width: 50%;
+  width: 100%;
   /* The width is the width of the web page */
 }
 
@@ -98,7 +98,19 @@ h3,
   margin-right: 5px;
 }
 
+.button.is-success {
+  background-color: #22311d;
+  border-color: white;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
 .button.is-info:hover {
+  background-color: #4a6741;
+  border-color: white;
+}
+
+.button.is-success:hover {
   background-color: #4a6741;
   border-color: white;
 }
@@ -247,8 +259,6 @@ img {
   opacity: 0.8;
 }
 
-
-
 /* park information  */
 
 .desc-box,
@@ -305,7 +315,7 @@ img {
   }  
 
 
-/* favorite parks button with icon */
+/* favorite parks button with icon
 .favBtn {
   border-left: 1px solid black;
   background-color: #313649;
@@ -318,7 +328,7 @@ img {
   font-size: 18px;
   transition: all 0.1s ease-in-out;
   opacity: 0.9;
-}
+}*/
 
   .btn:focus {
     outline: 0;
