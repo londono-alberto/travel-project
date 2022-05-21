@@ -1,9 +1,3 @@
-# travel-project
+# Hiking Project
 
-Group Project #1
-
-tim_smallupdate for class exercise
-
-mason-update
-
-new tim update
+<a href="https://guapguap.github.io/travel-project/">Hiking Project - Click here for deployed app</a>

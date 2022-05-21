@@ -10,6 +10,18 @@ function parkDisplay(e) {
 
   
 
+  // web api keys
+var apiKeyWeather = "b6a631faf48ec36736fa91299da2f0a2";
+var apiKeyNPS = "UwI3kgigKGVdm8bk9XTQmiupY45dyxNZfIcdn81Q";
+var apiGoogleMaps = "AIzaSyD4OVkkkHA93ViisjQDq3Fx_oAtNuevgR0";
+
+//--------------------PARK-------------------------
+function parkDisplay(e) {
+  // prevents event bubbling 
+  e.stopPropagation();
+
+  
+
   var element = e.target;
   var parkSave = e.target.textContent;
   var park = $(element).val();
@@ -52,6 +64,8 @@ function parkDisplay(e) {
       let parkDirectionsUrl = data.data[0].directionsUrl;
       let parkEntranceFeesCost = data.data[0].entranceFees[0].cost;
       let parkEntranceFeesDesc = data.data[0].entranceFees[0].description;
+      var parkCode = data.data[0].parkCode;
+      console.log(parkCode);
 
       $(".parkTitle").text(`${parkFullName}`);
       $(".picDesignation").text(`${picDesignation}`);
@@ -67,8 +81,10 @@ function parkDisplay(e) {
         `<strong>Cost of Entry:</strong> $ ${parkEntranceFeesCost} <br> ${parkEntranceFeesDesc}`
       );
 
+      $(".park-code").text(`${parkCode}`);
       $(".search-header").show();
       $(".clearBtn").hide();
+      console.log(data.data.length);
 
       for (let i = 0; i < data.data.length; i++) {
         // if statement to specify the state being selected within the array
@@ -97,7 +113,7 @@ function parkDisplay(e) {
             // this p element is getting the specified data
             createP2.textContent = data.data[i].activities[j].name;
 
-            // this element is getting appeneded to the div
+            // this element is getting appended to the div
             createDiv2.append(createP2);
 
             // this element is getting appended to the card
@@ -116,7 +132,7 @@ function parkDisplay(e) {
       }
       $(`.weather-dash`).empty();
       initMap(latitude, longitude, parkCity, parkName, parkState);
-      weatherDisplay(parkCity, parkName);
+      weatherDisplay(parkCity, parkName, latitude, longitude);
     },
   });
 }
@@ -150,24 +166,26 @@ function initMap(lat, lon, city, park, state) {
 //--------------------END MAP------------------------------
 
 //--------------------WEATHER----------------------
-function weatherDisplay(city, park) {
+function weatherDisplay(city, park, lat, lon) {
   var apiKeyWeather = "b6a631faf48ec36736fa91299da2f0a2";
 
   $.ajax({
     type: "GET",
-    url: `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&APPID=${apiKeyWeather}`,
-    id: "city",
+    url: `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=current,minutely,hourly,alerts&appid=${apiKeyWeather}`,
   }).then(function (data) {
+    console.log(data);
     $(".weatherTitle").text(`${park} Park Five Day Forecast`);
 
 
-    for (i = 5; i < 45; i += 8) {
+    for (i = 1; i < 6; i += 1) {
+
       var forecastCard = $('<div class = "card col">');
      
       var forecastDate = $('<p class = "castDate">');
       var forecastTemp = $('<p class = "temp">');
       var forecastWind = $('<p class = "wind">');
       var forecastHumidity = $('<p class = "humid">');
+
 
       var date = new Date(data.list[i].dt * 1000).toLocaleDateString("en-US");
       let iconData = $(`<img src="https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}.png"/>`);
