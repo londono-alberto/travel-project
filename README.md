@@ -8,8 +8,8 @@ Group Project #1 Take A Hike
 Group Members: Alberto, Arthur, Mason, Timothy
 
 General Technical Information: 
-
-     For each State in the US this Page accepts user input to provide:
+<br>
+For each State in the US this Page accepts user input to provide:
         - National Park Links
         - Scalable Maps
         - A 5 Day Weather Forecast for National Park
@@ -17,22 +17,22 @@ General Technical Information:
         - A Hyperlink to the National Parks Directions
         - Cost of admission to each specific National Park
         - Interesting photos of each National Park
-
+<br>
      This Application utilizes 3 Server Side APIs:
         - Google Maps
         - Weather
         - National Park Service
-
+<br>
      This Application uses client-side storage to store persistent data through ??????????
-
+<br>
     User Story:
     As a user who has been quarantined for two years, we wanted a go to website to find parks and trails that lists information regarding the park.
-
+<br>
     	Concept:
     	As an avid outdoor person, I wanted to go to a website that gives me high level park information when I select a park that I wanted to checkout.
-
+<br>
     Roles:
-
+<br>
 Alberto: Worked on the JavaScript. Focused on the functionality of the Park selection, park display of information (park buttons, carousel, activites), local storage
 <br>
 Mason: Worked on the JavaScript. Focused on the functionality of the maps, weather, park display of information (about and description), local storage.
