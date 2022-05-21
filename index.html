@@ -9,15 +9,16 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     />
-    <title>Hiking Project</title>
+    <title>Take A Hike</title>
   </head>
-  <html>
-    <body>
-      <div id="doc" class="header">
-        <div id="header">
-          <div id="header"><h1>Hiking Project</h1></div>
-        </div>
-      </div>
+<html>
+<body>
+<div id="doc" class="header">
+  <div id="header">
+    <div id="header"><h1>Take A Hike</h1></div>
+  </div>
+</div>
+
       <div id="searchBoxes" class="searchBoxes">
         <h3 class="parkTitle">Choose a State</h3>
         <div class="dropdown">
@@ -116,8 +117,8 @@
           </h4>
           <div class="wrapper">
             <div class="carouselbox" aria-role="img" aria-label="carousel">
-              <button class="prev">◀ Previous</button>
-              <button class="next">Next ▶</button>
+              <button id="prev" class="prev is-rounded">◀ Previous</button>
+              <button id="next" class="next is-rounded">Next ▶</button>
             </div>
           </div>
         </div>
@@ -134,7 +135,7 @@
           </div>
           <div id="activity-card" class="column col-3">
             <p class="search-header fs-3">State Park(s) and Activities:</p>
-          </div>
+          </div>  
         </div>
       </div>
         <input type="button" id="weather-btn" class="btn weather-btn" value="Weather Forecast" onClick="changetext()"  >
