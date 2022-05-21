@@ -7,7 +7,7 @@
 Group Project #1 Take A Hike
 Group Members: Alberto, Arthur, Mason, Timothy
 
-General Technical Information: 
+General Technical Information:
 
      For each State in the US this Page accepts user input to provide:
         - National Park Links
@@ -43,18 +43,18 @@ Arthur: Worked on the ReadMe, PowerPoint, and Software Testing. Focused on flesh
 
 Repository:
 <br>
- Repository Name is: travel-project
- <br>
- Repository contains at least 133 commit comments.
-
+Repository Name is: travel-project
+<br>
+Repository contains at least 133 commit comments.
 
 #Github Repository and Deployed Application:
 <br>
+
 - Deployed Page Link: https://guapguap.github.io/travel-project/
-<br>
+  <br>
 - Github Repo: https://github.com/Guapguap/travel-project
 
-#Presentation: 
+#Presentation:
 <br>
 Link to PowerPoint: [add PP link](https://onedrive.live.com/edit.aspx?resid=DE955333573C7D02!115&ithint=file%2cpptx&wdOrigin=OFFICECOM-WEB.START.MRU)
 
@@ -76,14 +76,36 @@ explored is saved for reference. The "Clear Recent Parks" button will clear this
 <br>
 Challenges we faced were mainly the functionality of some the features we implemented.
 <br>
+
 - One problem was event bubbling on the park list when a specific button is not clicked it would end up running the function and then locally storing the entire div.
-<br>
+  <br>
 - Another was that the weather api. We had the latitude and longitude displaying an error within the console before it even ran.
-<br>
+  <br>
 - Local Storage was another big obstacle that we encountered. We reworked it as a different feature in our application that kept giving an error.
 
 #Successes
 <br>
- - A lot of the successes derived from the challenges we encountered. We were able to push through and resolve the issues and find different solutions to some of the problems.
+
+- A lot of the successes derived from the challenges we encountered. We were able to push through and resolve the issues and find different solutions to some of the problems.
+  <br>
+- Aside from the coding aspect, further into the project building process, we ended up establishing a nice work flow in the group.
+
+#Screenshots:
+<br><br>
+Search Screen lets you select parks by state via dropdown selection
+![takeahikess1](https://user-images.githubusercontent.com/35643709/169659263-671fcec7-b577-4438-bb5b-2805b2caf071.JPG)
 <br>
- - Aside from the coding aspect, further into the project building process, we ended up establishing a nice work flow in the group.
+Park list added after state selection
+![takeahikess2](https://user-images.githubusercontent.com/35643709/169659279-c0650f1f-2e0b-4a50-a5d6-d7dfc184ca76.jpg)
+<br>
+Park Landing Page opens with location display via Google Maps
+![takeahikess3](https://user-images.githubusercontent.com/35643709/169659294-60073449-95da-476f-b015-b0bca430b7e7.JPG)
+<br>
+Park information from api to National Park Service website
+![takeahikess4](https://user-images.githubusercontent.com/35643709/169659300-5555fd9a-bfb2-4208-aa31-93d08ee1b305.jpg)
+<br>
+Dynamic 5 day weather forecast for chosen park
+![takeahikeweather](https://user-images.githubusercontent.com/35643709/169659740-1b89ae8c-333f-4a18-80d2-4fe4f970a17b.JPG)
+<br>
+List of park activities
+![takeahikess5](https://user-images.githubusercontent.com/35643709/169659312-7aeb2805-f963-4318-b62b-6c709cbdbbe3.JPG)
