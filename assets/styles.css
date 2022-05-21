@@ -103,6 +103,11 @@ h3,
   margin-right: 5px;
 }
 
+.weatherClose {
+  background-color: #22311d;
+  color: white;
+}
+
 .button.is-info:hover {
   background-color: #4a6741;
   border-color: white;
@@ -385,4 +390,11 @@ img {
     text-align: center;
     padding-left: 0px;
   }
+}
+
+
+@media (min-width: 768px) {
+.weatherClose {
+  display:none;
+}
 }
