@@ -112,6 +112,7 @@ searchBoard.addEventListener("click", function (e) {
     $(".favBtn").show();
     $(".saved-list").hide();
     $(".dropdown").hide();
+    $(".returnButton").show();
   }
 });
 
