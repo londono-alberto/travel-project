@@ -54,8 +54,9 @@ function parkDisplay(park) {
       console.log(parkCode);
 
       $(".parkTitle").text(`${parkFullName}`);
-      $(".picDesignation").text(`${picDesignation}`);
-      if (picDesignation === "") {
+      if (!picDesignation === "" && !picDesignation === null) {
+        $(".picDesignation").text(`${picDesignation}`);
+      } else {
         $(".picDesignation").text(`${parkFullName}`);
       }
       $(".desc-box").html(`<strong>About:</strong> ${infoDesc}`);
