@@ -7,7 +7,6 @@ let startBtn = document.getElementById("stateButton");
 let returnBtn = document.getElementById("returnButton");
 let activityCard = document.getElementById("activity-card");
 let searchBoard = document.getElementById("search-history");
-let parkBtn = document.getElementById("parkList");
 
 // button that gets the value from the dropdown list
 startBtn.addEventListener("click", function () {
@@ -20,25 +19,34 @@ startBtn.addEventListener("click", function () {
 
     success: function (data) {
       console.log(data);
-
       for (i = 0; i < data.data.length; i++)
         if (userInput === data.data[i].states) {
           var parkListName = data.data[i].fullName;
           var parkCode = data.data[i].parkCode;
 
           $("#parkList").append(
-            `<button id="parkBtn" class= "button is-info is-rounded" value = "${parkCode}">${parkListName}</button>`
+
+            `<button id="parkBtn" class= "parkBtn button is-info is-rounded" onclick="parkDisplay(event)" value = "${parkCode}">${parkListName}</button>`
+          );
+        } else if (data.data[i].states.includes(userInput)) {
+
+          parkListName = data.data[i].fullName;
+          parkCode = data.data[i].parkCode;
+
+          $("#parkList").append(
+            `<button id="parkBtn" class= "parkBtn button is-info is-rounded" onclick="parkDisplay(event)" value = "${parkCode}">${parkListName}</button>`
+
           );
         }
     },
   });
   // hides the dropdown list and the button
+  $(".parkTitle").hide();
   $(".dropdown").hide();
   $(".returnButton").show();
   $("#parkList").show();
   $(".park-choice").show();
-  
-  $(".park-choice").text(`Parks in ${userState}` );
+  $(".park-choice").text(`Parks in ${userState}`);
 });
 
 // button to return to state selection 
@@ -53,32 +61,11 @@ returnBtn.addEventListener("click", function () {
   $(".container").hide();
   $(".dropdown").show();
   $(".returnButton").hide();
-  $(".parkTitle").text(`Choose a State`);
-  $(".park-choice").show();
+  $(".parkTitle").show();
+  $(".parkTitle").text(`Choose A State`);
+  $(".park-choice").hide();
   $("#weather-btn").hide();
   $(".clearBtn").show();
-});
-
-// this button displays the activities and url from the specified park
-parkBtn.addEventListener("click", function (e) {
-  e.preventDefault();
-
-  var element = e.target;
-  var parkSave = e.target.textContent;
-  var parkEl = $(element).val();
-
-  // Pushes the text into the localstorage array
-  searchArray.push(parkSave);
-
-  parkDisplay(parkEl);
-  storeTodos();
-  renderTodos();
-
-  $("#map").show();
-  $("#weather-btn").show();
-  $("#parkList").hide();
-  $(".container").show();
-  $(".park-choice").hide();
 });
 
 // beginning of the localstorage functions --------vvvvv
@@ -162,6 +149,7 @@ function clearParks() {
 
 // hides and shows buttons when wanted 
 $(document).ready(function () {
+  $(".park-choice").hide();
   $("#map").hide();
   $(".returnButton").hide();
   $("#weather-btn").hide();

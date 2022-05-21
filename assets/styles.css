@@ -26,7 +26,7 @@ h1 {
 #map {
   height: 400px;
   /* The height is 400 pixels */
-  width: 100%;
+  width: 50%;
   /* The width is the width of the web page */
 }
 
@@ -236,6 +236,14 @@ img {
     background-color: #F90;
   }
   
+  .card {
+    margin: 5px;
+    padding: 10px;
+    background-color: rgb(46, 168, 225);
+    color: white;
+    text-align: center;
+  }
+
   .weather-dash {
     position: absolute;
     top: 0;
