@@ -90,6 +90,7 @@ parkList.addEventListener("click", function (e) {
     $(".park-choice").hide();
     $(".favBtn").show();
     $("#clearBtn").hide();
+    $(".dropdown").hide();
   }
 });
 
@@ -110,6 +111,7 @@ searchBoard.addEventListener("click", function (e) {
     $(".park-choice").hide();
     $(".favBtn").show();
     $(".saved-list").hide();
+    $(".dropdown").hide();
   }
 });
 

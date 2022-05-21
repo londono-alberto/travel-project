@@ -9,7 +9,6 @@ Github Repo: https://github.com/Guapguap/travel-project
 <br>
 <br>
 Group Members: Alberto, Arthur, Mason, Timothy
-
 <br>
 <br>
 Concept:
@@ -26,9 +25,6 @@ Mason: Worked on the JavaScript. Focused on the functionality of the maps, weath
 Timothy: Worked on the CSS and HTML. Focused on the styling and layout of the website to be engaging and user intuitive.
 <br>
 Arthur: Worked on the ReadMe, PowerPoint, and Software Testing. Focused on fleshing out the bugs and errors of the current main branch.
-<br>
-<br>
-#Presentation: 
 <br>
 <br>
 #Version 2.0 Might Include:
@@ -54,24 +50,26 @@ explored is saved for reference. The "Clear Recent Parks" button will clear this
 <br>
 Challenges we faced were mainly the functionality of some the features we implemented.
 <br>
-One problem was event bubbling on the park list when a specific button is not clicked it would end up running the function and then locally storing the entire div.
 <br>
-Another was that the weather api. We had the latitude and longitude displaying an error within the console before it even ran.
-<br>
-Local Storage was another big obstacle that we encountered. We reworked it as a different feature in our application that kept giving an error.
+#Screenshots:
 <br>
 <br>
-#Successes
+Search Screen lets you select parks by state via dropdown selection
+![takeahikess1](https://user-images.githubusercontent.com/35643709/169659263-671fcec7-b577-4438-bb5b-2805b2caf071.JPG)
 <br>
-A lot of the successes derived from the challenges we encountered. We were able to push through and resolve the issues and find different solutions to some of the problems.
+Park list added after state selection
+![takeahikess2](https://user-images.githubusercontent.com/35643709/169659279-c0650f1f-2e0b-4a50-a5d6-d7dfc184ca76.jpg)
 <br>
-Aside from the coding aspect, further into the project building process, we ended up establishing a nice work flow in the group.
- 
- <br>
+Park Landing Page opens with location display via Google Maps
+![takeahikess3](https://user-images.githubusercontent.com/35643709/169659294-60073449-95da-476f-b015-b0bca430b7e7.JPG)
 <br>
-
-Screenshot of Application: 
+Park information from api to National Park Service website
+![takeahikess4](https://user-images.githubusercontent.com/35643709/169659300-5555fd9a-bfb2-4208-aa31-93d08ee1b305.jpg)
 <br>
+Dynamic 5 day weather forecast for chosen park
+![takeahikeweather](https://user-images.githubusercontent.com/35643709/169659740-1b89ae8c-333f-4a18-80d2-4fe4f970a17b.JPG)
 <br>
-![guapguap github io_travel-project_(iPhone 12 Pro)](https://user-images.githubusercontent.com/102185104/169658323-d369013e-3e9b-4b00-b44f-3fce13c41345.png)
- 
+List of park activities
+![takeahikess5](https://user-images.githubusercontent.com/35643709/169659312-7aeb2805-f963-4318-b62b-6c709cbdbbe3.JPG)
+<br>
+<br>>
