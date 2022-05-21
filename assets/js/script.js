@@ -30,7 +30,6 @@ startBtn.addEventListener("click", function () {
           $("#parkList").append(
             `<button id="parkBtn" class= "parkBtn button is-info is-rounded"  value = "${parkCode}">${parkListName}</button>`
           );
-
         } else if (data.data[i].states.includes(userInput)) {
           parkListName = data.data[i].fullName;
           parkCode = data.data[i].parkCode;
@@ -71,8 +70,6 @@ returnBtn.addEventListener("click", function () {
   $("#weather-btn").hide();
   $("#clearBtn").show();
   $(".favBtn").hide();
-
-  favParksDisplay();
 });
 
 parkList.addEventListener("click", function (e) {
@@ -112,7 +109,6 @@ searchBoard.addEventListener("click", function (e) {
   }
 });
 
-
 $(".favBtn").on("click", favoritePark);
 
 function favoritePark(e) {
@@ -145,24 +141,24 @@ function clearParks() {
   window.location.reload();
 }
 
-// favParksDisplay();
-function favParksDisplay() {
-  var parkHistory = localStorage.getItem("historyKey") || [];
-  var parsed = JSON.parse(parkHistory);
-  var parsedVal = parsed[0];
-
-  for (i = 0; i < parsed.length; i++) {
-    var parsed = JSON.parse(parkHistory);
-    var parsedVal = parsed[i];
-
-    if (!parkHistory.includes(parsedVal)) {
-      var favPark = document.createElement("div");
-      $(favPark).html(
-        `<button id="parkBtn" class= "parkBtn list-group-item list-group-item-action" value = "${parsed[i].parkCode}">${parsed[i].parkFullName}</button>`
-      );
-      $("#search-history").append(favPark);
-    }
+var parkHistory = JSON.parse(localStorage.getItem("historyKey")) || [];
+// console.log(parkHistory[0]);
+console.log(parkHistory.length);
+for (i = 0; i < parkHistory.length; i++) {
+  var codesArr = [];
+  codeEl = parkHistory[i].parkCode;
+  var namesArr = [];
+  nameEl = parkHistory[i].parkFullName;
+  if (!codesArr.includes(codeEl) && !namesArr.includes(nameEl)) {
+    console.log("wow!");
+    codesArr.push(codeEl);
+    namesArr.push(nameEl);
   }
+  var hatePark = document.createElement("div");
+  $(hatePark).html(
+    `<button id="parkBtn" class= "parkBtn list-group-item list-group-item-action" value = "${codesArr}">${namesArr}</button>`
+  );
+  $("#search-history").append(hatePark);
 }
 
 // hides and shows buttons when wanted
