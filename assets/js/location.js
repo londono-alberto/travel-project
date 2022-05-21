@@ -4,6 +4,7 @@ var apiKeyNPS = "UwI3kgigKGVdm8bk9XTQmiupY45dyxNZfIcdn81Q";
 var apiGoogleMaps = "AIzaSyD4OVkkkHA93ViisjQDq3Fx_oAtNuevgR0";
 
 //--------------------PARK-------------------------
+
 function parkDisplay(park) {
   // prevents event bubbling
   // e.stopPropagation();

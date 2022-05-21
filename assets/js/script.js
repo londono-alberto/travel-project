@@ -7,7 +7,6 @@ let startBtn = document.getElementById("stateButton");
 let returnBtn = document.querySelector(".returnButton");
 let activityCard = document.getElementById("activity-card");
 let searchBoard = document.getElementById("search-history");
-
 let parkList = document.getElementById("parkList");
 
 // button that gets the value from the dropdown list
@@ -40,6 +39,8 @@ startBtn.addEventListener("click", function () {
 
           $("#parkList").append(
             `<button id="parkBtn" class= "parkBtn button is-info is-rounded"  value = "${parkCode}">${parkListName}</button>`
+
+            // `<button id="parkBtn" class= "parkBtn button is-info is-rounded" onclick="parkDisplay(event)" value = "${parkCode}">${parkListName}</button>`
           );
         }
     },

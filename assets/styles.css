@@ -18,10 +18,10 @@ h1 {
   color: #f5f5f5;
   text-shadow: 0px -2px 4px #fff, 0px -2px 10px #FF3, 0px -10px 20px #F90, 0px -20px 40px #C33;
   font-size: 60px;
-}
+  }
 
-* {
-  font-family: Georgia, 'Times New Roman', Times, serif;
+*{ 
+  font-family:Georgia, 'Times New Roman', Times, serif;
 }
 
 #search-header fs-3 {
@@ -47,7 +47,7 @@ h1 {
 }
 
 
-.searchBoxes {
+.searchBoxes{
   height: 50%;
   background-color: lightgray;
   border: black;
@@ -56,7 +56,7 @@ h1 {
 
 h2,
 h3,
-.dropdown {
+.dropdown  {
 
   display: flex;
   align-items: center;
@@ -81,25 +81,11 @@ h3,
 /*header | Animation & Design*/
 @keyframes colors {
 
-  0% {
-    background-color: #22311d;
-  }
-
-  25% {
-    background-color: #304529;
-  }
-
-  50% {
-    background-color: #374f2f;
-  }
-
-  75% {
-    background-color: #3f5a36;
-  }
-
-  100% {
-    background-color: #4a6741;
-  }
+  0%  {background-color: #22311d;}
+ 25%  {background-color: #304529;}
+ 50%  {background-color: #374f2f;}
+ 75%  {background-color: #3f5a36;}
+ 100% {background-color: #4a6741;}
 
 }
 
@@ -111,9 +97,9 @@ h3,
 }
 
 
-#header {
-  height: 100px;
-  background-color: #22311d;
+#header{
+  height:100px;
+  background-color:#22311d;
   color: whitesmoke;
   font-size: 32px;
   margin: 0;
@@ -137,7 +123,7 @@ h3,
   padding-top: 20px;
 }
 
-.container:hover {
+.container:hover{
   box-shadow: inset 0px 0px 40px #374f2f, 0 0 105px #374f2f;
 }
 
@@ -181,7 +167,8 @@ img {
 .desc-box,
 .fees,
 .hours,
-.directions {
+.directions
+  {
   font-size: calc(1.3vw + 1.3vh);
 }
 
@@ -270,24 +257,24 @@ img {
 }
 
 .dropdown-content {
-  background-color: lightgrey;
-  background-blend-mode: normal;
-  box-shadow: none;
-}
+    background-color: lightgrey;
+    background-blend-mode: normal;
+    box-shadow: none;
+  }
 
 #returnButton,
 #clearBtn,
 #stateButton {
-  background-color: #22311d;
-  color: white;
-}
+    background-color: #22311d;
+    color:white;
+  }  
 
 #returnButton:hover,
 #clearBtn:hover,
 #stateButton:hover {
-  background-color: #4a6741;
-  color: white;
-}
+    background-color: #4a6741;
+    color:white;
+  }  
 
 
 /* favorite parks button with icon */
@@ -305,57 +292,57 @@ img {
   opacity: 0.9;
 }
 
-.btn:focus {
-  outline: 0;
-}
+  .btn:focus {
+    outline: 0;
+  }
+  
+  .btn:hover {
+    /* background: #222; */
+    opacity: 0.8;
+  }
+  
+  .btn:active {
+    transform: scale(0.98);
+  }
+  
+  .weather-btn {
+    background-color: maroon;
+    color: white;
+    text-shadow: 0px -2px 4px #fff, 0px -2px 10px #FF3, 0px -10px 20px #F90, 0px -20px 40px #C33;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+  }
 
-.btn:hover {
-  /* background: #222; */
-  opacity: 0.8;
-}
+  .weather-btn:hover {
+    background-color: #F90;
+  }
+  
+  .card {
+    margin: 5px;
+    padding: 10px;
+    background-color: rgb(46, 168, 225);
+    color: white;
+    text-align: center;
+  }
 
-.btn:active {
-  transform: scale(0.98);
-}
+  .weather-dash {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #333;
+    color: #fff;
+    min-height: 100vh;
+    width: 400px;
+    padding: 20px;
+    line-height: 1.5;
+    /*this is what hides the display off screen(transform)*/
+    transform: translateX(-500px);
+    transition: transform 1s ease-in-out;
+  }
+  
+  .weather-dash.show {
+    transform: translateX(0);
+  }
 
-.weather-btn {
-  background-color: maroon;
-  color: white;
-  text-shadow: 0px -2px 4px #fff, 0px -2px 10px #FF3, 0px -10px 20px #F90, 0px -20px 40px #C33;
-  position: absolute;
-  top: 20px;
-  right: 30px;
-}
-
-.weather-btn:hover {
-  background-color: #F90;
-}
-
-.card {
-  margin: 5px;
-  padding: 10px;
-  background-color: rgb(46, 168, 225);
-  color: white;
-  text-align: center;
-}
-
-.weather-dash {
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: #333;
-  color: #fff;
-  min-height: 100vh;
-  width: 400px;
-  padding: 20px;
-  line-height: 1.5;
-  /*this is what hides the display off screen(transform)*/
-  transform: translateX(-500px);
-  transition: transform 1s ease-in-out;
-}
-
-.weather-dash.show {
-  transform: translateX(0);
-}
-
-/*end weather forecast-----*/
+  /*end weather forecast-----*/
