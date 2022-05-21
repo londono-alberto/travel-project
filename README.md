@@ -90,6 +90,10 @@ Challenges we faced were mainly the functionality of some the features we implem
   <br>
 - Aside from the coding aspect, further into the project building process, we ended up establishing a nice work flow in the group.
 
+<!-- # Demo
+
+![Gif Demo](Assets/HikeTaker.gif) -->
+
 #Screenshots:
 <br><br>
 Search Screen lets you select parks by state via dropdown selection
