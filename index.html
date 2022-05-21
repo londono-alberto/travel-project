@@ -22,6 +22,10 @@
         <h3 class="parkTitle">Choose a State</h3>
         <div class="dropdown">
           <div id="myDropdown" class="dropdown-content">
+            <div class="select">
+              <div class="select is-multiple">
+              <div class="select is-rounded">
+              <div class="select is-focused">
             <select>
               <option value="AL">Alabama</option>
               <option value="AK">Alaska</option>
@@ -75,6 +79,10 @@
               <option value="WI">Wisconsin</option>
               <option value="WY">Wyoming</option>
             </select>
+            </div>
+            </div>
+            </div>
+            </div>
           </div>
           <button id="stateButton" class="button is-info is-rounded">
             Submit
@@ -91,14 +99,16 @@
           <h2 class="park-choice">Parks in this state</h2>
           <div id="parkList" class="row parkList"></div>
         </div>
-        <button id="returnButton" class="button is-info is-rounded">
+
+        <button id="returnButton" class="returnButton button is-info is-rounded">
           Return to State Selection
         </button>
         <button class="favBtn" id="favBtn">
           <i class="fa fa-tree"></i> Save Park to Favorites
         </button>
+
         <div id="map"></div>
-        <!-- beginning of carousel elements  -->
+       <!-- beginning of carousel elements  -->
         <div class="container">
           <h4 class="picDesignation">Click on the image to view</h4>
           <h4 class="pictureDesc">
@@ -127,10 +137,20 @@
           </div>
         </div>
       </div>
-      <div id="five-day-forecast" class="weather-container">
-        <button id="weather-btn" class="btn weather-btn">
-          Weather Forecast
-        </button>
+        <input type="button" id="weather-btn" class="btn weather-btn" value="Weather Forecast" onClick="changetext()"  >
+        <script>
+        function changetext() {
+             var elem = document.getElementById("weather-btn");
+            if (elem.value=="Weather Forecast")
+                { 
+                    elem.value = "Close Forecast";
+                }
+            else
+             {
+                 elem.value = "Weather Forecast";
+             }
+        }
+        </script>
         <div id="weather-dash" class="weather-dash">
           <h2 class="weatherTitle">5 Day Forecast</h2>
           <button id="close-btn" class="btn">Close</button>

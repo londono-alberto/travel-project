@@ -4,9 +4,10 @@ var apiKeyNPS = "UwI3kgigKGVdm8bk9XTQmiupY45dyxNZfIcdn81Q";
 var apiGoogleMaps = "AIzaSyD4OVkkkHA93ViisjQDq3Fx_oAtNuevgR0";
 
 let startBtn = document.getElementById("stateButton");
-let returnBtn = document.getElementById("returnButton");
+let returnBtn = document.querySelector(".returnButton");
 let activityCard = document.getElementById("activity-card");
 let searchBoard = document.getElementById("search-history");
+
 let parkList = document.getElementById("parkList");
 
 // button that gets the value from the dropdown list
@@ -20,7 +21,6 @@ startBtn.addEventListener("click", function () {
 
     success: function (data) {
       console.log(data);
-
       for (i = 0; i < data.data.length; i++)
         if (userInput === data.data[i].states[i]) {
           var parkFullName = data.data[i].fullName;
@@ -29,14 +29,17 @@ startBtn.addEventListener("click", function () {
           console.log(parkFullName);
 
           $("#parkList").append(
-            `<button id="parkBtn" class= "parkBtn list-group-item list-group-item-action" value = "${parkCode}">${parkFullName}</button>`
+            `<button id="parkBtn" class= "parkBtn button is-info is-rounded"  value = "${parkCode}">${parkListName}</button>`
           );
+          // $("#parkList").append(
+          //   `<button id="parkBtn" class= "parkBtn button is-info is-rounded" onclick="parkDisplay(event)" value = "${parkCode}">${parkListName}</button>`
+          // );
         } else if (data.data[i].states.includes(userInput)) {
           parkListName = data.data[i].fullName;
           parkCode = data.data[i].parkCode;
 
           $("#parkList").append(
-            `<button id="parkBtn" class= "parkBtn button is-info is-rounded" onclick="parkDisplay(event)" value = "${parkCode}">${parkListName}</button>`
+            `<button id="parkBtn" class= "parkBtn button is-info is-rounded"  value = "${parkCode}">${parkListName}</button>`
           );
         }
     },
@@ -57,12 +60,17 @@ returnBtn.addEventListener("click", function () {
 
   $("#activity-card").empty();
   $("#map").empty();
-
-  $(".dropdown").show();
   $("#parkList").empty();
-  $("#returnButton").hide();
-  $(".parkTitle").text(`Choose a State`);
-  $(".park-choice").show();
+
+  $(".container").hide();
+  $(".dropdown").show();
+
+  $("#parkList").empty();
+  $(".returnButton").hide();
+  $(".parkTitle").show();
+  $(".parkTitle").text(`Choose A State`);
+  $(".park-choice").hide();
+
   $("#weather-btn").hide();
   $("#clearBtn").show();
   $(".favBtn").hide();
@@ -88,6 +96,7 @@ parkList.addEventListener("click", function (e) {
   }
 });
 
+// beginning of the localstorage functions --------vvvvv
 searchBoard.addEventListener("click", function (e) {
   e.preventDefault();
 
@@ -257,7 +266,7 @@ function favParksDisplay() {
 $(document).ready(function () {
   $(".park-choice").hide();
   $("#map").hide();
-  $("#returnButton").hide();
+  $(".returnButton").hide();
   $("#weather-btn").hide();
   $(".container").hide();
   $(".search-header").hide();
