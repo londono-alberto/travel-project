@@ -7,7 +7,7 @@
 Group Project #1 Take A Hike
 Group Members: Alberto, Arthur, Mason, Timothy
 
-General Technical Information: \* CSS Framework used: Bulma
+General Technical Information: 
 
      For each State in the US this Page accepts user input to provide:
         - National Park Links
