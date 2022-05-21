@@ -30,17 +30,13 @@ startBtn.addEventListener("click", function () {
           $("#parkList").append(
             `<button id="parkBtn" class= "parkBtn button is-info is-rounded"  value = "${parkCode}">${parkListName}</button>`
           );
-          // $("#parkList").append(
-          //   `<button id="parkBtn" class= "parkBtn button is-info is-rounded" onclick="parkDisplay(event)" value = "${parkCode}">${parkListName}</button>`
-          // );
+
         } else if (data.data[i].states.includes(userInput)) {
           parkListName = data.data[i].fullName;
           parkCode = data.data[i].parkCode;
 
           $("#parkList").append(
             `<button id="parkBtn" class= "parkBtn button is-info is-rounded"  value = "${parkCode}">${parkListName}</button>`
-
-            // `<button id="parkBtn" class= "parkBtn button is-info is-rounded" onclick="parkDisplay(event)" value = "${parkCode}">${parkListName}</button>`
           );
         }
     },
@@ -116,6 +112,7 @@ searchBoard.addEventListener("click", function (e) {
   }
 });
 
+
 $(".favBtn").on("click", favoritePark);
 
 function favoritePark(e) {
@@ -151,21 +148,12 @@ function clearParks() {
 favParksDisplay();
 function favParksDisplay() {
   var parkHistory = localStorage.getItem("historyKey") || [];
-  // console.log(parkHistory);
   var parsed = JSON.parse(parkHistory);
   var parsedVal = parsed[0];
-  // console.log(parsed.length);
-  // console.log(parsed);
-  // console.log(parsedVal);
-  // var parkCode = parsedVal.parkCode;
-  // var parkFullName = parsedVal.parkFullName;
 
   for (i = 0; i < parsed.length; i++) {
     var parsed = JSON.parse(parkHistory);
     var parsedVal = parsed[i];
-    // console.log(parkHistory);
-    // console.log(parsedVal);
-    // console.log(parsed);
 
     if (!parkHistory.includes(parsedVal)) {
       var favPark = document.createElement("div");
