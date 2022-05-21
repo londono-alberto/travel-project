@@ -97,35 +97,38 @@
           </div>
         </div>
         <div id="park-display" class="park-display">
-          <h2 class="park-choice">Parks in this state</h2>
+          <h2 class="park-choice" style="display: none">Parks in this state</h2>
           <div id="parkList" class="row parkList"></div>
         </div>
 
-        <button id="returnButton" class="returnButton button is-info is-rounded">
+        <button id="returnButton" class="returnButton button is-info is-rounded" style="display: none">
           Return to State Selection
         </button>
-        <button class="button is-success is-rounded" id="favBtn">
+
+        <button class="favBtn" id="favBtn" style="display: none">
+
           <i class="fa fa-tree"></i> Save Park to Favorites
         </button>
 
         <div id="map"></div>
        <!-- beginning of carousel elements  -->
-        <div class="container">
-          <h4 class="picDesignation">Click on the image to view</h4>
-          <h4 class="pictureDesc">
+        <div class="container" style="display: none">
+          <h4 class="picDesignation" style="display: none">Click on the image to view</h4>
+          <h4 class="pictureDesc" style="display: none">
             Click on the buttons to navigate the carousel
           </h4>
-          <div class="wrapper">
-            <div class="carouselbox" aria-role="img" aria-label="carousel">
-              <button id="prev" class="prev is-rounded">◀ Previous</button>
-              <button id="next" class="next is-rounded">Next ▶</button>
+
+          <div class="wrapper" style="display: none">
+            <div class="carouselbox"  aria-role="img" aria-label="carousel">
+              <button class="prev">◀ Previous</button>
+              <button class="next">Next ▶</button>
             </div>
           </div>
         </div>
         <!-- end of carousel elements  -->
         <div class="row">
-          <div class="container">
-            <div class="desc-box"></div>
+          <div class="container" style="display: none">
+            <div class="desc-box" ></div>
             <p class="hours"></p>
             <p class="directions"></p>
             <p class="fees"></p>
@@ -134,11 +137,11 @@
             <!-- DON'T REMOVE PARK CODE (ok to move)-->
           </div>
           <div id="activity-card" class="column col-3">
-            <p class="search-header fs-3">State Park(s) and Activities:</p>
-          </div>  
+            <p class="search-header fs-3" style="display: none">State Park(s) and Activities:</p>
+          </div>
         </div>
       </div>
-        <input type="button" id="weather-btn" class="btn weather-btn" value="Weather Forecast" onClick="changetext()"  >
+        <input type="button" id="weather-btn" class="btn weather-btn" style="display: none" value="Weather Forecast" onClick="changetext()"  >
         <script>
         function changetext() {
              var elem = document.getElementById("weather-btn");
