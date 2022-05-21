@@ -30,17 +30,12 @@ startBtn.addEventListener("click", function () {
           $("#parkList").append(
             `<button id="parkBtn" class= "parkBtn button is-info is-rounded"  value = "${parkCode}">${parkListName}</button>`
           );
-          // $("#parkList").append(
-          //   `<button id="parkBtn" class= "parkBtn button is-info is-rounded" onclick="parkDisplay(event)" value = "${parkCode}">${parkListName}</button>`
-          // );
         } else if (data.data[i].states.includes(userInput)) {
           parkListName = data.data[i].fullName;
           parkCode = data.data[i].parkCode;
 
           $("#parkList").append(
             `<button id="parkBtn" class= "parkBtn button is-info is-rounded"  value = "${parkCode}">${parkListName}</button>`
-
-            // `<button id="parkBtn" class= "parkBtn button is-info is-rounded" onclick="parkDisplay(event)" value = "${parkCode}">${parkListName}</button>`
           );
         }
     },
@@ -154,16 +149,11 @@ for (i = 0; i < parkHistory.length; i++) {
   codeEl = parkHistory[i].parkCode;
   var namesArr = [];
   nameEl = parkHistory[i].parkFullName;
-
-  console.log(codesArr);
-  console.log(namesArr);
   if (!codesArr.includes(codeEl) && !namesArr.includes(nameEl)) {
     console.log("wow!");
     codesArr.push(codeEl);
     namesArr.push(nameEl);
   }
-  console.log(`${codesArr}`);
-
   var hatePark = document.createElement("div");
   $(hatePark).html(
     `<button id="parkBtn" class= "parkBtn list-group-item list-group-item-action" value = "${codesArr}">${namesArr}</button>`
