@@ -10,6 +10,7 @@ Group Members: Alberto, Arthur, Mason, Timothy
 General Technical Information: 
 <br>
 For each State in the US this Page accepts user input to provide:
+<ul>
         - National Park Links
         - Scalable Maps
         - A 5 Day Weather Forecast for National Park
@@ -17,16 +18,12 @@ For each State in the US this Page accepts user input to provide:
         - A Hyperlink to the National Parks Directions
         - Cost of admission to each specific National Park
         - Interesting photos of each National Park
+</ul>
 <br>
      This Application utilizes 3 Server Side APIs:
         - Google Maps
         - Weather
         - National Park Service
-<br>
-     This Application uses client-side storage to store persistent data through ??????????
-<br>
-    User Story:
-    As a user who has been quarantined for two years, we wanted a go to website to find parks and trails that lists information regarding the park.
 <br>
     	Concept:
     	As an avid outdoor person, I wanted to go to a website that gives me high level park information when I select a park that I wanted to checkout.
@@ -40,13 +37,7 @@ Mason: Worked on the JavaScript. Focused on the functionality of the maps, weath
 Timothy: Worked on the CSS and HTML. Focused on the styling and layout of the website to be engaging and user intuitive.
 <br>
 Arthur: Worked on the ReadMe, PowerPoint, and Software Testing. Focused on fleshing out the bugs and errors of the current main branch.
-
-Repository:
 <br>
- Repository Name is: travel-project
- <br>
- Repository contains at least 133 commit comments.
-
 
 #Github Repository and Deployed Application:
 <br>
