@@ -9,15 +9,19 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     />
+
+    <title>Take a Hike</title>
+  </head>
+  <html>
+    <body>
+      <div id="doc" class="header">
+        <div id="header">
+          <div id="header"><h1>Take a Hike</h1></div>
+        </div>
+      </div>
     <title>Take A Hike</title>
   </head>
-<html>
-<body>
-<div id="doc" class="header">
-  <div id="header">
-    <div id="header"><h1>Take A Hike</h1></div>
-  </div>
-</div>
+    
 
       <div id="searchBoxes" class="searchBoxes">
         <h3 class="parkTitle">Choose a State</h3>
@@ -105,7 +109,7 @@
           Return to State Selection
         </button>
 
-        <button class="button is-success is-rounded" id="favBtn">
+        <button class="favBtn button is-success is-rounded" id="favBtn">
           <i class="fa fa-tree"></i> Save Park to Favorites
         </button>
 
@@ -135,8 +139,11 @@
             <p class="park-code" style = "display: none"></p>
             <!-- DON'T REMOVE PARK CODE (ok to move)-->
           </div>
-          <div id="activity-card" class="column col-3">
-            <p class="search-header fs-3">State Park(s) and Activities:</p>
+
+            <div id="activity-card" class="column col-3">
+            <p class="search-header fs-3" style="display: none"> Activities:</p>
+          </div>
+
           </div>
         </div>
       </div>

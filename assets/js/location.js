@@ -6,19 +6,6 @@ var apiGoogleMaps = "AIzaSyD4OVkkkHA93ViisjQDq3Fx_oAtNuevgR0";
 //--------------------PARK-------------------------
 
 function parkDisplay(park) {
-  // prevents event bubbling
-  // e.stopPropagation();
-
-  // var element = e.target;
-  // var parkSave = e.target.textContent;
-  // var park = $(element).val();
-  // console.log(element);
-
-  // // Pushes the text into the localstorage array
-  // searchArray.push(parkSave);
-
-  // storeTodos();
-  // renderTodos();
 
   $("#map").show();
   $("#weather-btn").show();
@@ -34,8 +21,6 @@ function parkDisplay(park) {
       apiKeyNPS,
 
     success: function (data) {
-      console.log(data);
-      // attempting to display hawaii on array 6 and create a p element to append the url text
 
       let latitude = data.data[0].latitude;
       let longitude = data.data[0].longitude;
@@ -71,13 +56,12 @@ function parkDisplay(park) {
       $(".park-code").text(`${parkCode}`);
       $(".search-header").show();
       $(".clearBtn").hide();
-      console.log(data.data.length);
 
       for (let i = 0; i < data.data.length; i++) {
         // if statement to specify the state being selected within the array
         if (park === data.data[0].parkCode) {
           // get the url data
-          let { urlPark } = data.data[0];
+          let urlPark = data.data[0].url;
 
           // this div will append the url link -- needs to be here so it doesnt get created multiple times
           let createDiv = document.createElement("div");
@@ -88,8 +72,8 @@ function parkDisplay(park) {
               `<a href="${urlPark}" display="none" >Link to ${data.data[0].name} Park</a>`
             )
           );
-          createDiv.append(createP);
-          activityCard.append(createDiv);
+//           createDiv.append(createP);
+//           activityCard.append(createDiv);
 
           // this for loop specifies the array within the data array
           for (let j = 0; j < data.data[i].activities.length; j++) {
