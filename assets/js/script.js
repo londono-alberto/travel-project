@@ -30,17 +30,13 @@ startBtn.addEventListener("click", function () {
           $("#parkList").append(
             `<button id="parkBtn" class= "parkBtn button is-info is-rounded"  value = "${parkCode}">${parkListName}</button>`
           );
-          // $("#parkList").append(
-          //   `<button id="parkBtn" class= "parkBtn button is-info is-rounded" onclick="parkDisplay(event)" value = "${parkCode}">${parkListName}</button>`
-          // );
+
         } else if (data.data[i].states.includes(userInput)) {
           parkListName = data.data[i].fullName;
           parkCode = data.data[i].parkCode;
 
           $("#parkList").append(
             `<button id="parkBtn" class= "parkBtn button is-info is-rounded"  value = "${parkCode}">${parkListName}</button>`
-
-            // `<button id="parkBtn" class= "parkBtn button is-info is-rounded" onclick="parkDisplay(event)" value = "${parkCode}">${parkListName}</button>`
           );
         }
     },
@@ -116,7 +112,8 @@ searchBoard.addEventListener("click", function (e) {
   }
 });
 
-$("#favBtn").on("click", favoritePark);
+
+$(".favBtn").on("click", favoritePark);
 
 function favoritePark(e) {
   $(this).find(".fa").removeClass("fa-tree").addClass("fa-check");
@@ -159,7 +156,7 @@ function favParksDisplay() {
     var parsedVal = parsed[i];
 
     if (!parkHistory.includes(parsedVal)) {
-      var favPark = document.createElement("button");
+      var favPark = document.createElement("div");
       $(favPark).html(
         `<button id="parkBtn" class= "parkBtn list-group-item list-group-item-action" value = "${parsed[i].parkCode}">${parsed[i].parkFullName}</button>`
       );
