@@ -3,6 +3,7 @@ var apiKeyWeather = "b6a631faf48ec36736fa91299da2f0a2";
 var apiKeyNPS = "UwI3kgigKGVdm8bk9XTQmiupY45dyxNZfIcdn81Q";
 var apiGoogleMaps = "AIzaSyD4OVkkkHA93ViisjQDq3Fx_oAtNuevgR0";
 
+let activityCard = 
 //--------------------PARK-------------------------
 
 function parkDisplay(park) {
@@ -61,19 +62,19 @@ function parkDisplay(park) {
 
       for (let i = 0; i < data.data.length; i++) {
         // if statement to specify the state being selected within the array
-        // if (park === data.data[0].parkCode) {
-        //   // get the url data
-        //   let urlPark = data.data[0].url;
+        if (park === data.data[0].parkCode) {
+          // get the url data
+          let urlPark = data.data[0].url;
 
-        //   // this div will append the url link -- needs to be here so it doesnt get created multiple times
-        //   let createDiv = document.createElement("div");
+          // this div will append the url link -- needs to be here so it doesnt get created multiple times
+          let createDiv = document.createElement("div");
 
-        //   let createP = document.createElement("p");
-        //   $(createP).html(
-        //     $(`<a href="${urlPark}">Link to ${data.data[0].name} Park</a>`)
-        //   );
-//           createDiv.append(createP);
-//           activityCard.append(createDiv);
+          let createP = document.createElement("p");
+          $(createP).html(
+            $(`<a href="${urlPark}">Link to ${data.data[0].name} Park</a>`)
+          );
+          createDiv.append(createP);
+          activityCard.append(createDiv);
 
           // this for loop specifies the array within the data array
           for (let j = 0; j < data.data[i].activities.length; j++) {
@@ -101,7 +102,7 @@ function parkDisplay(park) {
             parkImages.push(url);
             // console.log(parkImages);
           }
-        // }
+        }
       }
       $(`.weather-dash`).empty();
       initMap(latitude, longitude, parkCity, parkName, parkState);
