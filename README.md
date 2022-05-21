@@ -87,3 +87,11 @@ Challenges we faced were mainly the functionality of some the features we implem
  - A lot of the successes derived from the challenges we encountered. We were able to push through and resolve the issues and find different solutions to some of the problems.
 <br>
  - Aside from the coding aspect, further into the project building process, we ended up establishing a nice work flow in the group.
+ 
+<br>
+
+Screenshot of Application: 
+<br>
+<br>
+![guapguap github io_travel-project_(iPhone 12 Pro)](https://user-images.githubusercontent.com/102185104/169658323-d369013e-3e9b-4b00-b44f-3fce13c41345.png)
+ 
