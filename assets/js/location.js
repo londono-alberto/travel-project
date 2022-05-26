@@ -1,8 +1,3 @@
-// web api keys
-var apiKeyWeather = "b6a631faf48ec36736fa91299da2f0a2";
-var apiKeyNPS = "UwI3kgigKGVdm8bk9XTQmiupY45dyxNZfIcdn81Q";
-var apiGoogleMaps = "AIzaSyD4OVkkkHA93ViisjQDq3Fx_oAtNuevgR0";
-
 //--------------------PARK-------------------------
 
 function parkDisplay(park) {
@@ -35,7 +30,7 @@ function parkDisplay(park) {
       let parkEntranceFeesCost = data.data[0].entranceFees[0].cost;
       let parkEntranceFeesDesc = data.data[0].entranceFees[0].description;
       var parkCode = data.data[0].parkCode;
-      console.log(parkCode);
+    
 
       $(".parkTitle").text(`${parkFullName}`);
       if (!picDesignation === "" && !picDesignation === null) {
@@ -59,20 +54,6 @@ function parkDisplay(park) {
       for (let i = 0; i < data.data.length; i++) {
         // if statement to specify the state being selected within the array
         if (park === data.data[0].parkCode) {
-          // get the url data
-          let urlPark = data.data[0].url;
-
-          // this div will append the url link -- needs to be here so it doesnt get created multiple times
-          let createDiv = document.createElement("div");
-
-          let createP = document.createElement("p");
-          $(createP).html(
-            $(
-              `<a href="${urlPark}" display="none" >Link to ${data.data[0].name} Park</a>`
-            )
-          );
-          //           createDiv.append(createP);
-          //           activityCard.append(createDiv);
 
           // this for loop specifies the array within the data array
           for (let j = 0; j < data.data[i].activities.length; j++) {
@@ -98,7 +79,6 @@ function parkDisplay(park) {
 
             // this pushes the data into an empty array
             parkImages.push(url);
-            // console.log(parkImages);
           }
         }
       }
@@ -113,7 +93,6 @@ function parkDisplay(park) {
 //--------------------MAP-------------------------
 function initMap(lat, lon, city, park, state) {
   //map options
-  console.log(lat, lon);
   var options = {
     zoom: 9,
     mapId: "2f72557b09a6245f",
@@ -139,23 +118,23 @@ function initMap(lat, lon, city, park, state) {
 
 //--------------------WEATHER----------------------
 function weatherDisplay(city, park, lat, lon) {
-  var apiKeyWeather = "b6a631faf48ec36736fa91299da2f0a2";
+  let apiKeyWeather = "b6a631faf48ec36736fa91299da2f0a2";
 
   $.ajax({
     type: "GET",
     url: `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=current,minutely,hourly,alerts&appid=${apiKeyWeather}`,
   }).then(function (data) {
-    console.log(data);
+
     $(".weatherTitle").text(`${park} Park Five Day Forecast`);
 
     for (i = 1; i < 6; i += 1) {
-      var forecastCard = $('<div class = "card col">');
-      var forecastDate = $('<p class = "castDate">');
-      var forecastTemp = $('<p class = "temp">');
-      var forecastWind = $('<p class = "wind">');
-      var forecastHumidity = $('<p class = "humid">');
+      let forecastCard = $('<div class = "card col">');
+      let forecastDate = $('<p class = "castDate">');
+      let forecastTemp = $('<p class = "temp">');
+      let forecastWind = $('<p class = "wind">');
+      let forecastHumidity = $('<p class = "humid">');
 
-      var date = new Date(data.daily[i].dt * 1000).toLocaleDateString("en-US");
+      let date = new Date(data.daily[i].dt * 1000).toLocaleDateString("en-US");
       let iconData = $(
         `<img src="https://openweathermap.org/img/wn/${data.daily[i].weather[0].icon}.png"/>`
       );
@@ -172,13 +151,13 @@ function weatherDisplay(city, park, lat, lon) {
       forecastCard.append(forecastHumidity);
     }
   });
-  var weatherClose = document.createElement("div");
+  let weatherClose = document.createElement("div");
   $(weatherClose).html(
     `<button id="weatherClose" class= "weatherClose">Close</button>`
   );
   $("#weather-dash").append(weatherClose);
   $("#close-btn").show();
-  var weatherCloseBtn = document.getElementById("weatherClose");
+  let weatherCloseBtn = document.getElementById("weatherClose");
   weatherCloseBtn.addEventListener("click", () =>
     weatherDash.classList.remove("show")
   );

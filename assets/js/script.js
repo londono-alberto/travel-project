@@ -1,7 +1,7 @@
 // web api keys
-var apiKeyWeather = "b6a631faf48ec36736fa91299da2f0a2";
-var apiKeyNPS = "UwI3kgigKGVdm8bk9XTQmiupY45dyxNZfIcdn81Q";
-var apiGoogleMaps = "AIzaSyD4OVkkkHA93ViisjQDq3Fx_oAtNuevgR0";
+let apiKeyWeather = "b6a631faf48ec36736fa91299da2f0a2";
+let apiKeyNPS = "UwI3kgigKGVdm8bk9XTQmiupY45dyxNZfIcdn81Q";
+let apiGoogleMaps = "AIzaSyD4OVkkkHA93ViisjQDq3Fx_oAtNuevgR0";
 
 let startBtn = document.getElementById("stateButton");
 let returnBtn = document.querySelector(".returnButton");
@@ -19,13 +19,11 @@ startBtn.addEventListener("click", function () {
     url: `https://developer.nps.gov/api/v1/parks?stateCode=${userInput}&api_key=${apiKeyNPS}`,
 
     success: function (data) {
-      console.log(data);
+    
       for (i = 0; i < data.data.length; i++)
         if (userInput === data.data[i].states[i]) {
-          var parkFullName = data.data[i].fullName;
-          var parkCode = data.data[i].parkCode;
-          console.log(parkCode);
-          console.log(parkFullName);
+        
+          let parkCode = data.data[i].parkCode;
 
           $("#parkList").append(
             `<button id="parkBtn" class= "parkBtn button is-info is-rounded"  value = "${parkCode}">${parkListName}</button>`
@@ -77,8 +75,8 @@ returnBtn.addEventListener("click", function () {
 parkList.addEventListener("click", function (e) {
   e.preventDefault();
 
-  var element = e.target;
-  var parkEl = $(element).val();
+  let element = e.target;
+  let parkEl = $(element).val();
 
   if (e.target.classList.contains("parkBtn")) {
     parkDisplay(parkEl);
@@ -98,8 +96,8 @@ parkList.addEventListener("click", function (e) {
 searchBoard.addEventListener("click", function (e) {
   e.preventDefault();
 
-  var element = e.target;
-  var parkEl = $(element).val();
+  let element = e.target;
+  let parkEl = $(element).val();
 
   if (e.target.classList.contains("parkBtn")) {
     parkDisplay(parkEl);
@@ -118,23 +116,23 @@ searchBoard.addEventListener("click", function (e) {
 
 $(".favBtn").on("click", favoritePark);
 
-function favoritePark(e) {
+function favoritePark() {
   $(this).find(".fa").removeClass("fa-tree").addClass("fa-check");
   setTimeout(() => {
     $(this).find(".fa").removeClass("fa-check").addClass("fa-tree");
   }, 400);
 
-  var parkHistory = JSON.parse(localStorage.getItem("historyKey")) || [];
-  console.log(parkHistory);
+  let parkHistory = JSON.parse(localStorage.getItem("historyKey")) || [];
 
-  var parkCode = $(".park-code").text();
-  var parkFullName = $(".parkTitle").text();
-  console.log(parkCode, parkFullName);
-  var saveEl = { parkCode, parkFullName };
+
+  let parkCode = $(".park-code").text();
+  let parkFullName = $(".parkTitle").text();
+
+  let saveEl = { parkCode, parkFullName };
   if (!parkHistory.includes(saveEl)) {
     if (saveEl != "" && saveEl != null) {
       parkHistory.push(saveEl);
-      console.log(saveEl);
+
 
       localStorage.setItem("historyKey", JSON.stringify(parkHistory));
     }
@@ -148,20 +146,19 @@ function clearParks() {
   window.location.reload();
 }
 
-var parkHistory = JSON.parse(localStorage.getItem("historyKey")) || [];
-// console.log(parkHistory[0]);
-console.log(parkHistory.length);
+let parkHistory = JSON.parse(localStorage.getItem("historyKey")) || [];
+
 for (i = 0; i < parkHistory.length; i++) {
-  var codesArr = [];
+  let codesArr = [];
   codeEl = parkHistory[i].parkCode;
-  var namesArr = [];
+  let namesArr = [];
   nameEl = parkHistory[i].parkFullName;
   if (!codesArr.includes(codeEl) && !namesArr.includes(nameEl)) {
-    console.log("wow!");
+
     codesArr.push(codeEl);
     namesArr.push(nameEl);
   }
-  var hatePark = document.createElement("div");
+  let hatePark = document.createElement("div");
   $(hatePark).html(
     `<button id="parkBtn" class= "parkBtn list-group-item list-group-item-action" value = "${codesArr}">${namesArr}</button>`
   );
