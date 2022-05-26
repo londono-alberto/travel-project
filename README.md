@@ -96,3 +96,7 @@ List of park activities
 <img src="./assets/img/takeahikess5.jpg" alt="activities" title="List of Activities">
 <br>
 <br>
+# License & Copyright:
+<br>
+<br>
+Licensed under the [MIT License](LICENSE).
