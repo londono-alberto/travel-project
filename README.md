@@ -99,4 +99,6 @@ List of park activities
 ## License & Copyright:
 <br>
 <br>
+Copyright (c) 2022 Alberto Londono, Mason Benson, Arthur Green, Timothy Murphy
+<br>
 Licensed under the [MIT License](LICENSE) LICENSE.
