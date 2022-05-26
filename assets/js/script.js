@@ -1,3 +1,4 @@
+script.js
 // web api keys
 var apiKeyWeather = "b6a631faf48ec36736fa91299da2f0a2";
 var apiKeyNPS = "UwI3kgigKGVdm8bk9XTQmiupY45dyxNZfIcdn81Q";
@@ -169,7 +170,7 @@ for (i = 0; i < parkHistory.length; i++) {
 $(document).ready(function () {
   $(".park-choice").hide();
   $("#map").hide();
-  $("#returnButton").hide();
+  $(".returnButton").hide();
   $("#weather-btn").hide();
   $(".container").hide();
   $(".search-header").hide();
